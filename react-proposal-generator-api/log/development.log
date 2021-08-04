@@ -6228,3 +6228,33 @@ Migrating to CreateModelAssemblies (20210804220440)
   [1m[36mModel Load (0.3ms)[0m  [1m[34mSELECT "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mModel Load (0.3ms)[0m  [1m[34mSELECT "models".* FROM "models" ORDER BY "models"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mModelAssembly Load (0.2ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["model_id", 1], ["LIMIT", 11]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4301546756541730605)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMachines (20210804222416)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4301546756541730605)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4301546756541730605)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateMachines (20210804222416)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "machines" ("id" bigserial primary key, "model_id" bigint, "location_address" character varying, "location_city" character varying, "location_state" character varying, "location_zip" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE INDEX "index_machines_on_model_id" ON "machines" ("model_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210804222416"]]
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(4301546756541730605)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4301546756541730605)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RenamePartsAssembliesTable (20210804223010)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "parts_assemblies" RENAME TO "items_assemblies"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER INDEX "parts_assemblies_pkey" RENAME TO "items_assemblies_pkey"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "public"."parts_assemblies_id_seq" RENAME TO "items_assemblies_id_seq"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER INDEX "index_parts_assemblies_on_assembly_id" RENAME TO "index_items_assemblies_on_assembly_id"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER INDEX "index_parts_assemblies_on_item_id" RENAME TO "index_items_assemblies_on_item_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210804223010"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(4301546756541730605)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mItemsAssembly Load (0.5ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]

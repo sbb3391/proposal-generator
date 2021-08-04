@@ -1,8 +1,8 @@
 class Assembly < ApplicationRecord
   has_many :model_assemblies 
   has_many :models, through: :model_assemblies
-  has_many :parts_assemblies
-  has_many :items, through: :parts_assemblies
+  has_many :items_assemblies
+  has_many :items, through: :items_assemblies
 
   def self.import(file)
     CSV.read(file, headers: true, :header_converters => :symbol, :converters => :all, quote_empty: true)

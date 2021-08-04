@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_04_220440) do
+ActiveRecord::Schema.define(version: 2021_08_04_223010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,27 @@ ActiveRecord::Schema.define(version: 2021_08_04_220440) do
     t.string "part_type"
   end
 
+  create_table "items_assemblies", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "assembly_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "required"
+    t.index ["assembly_id"], name: "index_items_assemblies_on_assembly_id"
+    t.index ["item_id"], name: "index_items_assemblies_on_item_id"
+  end
+
+  create_table "machines", force: :cascade do |t|
+    t.bigint "model_id"
+    t.string "location_address"
+    t.string "location_city"
+    t.string "location_state"
+    t.string "location_zip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["model_id"], name: "index_machines_on_model_id"
+  end
+
   create_table "model_assemblies", force: :cascade do |t|
     t.bigint "model_id"
     t.bigint "assembly_id"
@@ -46,16 +67,6 @@ ActiveRecord::Schema.define(version: 2021_08_04_220440) do
     t.string "short_description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "parts_assemblies", force: :cascade do |t|
-    t.bigint "item_id"
-    t.bigint "assembly_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "required"
-    t.index ["assembly_id"], name: "index_parts_assemblies_on_assembly_id"
-    t.index ["item_id"], name: "index_parts_assemblies_on_item_id"
   end
 
 end

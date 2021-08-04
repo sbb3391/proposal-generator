@@ -1,4 +1,4 @@
-class PartsAssembly < ApplicationRecord
+class ItemsAssembly < ApplicationRecord
   belongs_to :item
   belongs_to :assembly
 
@@ -15,7 +15,7 @@ class PartsAssembly < ApplicationRecord
     puts "Currently there are #{starting_items} products."
 
     hashed.each do |row|
-      PartsAssembly.create(row)
+      self.create(row)
     end
   end  
 end

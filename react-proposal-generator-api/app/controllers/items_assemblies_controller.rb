@@ -1,0 +1,3 @@
+class ItemsAssembliesController < ApplicationController
+
+end

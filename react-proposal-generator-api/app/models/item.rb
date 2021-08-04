@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-  has_many :parts_assemblies
-  has_many :assemblies, through: :parts_assemblies
+  has_many :items_assemblies
+  has_many :assemblies, through: :items_assemblies
 
   def self.import(file)
     CSV.read(file, headers: true, :header_converters => :symbol, :converters => :all, quote_empty: true)
