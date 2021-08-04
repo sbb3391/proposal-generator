@@ -10,19 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_01_010838) do
+ActiveRecord::Schema.define(version: 2021_08_04_220440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "models", force: :cascade do |t|
-    t.string "part_number"
+  create_table "assemblies", force: :cascade do |t|
     t.string "name"
-    t.string "short_description"
-    t.decimal "branch_floor_price"
-    t.decimal "srp"
+    t.string "assembly_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "item_number"
+    t.string "description"
+    t.decimal "branch_floor_price"
+    t.decimal "target_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "part_type"
+  end
+
+  create_table "model_assemblies", force: :cascade do |t|
+    t.bigint "model_id"
+    t.bigint "assembly_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["assembly_id"], name: "index_model_assemblies_on_assembly_id"
+    t.index ["model_id"], name: "index_model_assemblies_on_model_id"
+  end
+
+  create_table "models", force: :cascade do |t|
+    t.string "name"
+    t.string "short_description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "parts_assemblies", force: :cascade do |t|
+    t.bigint "item_id"
+    t.bigint "assembly_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.boolean "required"
+    t.index ["assembly_id"], name: "index_parts_assemblies_on_assembly_id"
+    t.index ["item_id"], name: "index_parts_assemblies_on_item_id"
   end
 
 end

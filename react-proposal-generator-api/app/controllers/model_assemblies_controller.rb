@@ -1,0 +1,2 @@
+class ModelAssembliesController < ApplicationController
+end
