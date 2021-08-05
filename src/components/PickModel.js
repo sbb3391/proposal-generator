@@ -40,7 +40,7 @@ export default class PickModel extends Component {
             <div className="flex mt-4">
               <select className="w-1/2 h-12 mx-auto" value={this.state.selectValue} onChange={(e) => this.handleSelectChange(this.props.updateStep, e)}>
                 <option value="none" disabled hidden>
-                  Select an Option
+                  Select Model
                 </option>
                 {this.renderModelOptions(this.state.models)}
               </select>
