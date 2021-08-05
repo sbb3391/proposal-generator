@@ -1,5 +1,5 @@
 class ModelSerializer < ActiveModel::Serializer
-  attributes :id, :name, :assemblies
+  attributes :id, :name
 
   def assemblies 
     self.object.model_assemblies.map do |ma| 
