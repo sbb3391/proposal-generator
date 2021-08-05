@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PickModel from '../components/PickModel'
-import PickEngine from '../components/PickEngine'
+import EnginePick from '../components/EnginePick'
 
 
 class NewMachine extends Component {
@@ -20,7 +20,8 @@ class NewMachine extends Component {
       case 'pickMachine':
         return(<PickModel key='1' updateStep={this.updateStep}/>)
       case 'pickEngine':
-        return(<PickEngine key='2' updateStep={this.updateStep}/>)
+        console.log("log")
+        return(<EnginePick key='2' updateStep={this.updateStep}/>)
       default:
         return(<PickModel key='error'/>)
     }

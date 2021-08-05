@@ -16,11 +16,11 @@ class PickModel extends Component {
   }
 
   handleSelection = (callback, e) => {
-    const options = Array.from(e.target.querySelector("option"))
-    const selectedOption = options.find( option => option.id === e.target.value)
+    const options = e.target.querySelectorAll("option")
+    const selectedOption = Array.from(options).find( option => option.value === e.target.value)
 
-    callback("pickEngine")
     this.props.addModelToStore(selectedOption.id)
+    callback("pickEngine")
   }
 
   componentDidMount() {
