@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import uuid from 'react-uuid'
+import { connect } from 'react-redux';
 
-export default class PickModel extends Component {
+class PickModel extends Component {
 
   state = {
     selectValue: 'none',
@@ -15,8 +16,10 @@ export default class PickModel extends Component {
   }
 
   handleSelectChange = (callback, e) => {
-    debugger;
+    console.log(e.target.value)
     callback("pickEngine")
+    // addModelToStore()
+
   }
 
   componentDidMount() {
@@ -51,3 +54,11 @@ export default class PickModel extends Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    addModelToStore: model => dispatch({type: 'ADD_MODEL', model: model})
+  }
+}
+
+export default connect(null, mapDispatchToProps)(PickModel)

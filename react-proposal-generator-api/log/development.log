@@ -9507,3 +9507,11 @@ Processing by ModelsController#index as */*
 Completed 200 OK in 10ms (Views: 6.4ms | ActiveRecord: 2.4ms | Allocations: 1259)
 
 
+Started GET "/models" for ::1 at 2021-08-05 12:53:39 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (2.4ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.59ms)
+Completed 200 OK in 104ms (Views: 92.1ms | ActiveRecord: 35.7ms | Allocations: 4434)
+
+
