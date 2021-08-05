@@ -6284,3 +6284,118 @@ Migrating to CreateParts (20210804223639)
   [1m[36mPart Create (1.0ms)[0m  [1m[32mINSERT INTO "parts" ("machine_id", "item_id", "quantity", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["machine_id", 1], ["item_id", 1], ["quantity", 1], ["price", "125000.0"], ["created_at", "2021-08-04 22:43:47.480315"], ["updated_at", "2021-08-04 22:43:47.480315"]]
   [1m[36mTRANSACTION (3.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mPart Load (0.4ms)[0m  [1m[34mSELECT "parts".* FROM "parts" WHERE "parts"."machine_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["machine_id", 1], ["LIMIT", 11]]
+  [1m[36mModel Load (1.6ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  [1m[36mModelAssembly Load (1.3ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["model_id", 1], ["LIMIT", 11]]
+Started GET "/new_machine" for ::1 at 2021-08-05 10:12:14 -0400
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/new_machine"):
+  
+Started GET "/models" for ::1 at 2021-08-05 10:12:28 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (1.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 6.2ms | Allocations: 11112)
+
+
+  
+SyntaxError (/home/sbb3391/code/projects/react-proposal-generator/react-proposal-generator-api/app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+        name: Assembly.all.where(id: ma.a...
+        ^~~~
+/home/sbb3391/code/projects/react-proposal-generator/react-proposal-generator-api/app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+      }
+      ^):
+  
+app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+app/controllers/models_controller.rb:6:in `index'
+Started GET "/models" for ::1 at 2021-08-05 10:23:48 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (1.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+Completed 500 Internal Server Error in 40ms (ActiveRecord: 5.7ms | Allocations: 10007)
+
+
+  
+SyntaxError (/home/sbb3391/code/projects/react-proposal-generator/react-proposal-generator-api/app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+        name: Assembly.all.where(id: ma.a...
+        ^~~~
+/home/sbb3391/code/projects/react-proposal-generator/react-proposal-generator-api/app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+      }
+      ^):
+  
+app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+app/serializers/model_serializer.rb:8: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_serializer.rb:9: syntax error, unexpected '}', expecting end
+app/controllers/models_controller.rb:6:in `index'
+Started GET "/models" for ::1 at 2021-08-05 10:24:26 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (2.7ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mModelAssembly Load (1.7ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+[active_model_serializers]   ↳ app/serializers/model_serializer.rb:5:in `map'
+[active_model_serializers]   [1m[36mAssembly Load (1.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 1]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 12]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 13]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 14]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 15]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 16]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 17]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 18]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 19]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 20]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 21]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 22]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 24]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 25]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 26]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 27]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 29]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 30]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 31]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 32]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 33]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 34]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 35]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 36]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 38]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 39]]
+[active_model_serializers]   ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (146.43ms)
+Completed 200 OK in 181ms (Views: 115.3ms | ActiveRecord: 61.0ms | Allocations: 51136)
+
+
