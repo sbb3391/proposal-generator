@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :parts
   resources :machines
   resources :model_assemblies
   resources :parts_assemblies
