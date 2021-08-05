@@ -4,8 +4,6 @@ const rootReducer = combineReducers({
   newMachine: newMachineReducer
 })
 
-export default rootReducer;
-
 function newMachineReducer(state = {
   model: ''
 }, action) {
@@ -15,3 +13,5 @@ function newMachineReducer(state = {
       return Object.assign({}, ...state, {action})
   }
 }
+
+export default rootReducer;

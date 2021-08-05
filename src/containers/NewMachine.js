@@ -12,7 +12,6 @@ class NewMachine extends Component {
   updateStep = (newStep) => {
     this.setState({
       step: newStep
-
     })
   }
 

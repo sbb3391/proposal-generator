@@ -11,15 +11,16 @@ class PickModel extends Component {
 
   renderModelOptions = models => {
     return models.map( model => {
-      return <option key={uuid()} id={model.id}>{model.name}</option>
+      return <option key={uuid()} id={model.id} >{model.name}</option>
     })
   }
 
-  handleSelectChange = (callback, e) => {
-    console.log(e.target.value)
-    callback("pickEngine")
-    // addModelToStore()
+  handleSelection = (callback, e) => {
+    const options = Array.from(e.target.querySelector("option"))
+    const selectedOption = options.find( option => option.id === e.target.value)
 
+    callback("pickEngine")
+    this.props.addModelToStore(selectedOption.id)
   }
 
   componentDidMount() {
@@ -41,7 +42,7 @@ class PickModel extends Component {
           <h1 className="text-center text-3xl mt-4">Select Model:</h1>
           <form>
             <div className="flex mt-4">
-              <select className="w-1/2 h-12 mx-auto" value={this.state.selectValue} onChange={(e) => this.handleSelectChange(this.props.updateStep, e)}>
+              <select className="w-1/2 h-12 mx-auto" value={this.state.selectValue} onChange={(e) => this.handleSelection(this.props.updateStep, e)} readOnly>
                 <option value="none" disabled hidden>
                   Select Model
                 </option>
@@ -57,7 +58,7 @@ class PickModel extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    addModelToStore: model => dispatch({type: 'ADD_MODEL', model: model})
+    addModelToStore: id => dispatch({type: 'ADD_MODEL', modelId: id})
   }
 }
 
