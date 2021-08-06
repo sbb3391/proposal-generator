@@ -13865,3 +13865,1396 @@ Processing by ItemsAssembliesController#index as */*
 Completed 200 OK in 1010ms (Views: 654.4ms | ActiveRecord: 344.5ms | Allocations: 8569665)
 
 
+  [1m[36mModel Load (0.5ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+Started GET "/" for ::1 at 2021-08-06 07:02:31 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/sbb3391/.rvm/gems/ruby-2.6.1/gems/railties-6.1.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/sbb3391/.rvm/gems/ruby-2.6.1/gems/railties-6.1.4/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.2ms | Allocations: 353)
+Completed 200 OK in 28ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 2750)
+
+
+Started GET "/model/1/model_assemblies" for ::1 at 2021-08-06 07:02:39 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/model/1/model_assemblies"):
+  
+Started GET "/models/1/model_assemblies" for 127.0.0.1 at 2021-08-06 07:03:45 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (1.2ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.1ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (31.16ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 14.4ms | Allocations: 20516)
+
+
+  
+NoMethodError (undefined method `item' for #<ModelAssembly:0x00007f4c08d783a8>):
+  
+app/serializers/model_assembly_serializer.rb:13:in `item'
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for 127.0.0.1 at 2021-08-06 07:03:49 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (1.6ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.3ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.3ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.8ms | Allocations: 5670)
+
+
+  
+NoMethodError (undefined method `item' for #<ModelAssembly:0x00007f4c091c7490>):
+  
+app/serializers/model_assembly_serializer.rb:13:in `item'
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for 127.0.0.1 at 2021-08-06 07:03:53 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (1.1ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.7ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.82ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 2.8ms | Allocations: 5413)
+
+
+  
+NoMethodError (undefined method `item' for #<ModelAssembly:0x00005624b7ef1ed8>):
+  
+app/serializers/model_assembly_serializer.rb:13:in `item'
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:04:24 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (1.0ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (2.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ (byebug):1:in `model'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (37946.96ms)
+Completed 500 Internal Server Error in 38026ms (ActiveRecord: 26.5ms | Allocations: 405337)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `model'
+app/serializers/model_assembly_serializer.rb:7:in `model'
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:05:09 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (13.9ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:7:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:14:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3734.18ms)
+Completed 500 Internal Server Error in 3986ms (ActiveRecord: 80.3ms | Allocations: 2684329)
+
+
+  
+NoMethodError (undefined method `description' for #<Assembly:0x00007f4c14079ab0>):
+  
+app/serializers/model_assembly_serializer.rb:15:in `item'
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:06:35 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (0.9ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (28.63ms)
+Completed 500 Internal Server Error in 63ms (ActiveRecord: 14.5ms | Allocations: 21143)
+
+
+  
+NoMethodError (undefined method `item' for #<ModelAssembly:0x00007f0a3cd4d850>):
+  
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:06:58 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (0.9ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.1ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (36.82ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 16.2ms | Allocations: 23224)
+
+
+  
+NoMethodError (undefined method `description' for #<Assembly:0x00007f0a3cfcda08>):
+  
+app/serializers/model_assembly_serializer.rb:14:in `assembly'
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:07:08 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (0.9ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.7ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.8ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (10.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (167.09ms)
+Completed 200 OK in 183ms (Views: 121.0ms | ActiveRecord: 59.3ms | Allocations: 57638)
+
+
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:11:15 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (1.0ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 7.9ms | Allocations: 6731)
+
+
+  
+SyntaxError (/home/sbb3391/code/projects/react-proposal-generator/react-proposal-generator-api/app/serializers/model_assembly_serializer.rb:15: syntax error, unexpected tIDENTIFIER, expecting '}'
+      assemblyType: self.object.assembly.assemb...
+      ^~~~~~~~~~~~
+/home/sbb3391/code/projects/react-proposal-generator/react-proposal-generator-api/app/serializers/model_assembly_serializer.rb:16: syntax error, unexpected '}', expecting end
+    }
+    ^):
+  
+app/serializers/model_assembly_serializer.rb:15: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_assembly_serializer.rb:16: syntax error, unexpected '}', expecting end
+app/serializers/model_assembly_serializer.rb:15: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_assembly_serializer.rb:16: syntax error, unexpected '}', expecting end
+app/serializers/model_assembly_serializer.rb:15: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/serializers/model_assembly_serializer.rb:16: syntax error, unexpected '}', expecting end
+app/controllers/model_assemblies_controller.rb:5:in `index'
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:11:29 -0400
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (0.8ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (2.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (2.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (2.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (213.41ms)
+Completed 200 OK in 228ms (Views: 175.8ms | ActiveRecord: 49.3ms | Allocations: 57976)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(4301546756541730605)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRequiredColumnToModelAssemblies (20210806111321)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.3ms)[0m  [1m[35mALTER TABLE "model_assemblies" ADD "required" boolean[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210806111321"]]
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(4301546756541730605)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mModelAssembly Load (0.4ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (2.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "items_assemblies" ON "items"."id" = "items_assemblies"."item_id" WHERE "items_assemblies"."assembly_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["assembly_id", 1], ["LIMIT", 11]]
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mModel Load (0.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mModel Load (0.7ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Update (1.7ms)[0m  [1m[33mUPDATE "models" SET "name" = $1, "updated_at" = $2 WHERE "models"."id" = $3[0m  [["name", "c12000"], ["updated_at", "2021-08-06 11:15:48.302424"], ["id", 1]]
+  [1m[36mTRANSACTION (4.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModel Load (0.7ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Update (1.0ms)[0m  [1m[33mUPDATE "models" SET "name" = $1, "short_description" = $2, "updated_at" = $3 WHERE "models"."id" = $4[0m  [["name", "c14000"], ["short_description", "140 page per minute Cypress model"], ["updated_at", "2021-08-06 11:16:31.508359"], ["id", 2]]
+  [1m[36mTRANSACTION (4.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mModel Load (0.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["model_id", 1], ["LIMIT", 11]]
+Started GET "/models/1/model_assemblies" for ::1 at 2021-08-06 07:17:15 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ModelAssembliesController#index as HTML
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModelAssembly Load (1.0ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/model_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mModel Load (1.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (2.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (18.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (2.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.8ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers]   [1m[36mCACHE Model Load (0.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:6:in `model'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/model_assembly_serializer.rb:13:in `assembly'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (254.11ms)
+Completed 200 OK in 289ms (Views: 202.0ms | ActiveRecord: 68.2ms | Allocations: 64029)
+
+
+  [1m[36mModelAssembly Load (0.5ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.7ms)[0m  [1m[34mSELECT "items".* FROM "items" INNER JOIN "items_assemblies" ON "items"."id" = "items_assemblies"."item_id" WHERE "items_assemblies"."assembly_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["assembly_id", 1], ["LIMIT", 11]]
+  [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Destroy (1.3ms)[0m  [1m[31mDELETE FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mModelAssembly Load (0.6ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" /* loading for inspect */ LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mModelAssembly Load (1.1ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["assembly_id", 1], ["LIMIT", 11]]
+  [1m[36mModelAssembly Load (0.4ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 LIMIT $2[0m  [["assembly_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModelAssembly Destroy (0.6ms)[0m  [1m[31mDELETE FROM "model_assemblies" WHERE "model_assemblies"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModelAssembly Load (0.4ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 LIMIT $2[0m  [["assembly_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Create (23.7ms)[0m  [1m[32mINSERT INTO "assemblies" ("created_at", "updated_at") VALUES ($1, $2) RETURNING "id"[0m  [["created_at", "2021-08-06 11:29:30.857975"], ["updated_at", "2021-08-06 11:29:30.857975"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" ORDER BY "assemblies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" ORDER BY "assemblies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mModelAssembly Load (0.6ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["assembly_id", 40], ["LIMIT", 11]]
+  [1m[36mAssembly Load (0.8ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" ORDER BY "assemblies"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.7ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (0.8ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 40], ["created_at", "2021-08-06 11:30:30.080292"], ["updated_at", "2021-08-06 11:30:30.080292"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModelAssembly Load (0.6ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 LIMIT $2[0m  [["assembly_id", 40], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Destroy (1.2ms)[0m  [1m[31mDELETE FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 40]]
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModelAssembly Load (0.7ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["assembly_id", 40], ["LIMIT", 11]]
+  [1m[36mModelAssembly Load (0.7ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 LIMIT $2[0m  [["assembly_id", 40], ["LIMIT", 1]]
+  [1m[36mModelAssembly Load (0.8ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 LIMIT $2[0m  [["assembly_id", 40], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModelAssembly Destroy (0.7ms)[0m  [1m[31mDELETE FROM "model_assemblies" WHERE "model_assemblies"."id" = $1[0m  [["id", 28]]
+  [1m[36mTRANSACTION (10.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModelAssembly Load (0.5ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mModelAssembly Load (0.7ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Create (1.1ms)[0m  [1m[32mINSERT INTO "assemblies" ("name", "created_at", "updated_at", "assembly_type") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "C14000 DELIVERY/INSTALL"], ["created_at", "2021-08-06 11:38:14.527955"], ["updated_at", "2021-08-06 11:38:14.527955"], ["assembly_type", "main unit"]]
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Destroy (0.7ms)[0m  [1m[31mDELETE FROM "assemblies" WHERE "assemblies"."id" = $1[0m  [["id", 41]]
+  [1m[36mTRANSACTION (4.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (0.9ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 2], ["created_at", "2021-08-06 11:42:23.192218"], ["updated_at", "2021-08-06 11:42:23.192218"], ["required", true]]
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModel Load (0.4ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mModelAssembly Load (0.3ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."model_id" = $1 ORDER BY "model_assemblies"."id" DESC LIMIT $2[0m  [["model_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Create (0.5ms)[0m  [1m[32mINSERT INTO "assemblies" ("name", "created_at", "updated_at", "assembly_type") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "DELIVERY & INSTALL"], ["created_at", "2021-08-06 11:44:13.517480"], ["updated_at", "2021-08-06 11:44:13.517480"], ["assembly_type", "main unit"]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "assemblies" ("name", "created_at", "updated_at", "assembly_type") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "LEASE RETURNS"], ["created_at", "2021-08-06 11:45:27.967230"], ["updated_at", "2021-08-06 11:45:27.967230"], ["assembly_type", "main unit"]]
+  [1m[36mTRANSACTION (17.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblies" ("name", "created_at", "updated_at", "assembly_type") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "ADDTIONAL PROFESSIONAL SERVICES"], ["created_at", "2021-08-06 11:46:59.985206"], ["updated_at", "2021-08-06 11:46:59.985206"], ["assembly_type", "main_unit"]]
+  [1m[36mTRANSACTION (11.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblies" ("name", "created_at", "updated_at", "assembly_type") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "C12000/C14000 FUSER LOADING CART"], ["created_at", "2021-08-06 11:48:10.784047"], ["updated_at", "2021-08-06 11:48:10.784047"], ["assembly_type", "main unit"]]
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 42], ["created_at", "2021-08-06 11:49:46.742222"], ["updated_at", "2021-08-06 11:49:46.742222"]]
+  [1m[36mTRANSACTION (11.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModelAssembly Update (0.9ms)[0m  [1m[33mUPDATE "model_assemblies" SET "updated_at" = $1, "required" = $2 WHERE "model_assemblies"."id" = $3[0m  [["updated_at", "2021-08-06 11:50:06.883021"], ["required", true], ["id", 30]]
+  [1m[36mTRANSACTION (12.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (0.8ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 43], ["created_at", "2021-08-06 11:50:29.791241"], ["updated_at", "2021-08-06 11:50:29.791241"], ["required", false]]
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAssembly Load (0.8ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.5ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (0.8ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 43], ["created_at", "2021-08-06 11:52:21.486335"], ["updated_at", "2021-08-06 11:52:21.486335"], ["required", false]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (0.6ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 44], ["created_at", "2021-08-06 11:53:06.038688"], ["updated_at", "2021-08-06 11:53:06.038688"], ["required", false]]
+  [1m[36mTRANSACTION (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mModelAssembly Load (0.8ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["assembly_id", 44], ["LIMIT", 11]]
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (1.0ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 45], ["created_at", "2021-08-06 11:53:59.681339"], ["updated_at", "2021-08-06 11:53:59.681339"], ["required", true]]
+  [1m[36mTRANSACTION (10.3ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/models" for ::1 at 2021-08-06 07:54:21 -0400
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (1.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+Completed 200 OK in 37ms (Views: 14.2ms | ActiveRecord: 7.6ms | Allocations: 10168)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 07:54:23 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 2.2ms | Allocations: 5307)
+
+
+  
+ArgumentError (The :dependent option must be one of [:destroy, :delete_all, :nullify, :restrict_with_error, :restrict_with_exception, :destroy_async], but is :delete):
+  
+app/models/assembly.rb:2:in `<class:Assembly>'
+app/models/assembly.rb:1:in `<main>'
+app/controllers/assemblies_controller.rb:4:in `index'
+Started GET "/models" for ::1 at 2021-08-06 07:54:51 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.35ms)
+Completed 200 OK in 30ms (Views: 8.1ms | ActiveRecord: 6.7ms | Allocations: 7102)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 07:54:53 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (1.2ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.3ms)
+Completed 200 OK in 85ms (Views: 61.4ms | ActiveRecord: 9.8ms | Allocations: 16945)
+
+
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."name" = $1 LIMIT $2[0m  [["name", "LEASE RETURNS"], ["LIMIT", 1]]
+  [1m[36mModelAssembly Load (0.6ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1 /* loading for inspect */ LIMIT $2[0m  [["assembly_id", 43], ["LIMIT", 11]]
+  [1m[36mModelAssembly Load (0.6ms)[0m  [1m[34mSELECT "model_assemblies".* FROM "model_assemblies" WHERE "model_assemblies"."assembly_id" = $1[0m  [["assembly_id", 43]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModelAssembly Destroy (0.8ms)[0m  [1m[31mDELETE FROM "model_assemblies" WHERE "model_assemblies"."id" = $1[0m  [["id", 31]]
+  [1m[36mTRANSACTION (10.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/models" for ::1 at 2021-08-06 07:57:27 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.9ms | Allocations: 1358)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 07:57:28 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.95ms)
+Completed 200 OK in 11ms (Views: 6.2ms | ActiveRecord: 2.0ms | Allocations: 5450)
+
+
+Started GET "/assemblies/42/items_assemblies" for ::1 at 2021-08-06 07:57:39 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"42"}
+  [1m[36mItemsAssembly Load (1.2ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 42]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.06ms)
+Completed 200 OK in 11ms (Views: 1.8ms | ActiveRecord: 2.8ms | Allocations: 2449)
+
+
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.8ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (1.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (11.3ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["item_id", 3], ["assembly_id", 42], ["created_at", "2021-08-06 11:59:31.270744"], ["updated_at", "2021-08-06 11:59:31.270744"]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItemsAssembly Update (1.3ms)[0m  [1m[33mUPDATE "items_assemblies" SET "updated_at" = $1, "required" = $2 WHERE "items_assemblies"."id" = $3[0m  [["updated_at", "2021-08-06 11:59:40.725191"], ["required", true], ["id", 345]]
+  [1m[36mTRANSACTION (10.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 4], ["assembly_id", 42], ["created_at", "2021-08-06 12:00:36.278252"], ["updated_at", "2021-08-06 12:00:36.278252"], ["required", true]]
+  [1m[36mTRANSACTION (11.5ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/models" for ::1 at 2021-08-06 08:00:44 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.6ms)
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.9ms | Allocations: 1357)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:00:46 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.79ms)
+Completed 200 OK in 10ms (Views: 4.8ms | ActiveRecord: 1.8ms | Allocations: 5432)
+
+
+Started GET "/assemblies/42/items_assemblies" for ::1 at 2021-08-06 08:00:47 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"42"}
+  [1m[36mItemsAssembly Load (1.3ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 42]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (20.75ms)
+Completed 200 OK in 42ms (Views: 30.5ms | ActiveRecord: 10.5ms | Allocations: 16122)
+
+
+  [1m[36mAssembly Load (0.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.6ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 7], ["assembly_id", 43], ["created_at", "2021-08-06 12:03:30.913865"], ["updated_at", "2021-08-06 12:03:30.913865"], ["required", false]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.5ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 8], ["assembly_id", 43], ["created_at", "2021-08-06 12:03:30.924514"], ["updated_at", "2021-08-06 12:03:30.924514"], ["required", false]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.4ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 9], ["assembly_id", 43], ["created_at", "2021-08-06 12:03:30.939782"], ["updated_at", "2021-08-06 12:03:30.939782"], ["required", false]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.5ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 10], ["assembly_id", 43], ["created_at", "2021-08-06 12:03:30.952740"], ["updated_at", "2021-08-06 12:03:30.952740"], ["required", false]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/models" for ::1 at 2021-08-06 08:03:40 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (1.1ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.43ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 1.1ms | Allocations: 1357)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:03:41 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (1.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.02ms)
+Completed 200 OK in 11ms (Views: 6.3ms | ActiveRecord: 2.3ms | Allocations: 5432)
+
+
+Started GET "/assemblies/42/items_assemblies" for ::1 at 2021-08-06 08:03:43 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"42"}
+  [1m[36mItemsAssembly Load (0.9ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 42]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (7.84ms)
+Completed 200 OK in 13ms (Views: 8.2ms | ActiveRecord: 3.7ms | Allocations: 3142)
+
+
+Started GET "/assemblies/43/items_assemblies" for ::1 at 2021-08-06 08:03:47 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"43"}
+  [1m[36mItemsAssembly Load (1.7ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 43]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.05ms)
+Completed 200 OK in 22ms (Views: 14.1ms | ActiveRecord: 7.0ms | Allocations: 5063)
+
+
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.7ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 5], ["assembly_id", 44], ["created_at", "2021-08-06 12:05:46.285021"], ["updated_at", "2021-08-06 12:05:46.285021"], ["required", false]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.3ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 6], ["assembly_id", 44], ["created_at", "2021-08-06 12:05:46.293610"], ["updated_at", "2021-08-06 12:05:46.293610"], ["required", false]]
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.4ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 99], ["assembly_id", 45], ["created_at", "2021-08-06 12:05:46.304671"], ["updated_at", "2021-08-06 12:05:46.304671"], ["required", false]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/models" for ::1 at 2021-08-06 08:05:53 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (1.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.36ms)
+Completed 200 OK in 5ms (Views: 3.5ms | ActiveRecord: 1.2ms | Allocations: 1357)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:05:54 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (1.0ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.95ms)
+Completed 200 OK in 10ms (Views: 5.3ms | ActiveRecord: 2.2ms | Allocations: 5431)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:05:56 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.4ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.29ms)
+Completed 200 OK in 11ms (Views: 7.3ms | ActiveRecord: 2.7ms | Allocations: 2179)
+
+
+Started GET "/assemblies/38/items_assemblies" for ::1 at 2021-08-06 08:06:01 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"38"}
+  [1m[36mItemsAssembly Load (1.8ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 38]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (2.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 138], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.72ms)
+Completed 200 OK in 19ms (Views: 12.1ms | ActiveRecord: 5.4ms | Allocations: 3142)
+
+
+Started GET "/assemblies/39/items_assemblies" for ::1 at 2021-08-06 08:06:04 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"39"}
+  [1m[36mItemsAssembly Load (2.0ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 39]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (2.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 137], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (2.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 138], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.27ms)
+Completed 200 OK in 21ms (Views: 13.8ms | ActiveRecord: 6.2ms | Allocations: 3143)
+
+
+Started GET "/assemblies/42/items_assemblies" for ::1 at 2021-08-06 08:06:07 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"42"}
+  [1m[36mItemsAssembly Load (3.5ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 42]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (12.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (4.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (33.25ms)
+Completed 200 OK in 50ms (Views: 27.5ms | ActiveRecord: 20.7ms | Allocations: 3142)
+
+
+Started GET "/assemblies/43/items_assemblies" for ::1 at 2021-08-06 08:06:09 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"43"}
+  [1m[36mItemsAssembly Load (0.8ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 43]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.41ms)
+Completed 200 OK in 33ms (Views: 26.2ms | ActiveRecord: 5.3ms | Allocations: 5064)
+
+
+Started GET "/assemblies/45/items_assemblies" for ::1 at 2021-08-06 08:06:11 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"45"}
+  [1m[36mItemsAssembly Load (1.2ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 45]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.72ms)
+Completed 200 OK in 10ms (Views: 6.2ms | ActiveRecord: 2.4ms | Allocations: 2179)
+
+
+  [1m[36mItem Load (0.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mItem Load (0.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAssembly Create (0.9ms)[0m  [1m[32mINSERT INTO "assemblies" ("name", "assembly_number", "created_at", "updated_at", "assembly_type") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "ACCURIOPRESS C12000"], ["assembly_number", "AC0D011"], ["created_at", "2021-08-06 12:09:22.889983"], ["updated_at", "2021-08-06 12:09:22.889983"], ["assembly_type", "engine"]]
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mModelAssembly Create (1.3ms)[0m  [1m[32mINSERT INTO "model_assemblies" ("model_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["model_id", 1], ["assembly_id", 46], ["created_at", "2021-08-06 12:10:39.456444"], ["updated_at", "2021-08-06 12:10:39.456444"], ["required", true]]
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 132], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.8ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 132], ["assembly_id", 46], ["created_at", "2021-08-06 12:11:35.318697"], ["updated_at", "2021-08-06 12:11:35.318697"], ["required", true]]
+  [1m[36mTRANSACTION (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 134], ["LIMIT", 1]]
+  [1m[36mAssembly Load (0.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mItemsAssembly Create (0.6ms)[0m  [1m[32mINSERT INTO "items_assemblies" ("item_id", "assembly_id", "created_at", "updated_at", "required") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["item_id", 134], ["assembly_id", 46], ["created_at", "2021-08-06 12:11:35.328453"], ["updated_at", "2021-08-06 12:11:35.328453"], ["required", true]]
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:11:42 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (0.9ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.33ms)
+Completed 200 OK in 22ms (Views: 21.4ms | ActiveRecord: 11.5ms | Allocations: 5629)
+
+
+Started GET "/assemblies/38/items_assemblies" for ::1 at 2021-08-06 08:11:44 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"38"}
+  [1m[36mItemsAssembly Load (1.3ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 38]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 138], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.33ms)
+Completed 200 OK in 15ms (Views: 9.3ms | ActiveRecord: 3.8ms | Allocations: 3142)
+
+
+Started GET "/assemblies/39/items_assemblies" for ::1 at 2021-08-06 08:11:47 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"39"}
+  [1m[36mItemsAssembly Load (2.1ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 39]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (2.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 137], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.7ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 138], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.59ms)
+Completed 200 OK in 20ms (Views: 12.5ms | ActiveRecord: 6.1ms | Allocations: 3142)
+
+
+Started GET "/assemblies/42/items_assemblies" for ::1 at 2021-08-06 08:11:50 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"42"}
+  [1m[36mItemsAssembly Load (1.8ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 42]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.4ms)
+Completed 200 OK in 13ms (Views: 7.9ms | ActiveRecord: 4.3ms | Allocations: 3142)
+
+
+Started GET "/assemblies/43/items_assemblies" for ::1 at 2021-08-06 08:11:53 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"43"}
+  [1m[36mItemsAssembly Load (2.1ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 43]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.6ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (15.28ms)
+Completed 200 OK in 26ms (Views: 17.1ms | ActiveRecord: 7.7ms | Allocations: 5063)
+
+
+Started GET "/assemblies/45/items_assemblies" for ::1 at 2021-08-06 08:11:56 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"45"}
+  [1m[36mItemsAssembly Load (0.9ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 45]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.68ms)
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 1.8ms | Allocations: 2179)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:14:20 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (2.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.54ms)
+Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 2.2ms | Allocations: 1357)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:15:01 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (2.2ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.74ms)
+Completed 200 OK in 12ms (Views: 8.2ms | ActiveRecord: 2.2ms | Allocations: 1357)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:17:23 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (1.4ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.45ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 1.4ms | Allocations: 1357)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:17:25 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.0ms)
+Completed 200 OK in 11ms (Views: 5.3ms | ActiveRecord: 1.9ms | Allocations: 5552)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:17:34 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.6ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.58ms)
+Completed 200 OK in 12ms (Views: 7.6ms | ActiveRecord: 3.4ms | Allocations: 2179)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:19:39 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (2.1ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.5ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.07ms)
+Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 3.6ms | Allocations: 2179)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:19:43 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.8ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (1.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.24ms)
+Completed 200 OK in 14ms (Views: 8.7ms | ActiveRecord: 3.6ms | Allocations: 2179)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:20:20 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.3ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (10.4ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.52ms)
+Completed 200 OK in 22ms (Views: 8.8ms | ActiveRecord: 11.7ms | Allocations: 2179)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:20:27 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (0.9ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.9ms | Allocations: 1357)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:20:30 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (1.6ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.8ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.77ms)
+Completed 200 OK in 15ms (Views: 7.6ms | ActiveRecord: 3.4ms | Allocations: 5544)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:20:32 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.3ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mItem Load (0.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.58ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 2.2ms | Allocations: 2179)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:22:32 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (0.7ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 23ms (Views: 10.0ms | ActiveRecord: 7.0ms | Allocations: 6990)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:22:34 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (2.7ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.62ms)
+Completed 200 OK in 60ms (Views: 21.9ms | ActiveRecord: 17.1ms | Allocations: 15149)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:22:36 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.1ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.5ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ (byebug):1:in `item'
+Started GET "/models" for ::1 at 2021-08-06 08:24:11 -0400
+Processing by ModelsController#index as */*
+[active_model_serializers]   [1m[36mItem Load (2.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:7:in `item'
+  [1m[36mModel Load (1.6ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (94854.54ms)
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.3ms)
+Completed 200 OK in 94876ms (Views: 94855.3ms | ActiveRecord: 14.5ms | Allocations: 75954)
+
+
+Completed 200 OK in 39ms (Views: 22.2ms | ActiveRecord: 16.5ms | Allocations: 21600)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:24:14 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (1.2ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.02ms)
+Completed 200 OK in 49ms (Views: 12.9ms | ActiveRecord: 18.8ms | Allocations: 20522)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:24:16 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.1ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.6ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assembly_name'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (21.19ms)
+Completed 200 OK in 40ms (Views: 19.6ms | ActiveRecord: 13.5ms | Allocations: 15236)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:26:06 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (0.8ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.73ms)
+Completed 200 OK in 18ms (Views: 7.5ms | ActiveRecord: 6.1ms | Allocations: 6711)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:26:08 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (2.4ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.41ms)
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 2.4ms | Allocations: 1357)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:26:10 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (1.3ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.95ms)
+Completed 200 OK in 51ms (Views: 27.7ms | ActiveRecord: 9.8ms | Allocations: 15170)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:26:11 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.2ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (22.26ms)
+Completed 200 OK in 40ms (Views: 20.1ms | ActiveRecord: 15.2ms | Allocations: 15184)
+
+
+Started GET "/assemblies/29/items_assemblies" for ::1 at 2021-08-06 08:26:44 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"29"}
+  [1m[36mItemsAssembly Load (1.8ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 29]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.7ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.6ms)
+Completed 200 OK in 18ms (Views: 11.6ms | ActiveRecord: 4.7ms | Allocations: 3010)
+
+
+Started GET "/models" for ::1 at 2021-08-06 08:26:47 -0400
+Processing by ModelsController#index as */*
+  [1m[36mModel Load (1.0ms)[0m  [1m[34mSELECT "models".* FROM "models"[0m
+  ↳ app/controllers/models_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.31ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 1.0ms | Allocations: 1357)
+
+
+Started GET "/models/1/assemblies" for ::1 at 2021-08-06 08:26:49 -0400
+Processing by AssembliesController#index as */*
+  Parameters: {"model_id"=>"1"}
+  [1m[36mModel Load (1.8ms)[0m  [1m[34mSELECT "models".* FROM "models" WHERE "models"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/assemblies_controller.rb:4:in `index'
+  [1m[36mAssembly Load (1.9ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" INNER JOIN "model_assemblies" ON "assemblies"."id" = "model_assemblies"."assembly_id" WHERE "model_assemblies"."model_id" = $1[0m  [["model_id", 1]]
+  ↳ app/controllers/assemblies_controller.rb:6:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.18ms)
+Completed 200 OK in 19ms (Views: 10.1ms | ActiveRecord: 3.7ms | Allocations: 5544)
+
+
+Started GET "/assemblies/42/items_assemblies" for ::1 at 2021-08-06 08:26:50 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"42"}
+  [1m[36mItemsAssembly Load (1.7ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 42]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.4ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.9ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.45ms)
+Completed 200 OK in 22ms (Views: 13.8ms | ActiveRecord: 6.3ms | Allocations: 4560)
+
+
+Started GET "/assemblies/38/items_assemblies" for ::1 at 2021-08-06 08:27:14 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"38"}
+  [1m[36mItemsAssembly Load (1.3ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 38]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.2ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.7ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 136], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.1ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 138], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.47ms)
+Completed 200 OK in 20ms (Views: 13.5ms | ActiveRecord: 5.5ms | Allocations: 4551)
+
+
+Started GET "/assemblies/42/items_assemblies" for ::1 at 2021-08-06 08:27:19 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"42"}
+  [1m[36mItemsAssembly Load (1.7ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 42]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.3ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (14.29ms)
+Completed 200 OK in 23ms (Views: 15.8ms | ActiveRecord: 5.1ms | Allocations: 4559)
+
+
+Started GET "/assemblies/43/items_assemblies" for ::1 at 2021-08-06 08:27:21 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"43"}
+  [1m[36mItemsAssembly Load (0.9ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 43]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.1ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.3ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers]   [1m[36mCACHE Assembly Load (0.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (22.28ms)
+Completed 200 OK in 28ms (Views: 20.6ms | ActiveRecord: 6.4ms | Allocations: 7618)
+
+
+Started GET "/assemblies/45/items_assemblies" for ::1 at 2021-08-06 08:27:25 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"45"}
+  [1m[36mItemsAssembly Load (1.0ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 45]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.0ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.14ms)
+Completed 200 OK in 13ms (Views: 7.7ms | ActiveRecord: 3.1ms | Allocations: 3011)
+
+
+Started GET "/assemblies/45/items_assemblies" for ::1 at 2021-08-06 08:27:30 -0400
+Processing by ItemsAssembliesController#index as */*
+  Parameters: {"assembly_id"=>"45"}
+  [1m[36mItemsAssembly Load (1.6ms)[0m  [1m[34mSELECT "items_assemblies".* FROM "items_assemblies" WHERE "items_assemblies"."assembly_id" = $1[0m  [["assembly_id", 45]]
+  ↳ app/controllers/items_assemblies_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mAssembly Load (1.0ms)[0m  [1m[34mSELECT "assemblies".* FROM "assemblies" WHERE "assemblies"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:12:in `assemblyName'
+[active_model_serializers]   [1m[36mItem Load (1.8ms)[0m  [1m[34mSELECT "items".* FROM "items" WHERE "items"."id" = $1 LIMIT $2[0m  [["id", 99], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/items_assembly_serializer.rb:6:in `item'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (8.03ms)
+Completed 200 OK in 15ms (Views: 9.9ms | ActiveRecord: 4.4ms | Allocations: 3011)
+
+

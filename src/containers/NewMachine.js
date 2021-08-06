@@ -21,7 +21,7 @@ class NewMachine extends Component {
         return(<PickModel key='1' updateStep={this.updateStep}/>)
       case 'pickEngine':
         console.log("log")
-        return(<EnginePick key='2' updateStep={this.updateStep}/>)
+        return(<EnginePick key='2' updateStep={this.updateStep} step={"main unit"} />)
       default:
         return(<PickModel key='error'/>)
     }

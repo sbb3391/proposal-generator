@@ -15,10 +15,10 @@ class EnginePick extends Component {
     fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
     .then(resp => resp.json())
     .then(json => {
-      const mainUnitAssemblies = json.filter( assembly => assembly.assembly_type === "main unit")
+      const stepAssemblies = json.filter( assembly => assembly.assembly_type === this.props.step)
 
       this.setState({
-        selectAssemblies: mainUnitAssemblies
+        selectAssemblies: stepAssemblies
       })
     })
   
@@ -38,7 +38,7 @@ class EnginePick extends Component {
 
   renderPartsForAssembly = () => {
     if (this.state.activeAssemblyId) {
-      return(<PartsForAssembly assemblyId={this.state.activeAssemblyId} removeWindow={this.removeWindow}/>)
+      return(<PartsForAssembly assemblyId={this.state.activeAssemblyId} removeWindow={this.removeWindow} step={this.props.step}/>)
     }
   }
 
@@ -58,7 +58,7 @@ class EnginePick extends Component {
       <div className="w-full h-full relative flex flex-col">
         <div className="absolute z-10 w-11/12 mx-auto h-3/4 flex">
           <div className="flex flex-col space-y-16 place-items-center">
-            <h1 className="text-2xl text-center pt-8">Select Assemblies:</h1>
+            <h1 className="text-2xl text-center pt-8">Select {this.props.step} Assemblies:</h1>
             <div className="w-3/4 flex flex-wrap space-x-6" id="select-assemblies">
               {this.renderAssemblies()}
             </div>

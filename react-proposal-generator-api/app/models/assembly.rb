@@ -1,5 +1,5 @@
 class Assembly < ApplicationRecord
-  has_many :model_assemblies 
+  has_many :model_assemblies, dependent: :destroy
   has_many :models, through: :model_assemblies
   has_many :items_assemblies
   has_many :items, through: :items_assemblies
