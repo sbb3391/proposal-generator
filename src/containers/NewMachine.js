@@ -21,7 +21,13 @@ class NewMachine extends Component {
         return(<PickModel key='1' updateStep={this.updateStep}/>)
       case 'pickEngine':
         console.log("log")
-        return(<EnginePick key='2' updateStep={this.updateStep} step={"main unit"} />)
+        return(<EnginePick key='2' updateStep={this.updateStep} step={"main unit"} nextStep={"pickPaper"} prevStep={"pickMachine"} />)
+      case 'pickPaper':
+        return(<EnginePick key='3' updateStep={this.updateStep} step={"paper handling"} nextStep={"pickFinishing"} prevStep={"pickEngine"}/>)
+      case 'pickFinishing':
+        return(<EnginePick key='4' updateStep={this.updateStep} step={"finishing"} nextStep={"pickController"} prevStep={"pickPaper"}/>)
+      case 'pickController':
+        return(<EnginePick key='5' updateStep={this.updateStep} step={"controller"} nextStep={""} prevStep={"pickFinishing"} />)
       default:
         return(<PickModel key='error'/>)
     }
@@ -29,7 +35,7 @@ class NewMachine extends Component {
 
   render() {
     return (
-      <div className="bg-blue-100 w-full h-full flex">
+      <div className="w-full h-full flex">
           {this.renderComponent()}
       </div>
     );

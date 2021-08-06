@@ -42,7 +42,7 @@ class PickModel extends Component {
           <h1 className="text-center text-3xl mt-4">Select Model:</h1>
           <form>
             <div className="flex mt-4">
-              <select className="w-1/2 h-12 mx-auto" value={this.state.selectValue} onChange={(e) => this.handleSelection(this.props.updateStep, e)} readOnly>
+              <select className="w-1/2 h-12 mx-auto border border-black rounded-md px-2" value={this.state.selectValue} onChange={(e) => this.handleSelection(this.props.updateStep, e)} readOnly>
                 <option value="none" disabled hidden>
                   Select Model
                 </option>
