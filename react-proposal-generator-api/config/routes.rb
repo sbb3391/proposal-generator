@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :model_assemblies
   resources :items_assemblies
   resources :assemblies do 
-    resources :items
+    resources :items_assemblies
   end
   
   resources :items

@@ -24,8 +24,13 @@ class EnginePick extends Component {
   
   }
 
+  removeWindow = () => {
+    this.setState({
+      activeAssemblyId: null
+    })
+  }
+
   handleAdd = (e) => {
-    debugger;
     this.setState({
       activeAssemblyId: e.target.id
     })
@@ -33,7 +38,7 @@ class EnginePick extends Component {
 
   renderPartsForAssembly = () => {
     if (this.state.activeAssemblyId) {
-      return(<PartsForAssembly assemblyId={this.state.activeAssemblyId}/>)
+      return(<PartsForAssembly assemblyId={this.state.activeAssemblyId} removeWindow={this.removeWindow}/>)
     }
   }
 
