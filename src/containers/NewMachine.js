@@ -23,11 +23,13 @@ class NewMachine extends Component {
         console.log("log")
         return(<EnginePick key='2' updateStep={this.updateStep} step={"main unit"} nextStep={"pickPaper"} prevStep={"pickMachine"} />)
       case 'pickPaper':
-        return(<EnginePick key='3' updateStep={this.updateStep} step={"paper handling"} nextStep={"pickFinishing"} prevStep={"pickEngine"}/>)
+        return(<EnginePick key='3' updateStep={this.updateStep} step={"paper handling"} nextStep={"pickOutput"} prevStep={"pickEngine"}/>)
+      case 'pickOutput':
+        return(<EnginePick key='4' updateStep={this.updateStep} step={"output"} nextStep={"pickFinishing"} prevStep={"pickPaper"}/>)  
       case 'pickFinishing':
-        return(<EnginePick key='4' updateStep={this.updateStep} step={"finishing"} nextStep={"pickController"} prevStep={"pickPaper"}/>)
+        return(<EnginePick key='5' updateStep={this.updateStep} step={"finishing"} nextStep={"pickController"} prevStep={"pickOutput"}/>)
       case 'pickController':
-        return(<EnginePick key='5' updateStep={this.updateStep} step={"controller"} nextStep={""} prevStep={"pickFinishing"} />)
+        return(<EnginePick key='6' updateStep={this.updateStep} step={"controller"} nextStep={""} prevStep={"pickFinishing"} />)
       default:
         return(<PickModel key='error'/>)
     }

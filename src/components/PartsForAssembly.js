@@ -29,11 +29,8 @@ class PartsForAssembly extends Component {
     </div>
   }
 
-  renderLabels = () => {
-
-  }
-
   renderItems = () => {
+
     return this.state.itemsAssemblies.map( itemAssembly => {
       return(
         <div className="flex space-x-5">

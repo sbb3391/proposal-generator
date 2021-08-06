@@ -11,7 +11,6 @@ class EnginePick extends Component {
   }
 
   componentDidMount() {
-    console.log("mounted")
     fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
     .then(resp => resp.json())
     .then(json => {
@@ -31,10 +30,27 @@ class EnginePick extends Component {
   }
 
   handleAdd = (e) => {
+
+
     this.setState({
       activeAssemblyId: e.target.id
     })
   }
+
+  // renderPartsForAssembly = () => {
+  //   fetch(`http://localhost:3000/assemblies/${this.state.activeAssemblyId}/items_assemblies`)
+  //   .then(resp => resp.json())
+  //   .then(json => {
+  //     if (this.state.activeAssemblyId) {
+  //       const requiredItems = json.filter( item => item.required !== false)
+  //       debugger;
+  //       // checking to see if there are any items that are optional (i.e not required). Only show select options window if there are unrequired options
+  //       if (requiredItems.length !== json.length) {
+  //         return(<PartsForAssembly assemblyId={this.state.activeAssemblyId} removeWindow={this.removeWindow} step={this.props.step}/>)
+  //       }
+  //     }
+  //   })
+  // }
 
   renderPartsForAssembly = () => {
     if (this.state.activeAssemblyId) {
@@ -63,12 +79,14 @@ class EnginePick extends Component {
               <span className="text-4xl">&#x2192;</span>
               <button className="border border-black rounded-lg p-2">Paper Handling</button>
               <span className="text-4xl">&#x2192;</span>
+              <button className="border border-black rounded-lg p-2">Paper Output</button>
+              <span className="text-4xl">&#x2192;</span>
               <button className="border border-black rounded-lg p-2">Finishing</button>
               <span className="text-4xl">&#x2192;</span>
               <button className="border border-black rounded-lg p-2">Print Controller</button>
             </div>
             <h1 className="text-2xl text-center h-12">Select {this.props.step} Assemblies:</h1>
-            <div className="w-3/4 flex flex-wrap space-x-6" id="select-assemblies">
+            <div className="w-3/4 flex flex-wrap" id="select-assemblies">
               {this.renderAssemblies()}
             </div>
             <div className="flex space-x-4">
