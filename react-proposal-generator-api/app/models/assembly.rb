@@ -8,7 +8,7 @@ class Assembly < ApplicationRecord
     CSV.read(file, headers: true, :header_converters => :symbol, :converters => :all, quote_empty: true)
   end
 
-  def self.import_products_from_csv(file)
+  def self.update_products_from_csv(file)
     x = self.import(file)
     hashed = x.map {|d| d.to_hash}
 
@@ -17,7 +17,10 @@ class Assembly < ApplicationRecord
     puts "Currently there are #{starting_items} products."
 
     hashed.each do |row|
-      self.create(row)
+      assembly = Assembly.find_by(assembly_number: row[:assembly_number])
+      if assembly
+        assembly.update(type: row[:type])
+      end
     end
   end  
 end
