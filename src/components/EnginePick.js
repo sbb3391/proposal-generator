@@ -11,12 +11,14 @@ class EnginePick extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
-    .then(resp => resp.json())
-    .then(json => {
-      this.props.addAllAssemblies(json)
-    })
-  
+    // only fetch once, on the first render to get all the assemblies
+    if (this.props.allAssemblies.length === 0) {
+      fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
+      .then(resp => resp.json())
+      .then(json => {
+        this.props.addAllAssemblies(json)
+      })
+    }
   }
 
   removeWindow = () => {
@@ -49,11 +51,9 @@ class EnginePick extends Component {
 
     return stepAssemblies.map( assembly => {
       return(
-        <div className="assembly bg-blue-200 w-1/6 h-36 flex flex-col place-items-center justify-center border rounded-md mr-2 mb-2" id={assembly.id}>
-          <h1 className="text-center font-bold cursor-pointer text-md" id={assembly.id} onClick={this.handleAdd}>{assembly.name}</h1>
-          <div className="flex space-x-1 mt-2">
-            <button className="border border-black rounded-md text-xs p-1">What's This?</button>
-          </div>
+        <div className="relative assembly bg-blue-200 w-1/6 h-36 flex flex-col place-items-center justify-center border rounded-md mr-2 mb-2" id={assembly.id}>
+          <h1 className="text-center font-bold cursor-pointer text-md hover:underline" id={assembly.id} onClick={this.handleAdd}>{assembly.name}</h1>
+          <span className="absolute right-1 bottom-1 text-md cursor-pointer text-lg transform duration-75 hover:-translate-y-1">&#128712;</span>
         </div>
       )
     })
@@ -94,7 +94,7 @@ class EnginePick extends Component {
               {this.renderNextButton()}
             </div>
           </div>
-          <div className="w-1/4 h-full mx-auto h-full flex flex-col border border-black overflow-auto pb-4" id="selected-items">
+          <div className="w-1/4 h-full mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto pb-4" id="selected-items">
             <MachineAssemblies />
           </div>
 

@@ -14,12 +14,17 @@ function newMachineReducer(state = {
     case 'ADD_MODEL':
       return Object.assign({}, {...state}, {modelId: action.modelId})
     case 'ADD_ALL_ASSEMBLIES':
+      const requiredAssemblies = action.assemblies.filter( assembly => assembly.required_assembly)
+      const unrequiredAssemblies = action.assemblies.filter( assembly => !assembly.required_assembly)
       return {
         ...state,
+          machine: {
+            assemblies: requiredAssemblies
+          },
           model: {
             ...state.model,
               allAssemblies: action.assemblies,
-              remainingAssemblies: action.assemblies
+              remainingAssemblies: unrequiredAssemblies
           }
       }
     case 'ADD_ASSEMBLY':

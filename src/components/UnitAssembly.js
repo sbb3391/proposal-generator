@@ -3,17 +3,23 @@ import { connect } from 'react-redux';
 
 class UnitAssembly extends Component {
 
+  removeAssemblyFromMachine = () => {
+    debugger;
+  }
+
   renderAssembliesAndItems = () => {
     const filteredAssemblies = this.props.assemblies.filter( assembly => assembly.assembly_type == this.props.assemblyName)
 
     return filteredAssemblies.map( assembly => {
       return(
         <div className="px-1 w-11/12 mx-auto border rounded-md bg-blue-100 flex flex-col">
-          <h3>{assembly.name}</h3>
+          { assembly.required_assembly ? <h3>{assembly.name}</h3> : 
+            <h3 className="hover:text-color-red-500 cursor-pointer hover:underline hover:text-red-500" onClick={this.removeAssemblyFromMachine}>{assembly.name}</h3>
+          }
           {assembly.items.map( item => {
             return(
               <div className="flex space-x-2">
-                <span className="text-xs pl-4">&#10060;</span>
+                { item.required ? <span className="w-8"></span> : <span className="text-xs pl-4">&#10060;</span> }
                 <span className="text-xs">{item.description}</span>
               </div>
 
