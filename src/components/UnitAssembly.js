@@ -12,7 +12,11 @@ class UnitAssembly extends Component {
           <h3>{assembly.name}</h3>
           {assembly.items.map( item => {
             return(
-              <span className="text-xs pl-4">{item.description}</span>
+              <div className="flex space-x-2">
+                <span className="text-xs pl-4">&#10060;</span>
+                <span className="text-xs">{item.description}</span>
+              </div>
+
             )
           })}
         </div>
@@ -22,7 +26,8 @@ class UnitAssembly extends Component {
 
   render() {
     return (
-      <div className="flex flex-col space-y-1 pt-2">
+      <div className="flex flex-col pt-2 space-y-1">
+        <h1 className="text-center pl-2 underline mb-1">{this.props.assemblyName}</h1>
         {this.renderAssembliesAndItems()}
       </div>
     );
