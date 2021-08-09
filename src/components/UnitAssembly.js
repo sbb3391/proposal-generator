@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class UnitAssembly extends Component {
+
   renderAssembliesAndItems = () => {
-    debugger;
     const filteredAssemblies = this.props.assemblies.filter( assembly => assembly.assembly_type == this.props.assemblyName)
 
     return filteredAssemblies.map( assembly => {
@@ -17,9 +17,9 @@ class UnitAssembly extends Component {
 
   render() {
     return (
-      <div>
-        
-      </div>
+      <>
+        {this.renderAssembliesAndItems()}
+      </>
     );
   }
 }
@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => (
 )
 
 const mapStateToProps = (state) => (
-  {assemblies: state}
+  {assemblies: state.machine.assemblies}
 )
 
-export default connect(mapDispatchToProps, mapStateToProps)(UnitAssembly);
+export default connect(mapStateToProps, mapDispatchToProps)(UnitAssembly);
