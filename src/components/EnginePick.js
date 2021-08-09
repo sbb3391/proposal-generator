@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PartsForAssembly from './PartsForAssembly'
 import MachineAssemblies from './MachineAssemblies'
+import StatusButton from './statusButton'
+import CompleteMachine from './CompleteMachine'
 
 class EnginePick extends Component {
 
@@ -16,6 +18,7 @@ class EnginePick extends Component {
       fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
       .then(resp => resp.json())
       .then(json => {
+        debugger;
         this.props.addAllAssemblies(json)
       })
     }
@@ -65,7 +68,7 @@ class EnginePick extends Component {
     } else {
       return(
         <div className="flex place-items-center">
-          <span className="text-5xl cursor-pointer" onClick={() => this.props.updateStep(this.props.nextStep)}>&#9655;</span>
+          <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.nextStep)}>&#129185;</span>
         </div>
         // <button onClick={() => this.props.updateStep(this.props.nextStep)} className="border border-black rounded-md w-36">Next</button>
       ) 
@@ -78,33 +81,29 @@ class EnginePick extends Component {
         <div className="absolute z-10 w-full mx-auto h-full flex">
           <div className="flex flex-col w-2/3 h-full space-y-10 place-items-center">
             <div className="mt-4 flex space-x-8">
-              <button className="border border-black rounded-lg p-2">Main Unit</button>
+              <StatusButton text="main unit"/>
               <span className="text-4xl">&#x2192;</span>
-              <button className="border border-black rounded-lg p-2">Paper Handling</button>
+              <StatusButton text="paper handling"/>
               <span className="text-4xl">&#x2192;</span>
-              <button className="border border-black rounded-lg p-2">Paper Output</button>
+              <StatusButton text="paper output"/>
               <span className="text-4xl">&#x2192;</span>
-              <button className="border border-black rounded-lg p-2">Finishing</button>
+              <StatusButton text="finishing"/>
               <span className="text-4xl">&#x2192;</span>
-              <button className="border border-black rounded-lg p-2">Print Controller</button>
+              <StatusButton text="controller"/>
             </div>
-            {/* <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
-            <div className="flex space-x-4">
-              <button onClick={() => this.props.updateStep(this.props.prevStep)} className="border border-black rounded-md w-36">Previous</button>
-              {this.renderNextButton()}
-            </div> */}
             <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
-            <div className="flex">
+            <div className="flex w-5/6 h-1/2">
               <div className="flex place-items-center">
-                <span className="text-5xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#9665;</span>
+                <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
               </div>
-              <div className="w-5/6 flex flex-wrap space mx-auto" id="select-assemblies">
+              <div className="w-4/5 flex flex-wrap space mx-auto" id="select-assemblies">
                 {this.renderAssemblies()}
               </div>
                 {this.renderNextButton()}
             </div>
+            < CompleteMachine />
           </div>
-          <div className="w-1/4 h-full mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
+          <div className="w-1/4 mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
             <MachineAssemblies />
           </div>
 

@@ -24,7 +24,7 @@ class NewMachine extends Component {
       case 'pickPaper':
         return(<EnginePick key='3' updateStep={this.updateStep} step={"paper handling"} nextStep={"pickOutput"} prevStep={"pickEngine"}/>)
       case 'pickOutput':
-        return(<EnginePick key='4' updateStep={this.updateStep} step={"output"} nextStep={"pickFinishing"} prevStep={"pickPaper"}/>)  
+        return(<EnginePick key='4' updateStep={this.updateStep} step={"paper output"} nextStep={"pickFinishing"} prevStep={"pickPaper"}/>)  
       case 'pickFinishing':
         return(<EnginePick key='5' updateStep={this.updateStep} step={"finishing"} nextStep={"pickController"} prevStep={"pickOutput"}/>)
       case 'pickController':

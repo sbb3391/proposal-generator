@@ -3,6 +3,7 @@
 function newMachineReducer(state = {
   clickedAssemblyId: null,
   machine: {
+    completedMachine: false,
     assemblies: []
   },
   model: {
@@ -14,6 +15,7 @@ function newMachineReducer(state = {
     case 'ADD_MODEL':
       return Object.assign({}, {...state}, {modelId: action.modelId})
     case 'ADD_ALL_ASSEMBLIES':
+      // This only gets called once to add all machine assemblies from fetch to the store
       const requiredAssemblies = action.assemblies.filter( assembly => assembly.required_assembly)
       const unrequiredAssemblies = action.assemblies.filter( assembly => !assembly.required_assembly)
       return {
@@ -28,7 +30,8 @@ function newMachineReducer(state = {
           }
       }
     case 'ADD_ASSEMBLY':
-      console.log(action.assembly.name)
+      // this takes one assembly and adds it to the machine assembly (the one we're building)
+      // and removes it from the list of remaining assemblies that are available for selection
       const indexOfAddedAssembly = state.model.remainingAssemblies.indexOf(action.assembly)
       return {
         ...state,

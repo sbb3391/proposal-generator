@@ -1,0 +1,2 @@
+class PickOneGroupsController < ApplicationController
+end

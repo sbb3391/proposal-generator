@@ -1,6 +1,7 @@
 class ModelAssembly < ApplicationRecord
   belongs_to :model 
   belongs_to :assembly
+  belongs_to :pick_one_group
 
   def self.import(file)
     CSV.read(file, headers: true, :header_converters => :symbol, :converters => :all, quote_empty: true)

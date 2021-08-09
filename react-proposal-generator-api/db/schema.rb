@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_06_111321) do
+ActiveRecord::Schema.define(version: 2021_08_09_214009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,8 +60,10 @@ ActiveRecord::Schema.define(version: 2021_08_06_111321) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "required"
+    t.bigint "pick_one_group_id"
     t.index ["assembly_id"], name: "index_model_assemblies_on_assembly_id"
     t.index ["model_id"], name: "index_model_assemblies_on_model_id"
+    t.index ["pick_one_group_id"], name: "index_model_assemblies_on_pick_one_group_id"
   end
 
   create_table "models", force: :cascade do |t|
@@ -82,4 +84,13 @@ ActiveRecord::Schema.define(version: 2021_08_06_111321) do
     t.index ["machine_id"], name: "index_parts_on_machine_id"
   end
 
+  create_table "pick_one_groups", force: :cascade do |t|
+    t.bigint "model_id"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["model_id"], name: "index_pick_one_groups_on_model_id"
+  end
+
+  add_foreign_key "model_assemblies", "pick_one_groups"
 end
