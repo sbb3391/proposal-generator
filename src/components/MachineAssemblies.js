@@ -5,6 +5,7 @@ class MachineAssemblies extends Component {
   render() {
     return (
       <>
+        <UnitAssembly assemblyName ="engine" />
         <UnitAssembly assemblyName="main unit"/>
         <UnitAssembly assemblyName="paper handling"/>
         <UnitAssembly assemblyName="paper output"/>

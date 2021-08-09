@@ -19,7 +19,7 @@ class UnitAssembly extends Component {
           {assembly.items.map( item => {
             return(
               <div className="flex space-x-2">
-                { item.required ? <span className="w-8"></span> : <span className="text-xs pl-4">&#10060;</span> }
+                { item.required ? <span className="w-8"></span> : <span className="text-xs pl-4 cursor-pointer">&#10060;</span> }
                 <span className="text-xs">{item.description}</span>
               </div>
 
