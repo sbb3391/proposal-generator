@@ -12,10 +12,13 @@ class UnitAssembly extends Component {
 
     return filteredAssemblies.map( assembly => {
       return(
-        <div className="px-1 pb-2 w-11/12 mx-auto flex flex-col space-y-1">
-          { assembly.required_assembly ? <h3 className="mb-2 font-bold border rounded-md bg-blue-100 pl-1">{assembly.name} ({assembly.items.length} Items)</h3> : 
-            <h3 className="mb-2 font-bold border rounded-md bg-blue-100 hover:text-color-red-500 cursor-pointer hover:underline hover:text-red-500 pl-1" onClick={this.removeAssemblyFromMachine}>{assembly.name} ({assembly.items.length} Items)</h3>
-          }
+        <div className="px-1 pb-2 w-full mx-auto flex flex-col space-y-1">
+          <div className="flex space-x-2">
+            <span className="show cursor-pointer">&#9650;</span>
+            { assembly.required_assembly ? <h3 className="mb-2 font-bold border rounded-md bg-blue-100 pl-1">{assembly.name} ({assembly.items.length} Items)</h3> : 
+              <h3 className="mb-2 font-bold border rounded-md bg-blue-100 hover:text-color-red-500 cursor-pointer hover:underline hover:text-red-500 pl-1" onClick={this.removeAssemblyFromMachine}>{assembly.name} ({assembly.items.length} Items)</h3>
+            }
+          </div>
           {assembly.items.map( item => {
             return(
               <div className="flex space-x-2 hidden">

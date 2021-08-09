@@ -51,7 +51,7 @@ class EnginePick extends Component {
 
     return stepAssemblies.map( assembly => {
       return(
-        <div className="relative assembly bg-blue-200 w-1/6 h-36 flex flex-col place-items-center justify-center border rounded-md mr-2 mb-2" id={assembly.id}>
+        <div className="relative assembly bg-blue-200 w-40 h-36 flex flex-col place-items-center justify-center border rounded-md mr-2 mb-2" id={assembly.id}>
           <h1 className="text-center font-bold cursor-pointer text-md hover:underline" id={assembly.id} onClick={this.handleAdd}>{assembly.name}</h1>
           <span className="absolute right-1 bottom-1 text-md cursor-pointer text-lg transform duration-75 hover:-translate-y-1">&#128712;</span>
         </div>
@@ -64,7 +64,10 @@ class EnginePick extends Component {
 
     } else {
       return(
-        <button onClick={() => this.props.updateStep(this.props.nextStep)} className="border border-black rounded-md w-36">Next</button>
+        <div className="flex place-items-center">
+          <span className="text-5xl cursor-pointer" onClick={() => this.props.updateStep(this.props.nextStep)}>&#9655;</span>
+        </div>
+        // <button onClick={() => this.props.updateStep(this.props.nextStep)} className="border border-black rounded-md w-36">Next</button>
       ) 
     }
   }
@@ -73,7 +76,7 @@ class EnginePick extends Component {
     return (
       <div className="w-full h-full relative flex flex-col">
         <div className="absolute z-10 w-full mx-auto h-full flex">
-          <div className="flex flex-col w-2/3 h-full space-y-16 place-items-center">
+          <div className="flex flex-col w-2/3 h-full space-y-10 place-items-center">
             <div className="mt-4 flex space-x-8">
               <button className="border border-black rounded-lg p-2">Main Unit</button>
               <span className="text-4xl">&#x2192;</span>
@@ -85,13 +88,20 @@ class EnginePick extends Component {
               <span className="text-4xl">&#x2192;</span>
               <button className="border border-black rounded-lg p-2">Print Controller</button>
             </div>
-            <h1 className="text-2xl text-center">Select {this.props.step} Assemblies:</h1>
-            <div className="w-5/6 flex flex-wrap space" id="select-assemblies">
-              {this.renderAssemblies()}
-            </div>
+            {/* <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
             <div className="flex space-x-4">
               <button onClick={() => this.props.updateStep(this.props.prevStep)} className="border border-black rounded-md w-36">Previous</button>
               {this.renderNextButton()}
+            </div> */}
+            <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
+            <div className="flex">
+              <div className="flex place-items-center">
+                <span className="text-5xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#9665;</span>
+              </div>
+              <div className="w-5/6 flex flex-wrap space mx-auto" id="select-assemblies">
+                {this.renderAssemblies()}
+              </div>
+                {this.renderNextButton()}
             </div>
           </div>
           <div className="w-1/4 h-full mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">

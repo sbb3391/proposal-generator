@@ -46,7 +46,7 @@ class PartsForAssembly extends Component {
 
   render() {
     return (
-      <div className="relative z-20 w-full h-full bg-red-100 flex place-items-center">
+      <div className="relative z-20 w-2/3 ml-6 h-full bg-red-100 flex place-items-center">
         <div className="w-2/3 h-5/6 mx-auto flex flex-col">
           <h1 className="w-2/3 mx-auto text-center">Select Options For {this.state.assemblyName}:</h1>
           <div>
