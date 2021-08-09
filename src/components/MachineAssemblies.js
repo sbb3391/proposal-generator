@@ -6,7 +6,7 @@ class MachineAssemblies extends Component {
     return (
       <>
         <UnitAssembly assemblyName="main unit"/>
-        <UnitAssembly assemblyName="paper input"/>
+        <UnitAssembly assemblyName="paper handling"/>
         <UnitAssembly assemblyName="paper output"/>
         <UnitAssembly assemblyName="finishing"/>
         <UnitAssembly assemblyName="controller"/>

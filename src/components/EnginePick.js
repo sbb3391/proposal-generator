@@ -94,7 +94,7 @@ class EnginePick extends Component {
               {this.renderNextButton()}
             </div>
           </div>
-          <div className="w-1/4 h-full mx-auto h-full flex flex-col border border-black" id="selected-items">
+          <div className="w-1/4 h-full mx-auto h-full flex flex-col border border-black overflow-auto" id="selected-items">
             <MachineAssemblies />
           </div>
 

@@ -8,8 +8,13 @@ class UnitAssembly extends Component {
 
     return filteredAssemblies.map( assembly => {
       return(
-        <div>
-          <h1>{assembly.name}</h1>
+        <div className="px-1 w-11/12 mx-auto border rounded-md bg-blue-100 flex flex-col">
+          <h3>{assembly.name}</h3>
+          {assembly.items.map( item => {
+            return(
+              <span className="text-xs pl-4">{item.description}</span>
+            )
+          })}
         </div>
       )
     })
@@ -17,9 +22,9 @@ class UnitAssembly extends Component {
 
   render() {
     return (
-      <>
+      <div className="flex flex-col space-y-1 pt-2">
         {this.renderAssembliesAndItems()}
-      </>
+      </div>
     );
   }
 }
