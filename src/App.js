@@ -1,6 +1,5 @@
 import Home from './containers/Home.js';
 import Navbar from './containers/Navbar';
-import About from './components/About';
 import Edit from './components/Edit'
 import NewMachine from './containers/NewMachine'
 
