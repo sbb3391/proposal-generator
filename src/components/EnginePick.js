@@ -18,7 +18,6 @@ class EnginePick extends Component {
       fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
       .then(resp => resp.json())
       .then(json => {
-        debugger;
         this.props.addAllAssemblies(json)
       })
     }
@@ -119,7 +118,8 @@ const mapStateToProps = state => (
     modelId: state.modelId,
     clickedId: state.clickedAssemblyId,
     allAssemblies: state.model.allAssemblies,
-    remainingAssemblies: state.model.remainingAssemblies
+    remainingAssemblies: state.model.remainingAssemblies,
+    remainingPickOneGroupIds: state.model.remainingPickOneGroupIds
   }
 )
 
