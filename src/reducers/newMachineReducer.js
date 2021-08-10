@@ -56,12 +56,12 @@ function newMachineReducer(state = {
         }
       }
 
-      // determining if the selected assembly belongs to a 'pick one group.' if it does, remove that from state.
+      // determines if the selected assembly belongs to a 'pick one group.' if it does, all other items in the group will also be
+      // removed as selection options.
       const group = action.assembly.pick_one_group
       
       if (group) {
         const indexOfGroupId = state.model.remainingPickOneGroupIds.indexOf(group.pick_one_group_id)
-        // const remainingAssembliesExcludingPickOneGroup = state.model.remainingAssemblies.filter( assembly => assembly)
         const remainingAssembliesInPickOneGroups = state.model.remainingAssemblies.filter( assembly => assembly.pick_one_group)
         const assembliesInGroup = remainingAssembliesInPickOneGroups.filter( assembly => assembly.pick_one_group.pick_one_group_id === group.pick_one_group_id )
 

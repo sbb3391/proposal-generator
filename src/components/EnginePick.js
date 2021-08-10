@@ -74,12 +74,24 @@ class EnginePick extends Component {
     }
   }
 
+  renderCompleteButton = () => {
+    if (this.props.remainingPickOneGroupIds.length === 0) {
+      return(
+        <>
+          <span className="text-4xl">&#x2192;</span>
+          <button className="border border-black rounded-lg p-2 bg-green-500 text-white font-bold">Complete</button>
+        </>
+
+      )
+    }
+  }
+
   render() {
     return (
       <div className="w-full h-full relative flex flex-col">
         <div className="absolute z-10 w-full mx-auto h-full flex">
           <div className="flex flex-col w-2/3 h-full space-y-10 place-items-center">
-            <div className="mt-4 flex space-x-8">
+            <div className="mt-4 flex space-x-4">
               <StatusButton text="main unit"/>
               <span className="text-4xl">&#x2192;</span>
               <StatusButton text="paper handling"/>
@@ -89,6 +101,7 @@ class EnginePick extends Component {
               <StatusButton text="finishing"/>
               <span className="text-4xl">&#x2192;</span>
               <StatusButton text="controller"/>
+              {this.renderCompleteButton()}
             </div>
             <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
             <div className="flex w-5/6 h-1/2">

@@ -3,13 +3,14 @@ import { connect } from 'react-redux';
 
 class StatusButton extends Component {
   render() {
-    const AssembliesOfThisType = this.props.machineAssemblies.filter( assembly => assembly.assembly_type == this.props.text)
-
+    const remainingAssembliesOfThisType = this.props.remainingAssemblies.filter( assembly => assembly.assembly_type == this.props.text)
+    const remainingAssembliesBelongingToPickOneGroup = remainingAssembliesOfThisType.filter( assembly => assembly.pick_one_group )
+    
     return (
       <>
-        { AssembliesOfThisType.length > 0 ?
+        { remainingAssembliesBelongingToPickOneGroup.length === 0 ?
           <button className="border border-black rounded-lg p-2 bg-green-500 text-white font-bold">{this.props.text}</button> :
-          <button className="border border-black rounded-lg p-2 bg-red-500 text-white font-bold">{this.props.text}</button>
+          <button className="border border-black rounded-lg p-2 bg-red-500 text-white font-bold">{this.props.text}</button> 
         }
         
       </>
@@ -23,7 +24,10 @@ const mapDispatchToProps = (dispatch) => (
 )
 
 const mapStateToProps = (state) => (
-  {machineAssemblies: state.machine.assemblies}
+  {
+    machineAssemblies: state.machine.assemblies,
+    remainingAssemblies: state.model.remainingAssemblies
+  }
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(StatusButton);
