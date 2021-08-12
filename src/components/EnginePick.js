@@ -104,7 +104,6 @@ class EnginePick extends Component {
 
 
   render() {
-    debugger;
     return (
       <div className="w-full h-full relative flex flex-col">
         <div className="absolute z-10 w-full mx-auto h-full flex">

@@ -1,20 +1,18 @@
-import React, { Component } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams
-} from "react-router-dom";
+import React, { Component, useState } from 'react';
 import { useHistory } from 'react-router-dom'
+import { connect } from 'react-redux';
 
-function CompleteButton(props) {
+const CompleteButton = ({machineAssemblies}) => {
   const history = useHistory()
 
   const createMachine = () => {
-    data = "apple"
+    const data = {
+      model: {
+        id: machineAssemblies[0].model_id
+      }
+    }
 
-    fetch('http://localhost:3001/machines/create', {
+    fetch('http://localhost:3000/machines', {
     method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,16 +21,30 @@ function CompleteButton(props) {
     })
     .then(resp => resp.json())
     .then(json => {
-
+      history.push(`/machines/${json.id}`)
     })
   }
-  debugger;
   return (
     <>
       <span className="text-4xl">&#x2192;</span>
-      <button id="complete-button" className="static-button" onClick={() => history.push('/machines/create')}>Complete</button>
+      <button id="complete-button" className="static-button" onClick={createMachine}>Complete</button>
     </>
   );
 }
 
-export default CompleteButton;
+
+const mapStateToProps = state => (
+  {
+    machineAssemblies: state.machine.assemblies
+  }
+)
+
+const mapDispatchToProps = dispatch => (
+  {
+    addAllAssemblies: assemblies => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies}),
+    addAssembly: assembly => dispatch({type: 'ADD_ASSEMBLY', assembly: assembly}),
+    removeClickedId: () => dispatch({type: 'REMOVE_CLICKED_ID', id: ""})
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(CompleteButton);
