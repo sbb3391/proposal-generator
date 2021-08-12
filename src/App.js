@@ -2,8 +2,9 @@ import Home from './containers/Home.js';
 import Navbar from './containers/Navbar';
 import Edit from './components/Edit'
 import NewMachine from './containers/NewMachine'
+import Machine from './containers/Machine'
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
@@ -13,9 +14,12 @@ function App() {
           <Navbar />
         </div>
         <div className="w-full h-5/6">
-          <Route path="/" component={Home} exact/>
-          <Route path="/new_machine" component={NewMachine} />
-          <Route path="/edit" component={Edit} />
+          <Switch>
+            <Route path="/" component={Home} exact/>
+            <Route path="/new_machine" component={NewMachine} />
+            <Route path="/edit" component={Edit} />
+            <Route path="/machines/:id" component={Machine} />
+          </Switch>
         </div>
       </div>
     </Router>

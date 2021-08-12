@@ -1,5 +1,5 @@
 class AssemblySerializer < ActiveModel::Serializer
-  attributes :id, :name, :assembly_type, :required_assembly, :items, :pick_one_group
+  attributes :id, :name, :assembly_type, :model_id, :required_assembly, :items, :pick_one_group
 
   def items
     self.object.items.map do |item|
@@ -27,6 +27,9 @@ class AssemblySerializer < ActiveModel::Serializer
         pick_one_group_assemblies: PickOneGroup.find(id).model_assemblies
       }
     end
+  end
 
+  def model_id
+    instance_options[:model_id]
   end
 end

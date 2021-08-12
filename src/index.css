@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.static-button {
+  background-color: rgba(16, 185, 129);
+  color: white;
+  border: 1px solid black;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.moving-button {
+  background-color: rgba(16, 185, 129);
+  color: white;
+  border: 1px solid black;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  transform: scale(2);
+}

@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import PartsForAssembly from './PartsForAssembly'
 import MachineAssemblies from './MachineAssemblies'
 import StatusButton from './statusButton'
-import CompleteMachine from './CompleteMachine'
+import CompleteButton from './CompleteButton'
+
+
 
 class EnginePick extends Component {
 
@@ -75,18 +77,34 @@ class EnginePick extends Component {
   }
 
   renderCompleteButton = () => {
-    if (this.props.remainingPickOneGroupIds.length === 0) {
-      return(
-        <>
-          <span className="text-4xl">&#x2192;</span>
-          <button className="border border-black rounded-lg p-2 bg-green-500 text-white font-bold">Complete</button>
-        </>
-
-      )
+    if (this.props.remainingPickOneGroupIds.length === 0 ) {
+      return <CompleteButton />
     }
+
+    const button = document.querySelector("#complete-button")
+
+    if (button) {
+    }
+
+    // window.onload(
+    //   setIn
+    // )
+    // setInterval(() => {
+    //   this.moveButtonUp(completeButton)
+    // }, 500)
+      
   }
 
+  moveButtonUp = (button) => {
+    button.class = "moving-button"
+
+    setTimeout(() => button.class = "static-button", 200)
+  }
+
+
+
   render() {
+    debugger;
     return (
       <div className="w-full h-full relative flex flex-col">
         <div className="absolute z-10 w-full mx-auto h-full flex">
@@ -113,7 +131,6 @@ class EnginePick extends Component {
               </div>
                 {this.renderNextButton()}
             </div>
-            < CompleteMachine />
           </div>
           <div className="w-1/4 mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
             <MachineAssemblies />
@@ -132,7 +149,8 @@ const mapStateToProps = state => (
     clickedId: state.clickedAssemblyId,
     allAssemblies: state.model.allAssemblies,
     remainingAssemblies: state.model.remainingAssemblies,
-    remainingPickOneGroupIds: state.model.remainingPickOneGroupIds
+    remainingPickOneGroupIds: state.model.remainingPickOneGroupIds,
+    machineAssemblies: state.machine.assemblies
   }
 )
 
