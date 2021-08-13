@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
+import Pdf from './Pdf'
 
 class MachineOverview extends Component {
   render() {
@@ -16,6 +17,7 @@ class MachineOverview extends Component {
       <>
         <h1 className="text-center">Machine Overview</h1>
         <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
+        <button onClick={this.generatePdf}>Generate PDF</button>
       </>
     );
   }

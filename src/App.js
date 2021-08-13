@@ -3,6 +3,7 @@ import Navbar from './containers/Navbar';
 import Edit from './components/Edit'
 import NewMachine from './containers/NewMachine'
 import Machine from './containers/Machine'
+import NewProposal from './containers/NewProposal'
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -16,9 +17,10 @@ function App() {
         <div className="w-full h-5/6">
           <Switch>
             <Route path="/" component={Home} exact/>
-            <Route path="/new_machine" component={NewMachine} />
+            <Route path="/machine/new" component={NewMachine} />
             <Route path="/edit" component={Edit} />
             <Route path="/machines/:id" component={Machine} />
+            <Route path="/proposals/new" component={NewProposal}/>
           </Switch>
         </div>
       </div>
