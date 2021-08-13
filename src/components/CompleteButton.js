@@ -2,13 +2,14 @@ import React, { Component, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-const CompleteButton = ({machineAssemblies}) => {
+const CompleteButton = ({machineAssemblies, machine}) => {
   const history = useHistory()
 
   const createMachine = () => {
     const data = {
       model: {
-        id: machineAssemblies[0].model_id
+        id: machineAssemblies[0].model_id,
+        assemblies: machineAssemblies
       }
     }
 
@@ -21,6 +22,8 @@ const CompleteButton = ({machineAssemblies}) => {
     })
     .then(resp => resp.json())
     .then(json => {
+      debugger;
+      machine(json)
       history.push(`/machines/${json.id}`)
     })
   }
@@ -41,9 +44,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    addAllAssemblies: assemblies => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies}),
-    addAssembly: assembly => dispatch({type: 'ADD_ASSEMBLY', assembly: assembly}),
-    removeClickedId: () => dispatch({type: 'REMOVE_CLICKED_ID', id: ""})
+    machine: machine => dispatch({type: 'ADD_MACHINE', machine: machine}),
   }
 )
 

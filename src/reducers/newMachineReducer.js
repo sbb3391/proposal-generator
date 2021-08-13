@@ -84,9 +84,19 @@ function newMachineReducer(state = {
         ...state,
           clickedAssemblyId: null
       }
+
+    case 'ADD_MACHINE':
+      return {
+        ...state,
+        machine: {
+          assemblies: action.machine.assemblies
+        }
+      }
     default:
       return {...state}
   }
+
+
 }
 
 export default newMachineReducer;

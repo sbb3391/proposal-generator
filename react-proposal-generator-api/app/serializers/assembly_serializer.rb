@@ -5,7 +5,6 @@ class AssemblySerializer < ActiveModel::Serializer
     self.object.items.map do |item|
       {
         itemId: item.id,
-        itemNumber: item.item_number,
         description: item.description,
         branchFloor: item.branch_floor_price,
         target: item.target_price,

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 class UnitAssembly extends Component {
 
   removeAssemblyFromMachine = () => {
-    debugger;
   }
 
   renderAssembliesAndItems = () => {

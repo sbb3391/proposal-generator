@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :machine_assembly_items
   resources :pick_one_groups
   resources :parts
   resources :machines

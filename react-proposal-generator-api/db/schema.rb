@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_09_214009) do
+ActiveRecord::Schema.define(version: 2021_08_12_063442) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 2021_08_09_214009) do
     t.boolean "required"
     t.index ["assembly_id"], name: "index_items_assemblies_on_assembly_id"
     t.index ["item_id"], name: "index_items_assemblies_on_item_id"
+  end
+
+  create_table "machine_assembly_items", force: :cascade do |t|
+    t.bigint "machine_id"
+    t.bigint "assembly_item_id"
+    t.decimal "unit_price"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["assembly_item_id"], name: "index_machine_assembly_items_on_assembly_item_id"
+    t.index ["machine_id"], name: "index_machine_assembly_items_on_machine_id"
   end
 
   create_table "machines", force: :cascade do |t|

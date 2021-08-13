@@ -11,8 +11,7 @@ class ModelAssemblySerializer < ActiveModel::Serializer
   def assembly
     {
       assembly_id: self.object.assembly.id,
-      name: self.object.assembly.name,
-      assemblyType: self.object.assembly.assembly_type
+      name: self.object.assembly.name
     }
   end
 end

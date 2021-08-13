@@ -1,0 +1,2 @@
+class MachineAssemblyItemsController < ApplicationController
+end

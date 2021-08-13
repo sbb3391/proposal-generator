@@ -20,6 +20,7 @@ class EnginePick extends Component {
       fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
       .then(resp => resp.json())
       .then(json => {
+        
         this.props.addAllAssemblies(json)
       })
     }
