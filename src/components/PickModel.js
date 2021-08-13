@@ -32,6 +32,7 @@ class PickModel extends Component {
           return{name: model.name, id: model.id}
         })
       })
+      this.props.resetMachine()
     })
   }
 
@@ -58,7 +59,8 @@ class PickModel extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    addModelToStore: id => dispatch({type: 'ADD_MODEL', modelId: id})
+    addModelToStore: id => dispatch({type: 'ADD_MODEL', modelId: id}),
+    resetMachine: () => dispatch({type: 'RESET_MACHINE'})
   }
 }
 

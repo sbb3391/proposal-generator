@@ -1,6 +1,6 @@
 // import { combineReducers } from 'redux';
 
-function newMachineReducer(state = {
+const defaultState = {
   clickedAssemblyId: null,
   machine: {
     completedMachine: false,
@@ -11,8 +11,12 @@ function newMachineReducer(state = {
     remainingAssemblies: [],
     remainingPickOneGroupIds: []
   }
-}, action) {
+}
+
+function newMachineReducer(state = defaultState, action) {
   switch (action.type) {
+    case 'RESET_MACHINE':
+      return defaultState
     case 'ADD_MODEL':
       return Object.assign({}, {...state}, {modelId: action.modelId})
     case 'ADD_ALL_ASSEMBLIES':
