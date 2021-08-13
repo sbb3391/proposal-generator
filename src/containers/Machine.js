@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { useHistory } from 'react-router-dom'
+import MachineOverview from '../components/MachineOverview'
+import numeral from 'numeral';
 
 class Machine extends Component {
 
@@ -8,9 +10,20 @@ class Machine extends Component {
     fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
     .then(resp => resp.json())
     .then( json => {
-      debugger;
+      this.props.addMachine(json)
     })
   }
+
+  returnCurrencyFormat = (number) => {
+    let newNum = numeral(number).format('$0,0.00')
+    return newNum
+  }
+
+  returnPercentFormat = (number) => {
+    return numeral(number).format('0%')
+  }
+
+
 
   renderTableRows = () => {
     let itemsArray = []
@@ -22,14 +35,20 @@ class Machine extends Component {
 
     return part_types.map( part => {
       return itemsArray.filter( item => item.part_type === part).map( item => {
+
+        let percent = parseFloat(item.branchFloor) / parseFloat(item.branchFloor)
+
         return(
-          <tr>
-            <td>1</td>
+          <tr >
+            <td className="text-center">1</td>
             <td>{item.description}</td>
-            <td>{item.branchFloor}</td>
-            <td>
-              <input type="number" value={item.branchFloor} />
-            </td>
+            <td id="branch-floor-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
+            <td id="selling-price" className="text-center w-32">{this.returnCurrencyFormat(item.branchFloor)}</td>
+            <td className="text-center w-32">{this.returnPercentFormat(percent)}</td>
+            {/* add in functionality to change selling price later */}
+            {/* <td>
+              <input type="number" defaultValue={this.returnCurrencyFormat(item.branchFloor)} className="text-center" />
+            </td> */}
           </tr>
         )
       })
@@ -52,18 +71,26 @@ class Machine extends Component {
 
   render() {
     return (
-      <div className="w-1/2 mx-auto">
-        <table>
-          <thead>
-            <td>Quantity</td>
-            <td>Item</td>
-            <td>Branch Floor Price</td>
-            <td>Selling Price</td>
-          </thead>
-          <tbody>
-            {this.renderTableRows()}
-          </tbody>
-        </table>
+      <div className="w-full h-full flex justify-around">
+        <div className="w-3/5 h-full overflow-auto mx-auto py-4">
+          <table>
+            <thead className="">
+              <tr className="border-b-2 border-black">
+                <td className="text-center">Quantity</td>
+                <td className="text-center">Item</td>
+                <td className="text-center">Branch Floor Price</td>
+                <td className="text-center">Selling Price</td>
+                <td className="text-center">Percent of BF</td>
+              </tr>
+            </thead>
+            <tbody className="">
+              {this.renderTableRows()}
+            </tbody>
+          </table>
+        </div>
+        <div className="w-1/3 h-full flex flex-col">
+          <MachineOverview machineAssemblies={this.props.machine.assemblies} />
+        </div>
       </div>
     );
   }
@@ -77,7 +104,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    machine: machine => dispatch({type: 'ADD_MACHINE', machine: machine})
+    addMachine: machine => dispatch({type: 'ADD_MACHINE', machine: machine})
   }
 )
 

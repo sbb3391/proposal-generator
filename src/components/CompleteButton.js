@@ -22,7 +22,6 @@ const CompleteButton = ({machineAssemblies, machine}) => {
     })
     .then(resp => resp.json())
     .then(json => {
-      debugger;
       machine(json)
       history.push(`/machines/${json.id}`)
     })
@@ -44,7 +43,7 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    machine: machine => dispatch({type: 'ADD_MACHINE', machine: machine}),
+    machine: machine => dispatch({type: 'ADD_MACHINE', machine: machine})
   }
 )
 
