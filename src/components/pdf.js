@@ -4,16 +4,6 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const pdf = (machine) => {
 
-  // let itemsTable = {
-  //   table: {
-  //     body: [
-  //       [{text: 'All of the items in this configuration', colSpan: 2}],
-  //       []
-  //     ]
-  //   }
-  // }
-
-
   let body = [
     [
       
@@ -26,52 +16,45 @@ const pdf = (machine) => {
       case 0:
         newAssembly = {
           stack: [
-            {text: assembly.name, fontSize: 8, margin: [0, 20, 0, 0]}
+            {text: assembly.name, fontSize: 12, margin: [0, 10, 0, 0], bold: true}
           ]
         }
         
-        if (assembly.items.length > 1) {
-          newAssembly.stack.push( { ul: [] } )
-          
-          assembly.items.forEach( item => {
-            newAssembly.stack[1].ul.push(item.description)
-          })
-        }
-
+        newAssembly.stack.push( { type: "square", ul: [] } )
+        
+        assembly.items.forEach( item => {
+          newAssembly.stack[1].ul.push({text: item.description, fontSize: 8})
+        })
+        
         body[body.length - 1].push(newAssembly);
         break
       case 1:
         newAssembly = {
           stack: [
-            {text: assembly.name, fontSize: 8, margin: [0, 20, 0, 0]}
+            {text: assembly.name, fontSize: 12, margin: [0, 10, 0, 0], bold: true}
           ]
         }
         
-        if (assembly.items.length > 1) {
-          newAssembly.stack.push( { ul: [] } )
-          
-          assembly.items.forEach( item => {
-            newAssembly.stack[1].ul.push(item.description)
-          })
-        }
+        newAssembly.stack.push( {type: "square", ul: [] } )
+        
+        assembly.items.forEach( item => {
+          newAssembly.stack[1].ul.push({text: item.description, fontSize: 8})
+        })
         
         body[body.length - 1].push(newAssembly)
         break
       case 2:
         newAssembly = {
           stack: [
-            {text: assembly.name, fontSize: 8, margin: [0, 20, 0, 0]}
+            {text: assembly.name, fontSize: 12, margin: [0, 10, 0, 0], bold: true}
           ]
         }
   
-        if (assembly.items.length > 1) {
-          newAssembly.stack.push( { ul: [] } )
-          
-          assembly.items.forEach( item => {
-            newAssembly.stack[1].ul.push(item.description)
-          })
-        }
+        newAssembly.stack.push( {type: 'square', ul: [] } )
         
+        assembly.items.forEach( item => {
+          newAssembly.stack[1].ul.push({text: item.description, fontSize: 8})
+        })
 
         let newRow = []
         newRow.push(newAssembly)
@@ -83,21 +66,26 @@ const pdf = (machine) => {
         break
     }
   })
-  debugger;
 
   let dd = {
     content: [
       {
-        text: 'This paragraph uses header style and extends the alignment property',
+        pageBreak: "before",
+        text: 'Machine Component Breakdown',
         style: 'header',
-        alignment: 'center'
+        alignment: 'center',
+        fontSize: 24,
       },
       {
-        table: {
+         table: {
           widths: [250, 250],
-          body: body
+          body: body,
         },
-        layout: 'noBorders'
+        layout: 'noBorders',
+      },
+      {
+        pageBreak: "before",
+        text: "new page"
       }
       
     ]
