@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
-import Pdf from './Pdf'
+import { pdf } from './pdf'
+import { connect } from 'react-redux';
 
 class MachineOverview extends Component {
   render() {
@@ -17,10 +18,20 @@ class MachineOverview extends Component {
       <>
         <h1 className="text-center">Machine Overview</h1>
         <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
-        <button onClick={this.generatePdf}>Generate PDF</button>
+        <button onClick={() => pdf(this.props.machine)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
       </>
     );
   }
 }
 
-export default MachineOverview;
+const mapStateToProps = (state) => (
+  {
+    machine: state.machine
+  }
+)
+
+const mapDispatchToProps = (dispatch) => {
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MachineOverview);

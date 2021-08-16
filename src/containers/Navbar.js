@@ -26,7 +26,6 @@ class Navbar extends Component {
         <NavLink className="text-xl bg-blue-200 px-3 py-1" activeClassName="text-xl bg-blue-500 px-3 py-1" to='/' exact>Home</NavLink>
         <NavLink className="text-xl bg-blue-200 px-3 py-1" activeClassName="text-xl bg-blue-500 px-3 py-1" to="/machine/new">New Machine</NavLink>
         <NavLink className="text-xl bg-blue-200 px-3 py-1" activeClassName="text-xl bg-blue-500 px-3 py-1" to='/proposals/new'>New Proposal</NavLink>
-        <button onClick={() => this.makePdf(this.docDefinition)}>Make PDF</button>
       </div>
     );
   }

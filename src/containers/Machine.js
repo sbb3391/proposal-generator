@@ -40,11 +40,11 @@ class Machine extends Component {
 
         return(
           <tr >
-            <td className="text-center">1</td>
-            <td>{item.description}</td>
+            <td className="text-center w-20">1</td>
+            <td className="width-96">{item.description}</td>
             <td id="branch-floor-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
-            <td id="selling-price" className="text-center w-32">{this.returnCurrencyFormat(item.branchFloor)}</td>
-            <td className="text-center w-32">{this.returnPercentFormat(percent)}</td>
+            <td id="selling-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
+            <td className="text-center w-28">{this.returnPercentFormat(percent)}</td>
             {/* add in functionality to change selling price later */}
             {/* <td>
               <input type="number" defaultValue={this.returnCurrencyFormat(item.branchFloor)} className="text-center" />
@@ -72,23 +72,23 @@ class Machine extends Component {
   render() {
     return (
       <div className="w-full h-full flex justify-around">
-        <div className="w-3/5 h-full overflow-auto mx-auto py-4">
-          <table>
-            <thead className="">
+        <div className="w-3/5 h- mx-auto py-6 my-3 border-2 border-grey-200 rounded-lg text-center">
+          <table className="mx-auto h-full w-full text-center">
+            <thead className="w-full block text-center">
               <tr className="border-b-2 border-black">
-                <td className="text-center">Quantity</td>
-                <td className="text-center">Item</td>
-                <td className="text-center">Branch Floor Price</td>
-                <td className="text-center">Selling Price</td>
-                <td className="text-center">Percent of BF</td>
+                <td className="text-center w-20">Quantity</td>
+                <td className="text-center w-80">Item</td>
+                <td className="text-center w-36">Branch Floor Price</td>
+                <td className="text-center w-36">Selling Price</td>
+                <td className="text-center w-28">Percent of BF</td>
               </tr>
             </thead>
-            <tbody className="">
+            <tbody className="h-full overflow-auto block text-center">
               {this.renderTableRows()}
             </tbody>
           </table>
         </div>
-        <div className="w-1/3 h-full flex flex-col">
+        <div className="w-1/3 h-full flex flex-col space-y-3">
           <MachineOverview machineAssemblies={this.props.machine.assemblies} />
         </div>
       </div>
