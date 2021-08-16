@@ -33,9 +33,30 @@ const pdf = (machine) => {
 
   let mainComponentsTable = [
     [
-      
+
     ]
   ]
+
+  machine.assemblies.forEach( (assembly) => {
+    let newAssembly = {text: assembly.name, fontSize: 12, alignment: "center", margin: [5,5,5,5] }
+    switch (mainComponentsTable[mainComponentsTable.length - 1].length) {
+      case 0:
+        mainComponentsTable[mainComponentsTable.length - 1].push(newAssembly);
+        break
+      case 1:
+        mainComponentsTable[mainComponentsTable.length - 1].push(newAssembly)
+        break
+      case 2:
+        let newRow = []
+        newRow.push(newAssembly)
+        mainComponentsTable.push(newRow)
+        
+        if (machine.assemblies.indexOf(assembly) === machine.assemblies.length - 1 && mainComponentsTable[mainComponentsTable.length - 1].length === 1) {
+          mainComponentsTable[mainComponentsTable.length - 1].push({text: "", border: [true, true, false, false]})
+        }
+        break
+    }
+  })
 
   let dd = {
     content: [
@@ -60,6 +81,13 @@ const pdf = (machine) => {
          </svg>`,
          margin: [0, 0, 0, 20]
       },
+      {
+        margin: [0,0,0,20],
+        table: {
+         body: mainComponentsTable,
+         widths: [250, 250],
+       },
+     },
       {
         svg: `<svg width="525" height="30">
                 <rect rx="10" ry="10" width="525" height="30"
