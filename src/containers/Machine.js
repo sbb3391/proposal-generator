@@ -10,6 +10,10 @@ class Machine extends Component {
     fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
     .then(resp => resp.json())
     .then( json => {
+
+      // sets the default unit price amount to the branch floor price
+      json.assemblies.forEach( assembly => assembly.items.forEach( i => i.unitPrice = i.branchFloor))
+
       this.props.addMachine(json)
     })
   }
@@ -23,7 +27,17 @@ class Machine extends Component {
     return numeral(number).format('0%')
   }
 
+  handlePriceChange = (event) => {
+    const modelId = event.target.dataset.modelId
+    const itemId = event.target.id
+    const assemblyId = event.target.dataset.assemblyId
 
+    const assembly = this.props.machine.assemblies.find( assembly => assembly.id == assemblyId && assembly.modelId == modelId)
+
+    const  changingItem = assembly.items.find( i => i.itemId == itemId)
+    
+    this.props.changeItemPrice(changingItem)
+  }
 
   renderTableRows = () => {
     let itemsArray = []
@@ -32,18 +46,25 @@ class Machine extends Component {
     this.props.machine.assemblies.map( assembly => 
       assembly.items.forEach( item => itemsArray.push(item))
     )
-
+    
     return part_types.map( part => {
       return itemsArray.filter( item => item.part_type === part).map( item => {
 
-        let percent = parseFloat(item.branchFloor) / parseFloat(item.branchFloor)
+        const sellingPriceValue = () => {
+          const assembly = this.props.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId )
 
+          return assembly.items.find( i => i.id == item.id).unitPrice
+        }
+
+        let percent = parseFloat(item.branchFloor) / parseFloat(item.branchFloor)
         return(
-          <tr >
+          <tr>
             <td className="text-center w-20">1</td>
             <td className="width-96">{item.description}</td>
             <td id="branch-floor-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
-            <td id="selling-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
+            <td className="text-center w-36">
+              <input data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} defaultValue={numeral(item.branchFloor).format('0.000')} onChange={this.handlePriceChange} />
+            </td> 
             <td className="text-center w-28">{this.returnPercentFormat(percent)}</td>
             {/* add in functionality to change selling price later */}
             {/* <td>
@@ -53,20 +74,6 @@ class Machine extends Component {
         )
       })
     })
-
-
-    //     return(
-    //       <tr>
-    //         <td>1</td>
-    //         <td>{item.description}</td>
-    //         <td>{item.branchFloor}</td>
-    //         <td>
-    //           <input type="number" value={item.branchFloor} />
-    //         </td>
-    //       </tr>
-    //     )
-    //   })
-    // })
   }
 
   render() {
@@ -104,7 +111,8 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    addMachine: machine => dispatch({type: 'ADD_MACHINE', machine: machine})
+    addMachine: machine => dispatch({type: 'ADD_MACHINE', machine: machine}),
+    changeItemPrice: item => dispatch({type: 'CHANGE_ITEM_PRICE', item: item})
   }
 )
 

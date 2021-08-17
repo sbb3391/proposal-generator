@@ -1,10 +1,12 @@
 class AssemblySerializer < ActiveModel::Serializer
   attributes :id, :name, :assembly_type, :model_id, :required_assembly, :items, :pick_one_group
 
+  byebug 
+
   def items
     self.object.items.map do |item|
       {
-        itemId: item.id,
+        itemId: item.id
         description: item.description,
         branchFloor: item.branch_floor_price,
         target: item.target_price,

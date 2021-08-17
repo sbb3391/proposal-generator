@@ -3,7 +3,7 @@ class MachinesController < ApplicationController
   def show
     machine = Machine.find(params[:id])
 
-    render json: machine
+    render json: machine, machine_id: params[:id]
   end
 
   def index

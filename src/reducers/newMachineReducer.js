@@ -96,6 +96,8 @@ function newMachineReducer(state = defaultState, action) {
           assemblies: action.machine.assemblies
         }
       }
+    case 'CHANGE_ITEM_PRICE':
+      debugger;
     default:
       return {...state}
   }
