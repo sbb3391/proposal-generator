@@ -1,9 +1,11 @@
 import { buildQueries } from "@testing-library/react";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import numeral from 'numeral';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-const pdf = (machine) => {
+const pdf = (machine, totalPrice) => {
+  debugger;
 
   let body = [
     [],
@@ -24,8 +26,6 @@ const pdf = (machine) => {
       body[columnIndex][body[columnIndex].length -1].ul.push({text: item.description, fontSize: 10, margin: [7, 0, 0, 0]})
     })
   })
-
-  console.log(JSON.stringify(body))
 
   let mainComponentsTable = [
     [
@@ -87,11 +87,52 @@ const pdf = (machine) => {
       },
       },
       {
-        svg: `<svg width="525" height="30">
-                <rect rx="10" ry="10" width="525" height="30"
-                style="fill:blue;stroke:black;;opacity:0.5" />
-                <text x="35%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Equipment Pricing</text>
-         </svg>`
+        columns: [
+          [
+            {
+              svg: `<svg width="260" height="30">
+                      <rect rx="10" ry="10" width="250" height="30"
+                      style="fill:blue;stroke:black;;opacity:0.5" />
+                      <text x="22%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Maintance Details</text>
+               </svg>`,
+               margin: [0, 0, 0, 10],
+            },
+            {
+              table: {
+                widths: [240],
+                alignment: "center",
+                body: [
+                  ["Add Machine to Proposal to Add Maintanance Details"]
+                ]
+              }
+            }
+          ],
+          [
+            {
+              svg: `<svg width="260" height="30">
+                      <rect rx="10" ry="10" width="250" height="30"
+                      style="fill:blue;stroke:black;;opacity:0.5" />
+                      <text x="22%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Equipment Pricing</text>
+               </svg>`,
+               margin: [4, 0, 0, 10]
+            },
+            {
+              table: {
+                widths: [140, 90],
+                body: [
+                  [{text: "Purchase:", border: [true, true, false, false], fontSize: 10}, {text: `${numeral(totalPrice).format('$0,0.00')}`, fontSize: 10}],
+                  [{text: "36 Month $1 Out:", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0334).format('$0,0.00')}/mo`, fontSize: 10}],
+                  [{text: "36 Month Fair Market", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0303).format('$0,0.00')}/mo`, fontSize: 10}],
+                  [{text: "48 Month $1 Out:", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0265).format('$0,0.00')}/mo`, fontSize: 10}],
+                  [{text: "48 Month Fair Market", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0224).format('$0,0.00')}/mo`, fontSize: 10}],
+                  [{text: "60 Month $1 Out:", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0215).format('$0,0.00')}/mo`, fontSize: 10}],
+                  [{text: "60 Month Fair Market", border: [true, false, false, true], fontSize: 10}, {text: `${numeral(totalPrice * .0205).format('$0,0.00')}/mo`, fontSize: 10}]
+                ]
+              },
+              margin: [4,0,0,0]
+            }
+          ]
+        ]
       },
       {
         pageBreak: "before",
@@ -103,13 +144,6 @@ const pdf = (machine) => {
       },
       {
         columns: body
-      },
-      {
-        svg: `<svg width="525" height="30">
-                <rect rx="10" ry="10" width="525" height="30"
-                style="fill:blue;stroke:black;;opacity:0.5" />
-                <text x="35%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Equipment Pricing</text>
-         </svg>`
       },
       {
         pageBreak: "before",
