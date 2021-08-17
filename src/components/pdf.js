@@ -6,30 +6,26 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 const pdf = (machine) => {
 
   let body = [
+    [],
+    []
   ]
 
   machine.assemblies.forEach( (assembly) => {
+    let columnIndex = machine.assemblies.indexOf(assembly) % 2 !== 0 ? 0 : 1
+
     let newAssembly; 
-    newAssembly = {
-      stack: [
-        {text: assembly.name, fontSize: 16, margin: [20, 20, 0, 0], color: "blue", bold: true}
-      ]
-    }
+    newAssembly = {text: assembly.name, fontSize: 16, color: "blue", bold: true}
     
-    newAssembly.stack.push( { type: "square", ul: [], margin: [40,0,0,0] } )
+    body[columnIndex].push(newAssembly);
+
+    body[columnIndex].push( { type: "square", ul: [], margin: [0,0,0, 20] } )
     
     assembly.items.forEach( item => {
-      newAssembly.stack[1].ul.push({text: item.description, fontSize: 10})
+      body[columnIndex][body[columnIndex].length -1].ul.push({text: item.description, fontSize: 10, margin: [7, 0, 0, 0]})
     })
-    
-    body.push([newAssembly]);
-    
   })
 
   console.log(JSON.stringify(body))
-
-  const customerName = "Raff Printing"
-  console.log(Math.floor((customerName.length / 48) * 100))
 
   let mainComponentsTable = [
     [
@@ -58,13 +54,15 @@ const pdf = (machine) => {
     }
   })
 
+  const machineName = machine.assemblies.find( assembly => assembly.assembly_type === "engine").name
+  
   let dd = {
     content: [
       {
         svg: `<svg width="525" height="40">
                 <rect rx="10" ry="10" width="525" height="40"
                 style="fill:blue;stroke:black;;opacity:0.5" />
-                <text x='${Math.floor((customerName.length / 48) * 100)}%'  y="57%" font-family="Verdana" font-size="20" bold="true" fill="white">${customerName}</text>
+                <text x='${Math.floor(((machineName).length / 48) * 100)}%'  y="57%" font-family="Verdana" font-size="20" bold="true" fill="white">${machineName}</text>
          </svg>`  
       },
       {
@@ -77,7 +75,7 @@ const pdf = (machine) => {
         svg: `<svg width="525" height="30">
                 <rect rx="10" ry="10" width="525" height="30"
                 style="fill:blue;stroke:black;;opacity:0.5" />
-                <text x="35%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Main Accessories</text>
+                <text x="35%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Included Components</text>
          </svg>`,
          margin: [0, 0, 0, 20]
       },
@@ -86,8 +84,8 @@ const pdf = (machine) => {
         table: {
          body: mainComponentsTable,
          widths: [250, 250],
-       },
-     },
+      },
+      },
       {
         svg: `<svg width="525" height="30">
                 <rect rx="10" ry="10" width="525" height="30"
@@ -97,16 +95,21 @@ const pdf = (machine) => {
       },
       {
         pageBreak: "before",
-        text: 'Machine Component Breakdown',
+        text: 'Component Detail',
         style: 'header',
         alignment: 'center',
         fontSize: 24,
+        margin: [0,0,0,30]
       },
       {
-         table: {
-          body: body,
-        },
-        layout: 'noBorders',
+        columns: body
+      },
+      {
+        svg: `<svg width="525" height="30">
+                <rect rx="10" ry="10" width="525" height="30"
+                style="fill:blue;stroke:black;;opacity:0.5" />
+                <text x="35%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Equipment Pricing</text>
+         </svg>`
       },
       {
         pageBreak: "before",
