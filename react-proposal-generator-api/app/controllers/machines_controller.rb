@@ -24,6 +24,6 @@ class MachinesController < ApplicationController
 
     machine.save
 
-    render json: machine
+    render json: machine, machine_id: machine.id
   end
 end

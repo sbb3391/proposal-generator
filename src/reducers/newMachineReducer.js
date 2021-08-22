@@ -1,6 +1,7 @@
 // import { combineReducers } from 'redux';
 
 const defaultState = {
+  requesting: false,
   clickedAssemblyId: null,
   machine: {
     completedMachine: false,
@@ -19,6 +20,11 @@ function newMachineReducer(state = defaultState, action) {
       return defaultState
     case 'ADD_MODEL':
       return Object.assign({}, {...state}, {modelId: action.modelId})
+    case 'START_FETCHING_ASSEMBLIES':
+      return {
+        ...state,
+        requesting: true
+      }
     case 'ADD_ALL_ASSEMBLIES':
       // This only gets called once to add all machine assemblies from fetch to the store
       const requiredAssemblies = action.assemblies.filter( assembly => assembly.required_assembly)
@@ -39,7 +45,8 @@ function newMachineReducer(state = defaultState, action) {
               allAssemblies: action.assemblies,
               remainingAssemblies: unrequiredAssemblies,
               remainingPickOneGroupIds: uniquePickOneGroupIds
-          }
+          },
+          requesting: false
       }
     case 'ADD_ASSEMBLY':
       // this takes one assembly and adds it to the machine assembly (the one we're building)
@@ -97,7 +104,20 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'CHANGE_ITEM_PRICE':
+      const assembly = state.machine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId)
+      const assemblyIndex = state.machine.assemblies.indexOf(assembly)
+      const item = assembly.items.find( i => i.itemId == action.item.itemId)
+      const itemIndex = assembly.items.indexOf(item)
+
       debugger;
+      // debugger;
+      // return {
+      //   ...state,
+      //   machine: {
+      //     ...state.machine,
+      //     assemblies: []
+      //   }
+      // }
     default:
       return {...state}
   }

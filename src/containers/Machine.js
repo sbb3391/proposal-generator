@@ -63,7 +63,7 @@ class Machine extends Component {
             <td className="width-96">{item.description}</td>
             <td id="branch-floor-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
             <td className="text-center w-36">
-              <input data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} defaultValue={numeral(item.branchFloor).format('0.000')} onChange={this.handlePriceChange} />
+              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} defaultValue={numeral(item.branchFloor).format('0.000')} onChange={this.handlePriceChange} />
             </td> 
             <td className="text-center w-28">{this.returnPercentFormat(percent)}</td>
             {/* add in functionality to change selling price later */}
@@ -84,9 +84,9 @@ class Machine extends Component {
             <thead className="w-full block text-center">
               <tr className="border-b-2 border-black">
                 <td className="text-center w-20">Quantity</td>
-                <td className="text-center w-80">Item</td>
-                <td className="text-center w-36">Branch Floor Price</td>
-                <td className="text-center w-36">Selling Price</td>
+                <td className="text-center w-96">Item</td>
+                <td className="text-center w-36">Branch Floor</td>
+                <td className="text-center w-28">Selling Price</td>
                 <td className="text-center w-28">Percent of BF</td>
               </tr>
             </thead>

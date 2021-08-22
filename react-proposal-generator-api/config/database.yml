@@ -79,8 +79,14 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+
 production:
   <<: *default
   database: react_proposal_generator_api_production
   username: react_proposal_generator_api
   password: <%= ENV['REACT_PROPOSAL_GENERATOR_API_DATABASE_PASSWORD'] %>
+#   database: react_proposal_generator_api_production
+#   adapter: postgresql
+#   encoding: unicode
+#   username: react_proposal_generator_api
+#   password: <%= ENV['REACT_PROPOSAL_GENERATOR_API_DATABASE_PASSWORD'] %>

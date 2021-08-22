@@ -4,6 +4,7 @@ import PartsForAssembly from './PartsForAssembly'
 import MachineAssemblies from './MachineAssemblies'
 import StatusButton from './statusButton'
 import CompleteButton from './CompleteButton'
+import { fetchAssemblies } from '../actions/fetchAssemblies'
 
 
 
@@ -17,12 +18,7 @@ class EnginePick extends Component {
   componentDidMount() {
     // only fetch once, on the first render to get all the assemblies
     if (this.props.allAssemblies.length === 0) {
-      fetch(`http://localhost:3000/models/${this.props.modelId}/assemblies`)
-      .then(resp => resp.json())
-      .then(json => {
-        
-        this.props.addAllAssemblies(json)
-      })
+      this.props.fetchAssemblies(this.props.modelId)
     }
   }
 
@@ -105,41 +101,45 @@ class EnginePick extends Component {
 
 
   render() {
-    return (
-      <div className="w-full h-full relative flex flex-col">
-        <div className="absolute z-10 w-full mx-auto h-full flex">
-          <div className="flex flex-col w-2/3 h-full space-y-10 place-items-center">
-            <div className="mt-4 flex space-x-4">
-              <StatusButton text="main unit"/>
-              <span className="text-4xl">&#x2192;</span>
-              <StatusButton text="paper handling"/>
-              <span className="text-4xl">&#x2192;</span>
-              <StatusButton text="paper output"/>
-              <span className="text-4xl">&#x2192;</span>
-              <StatusButton text="finishing"/>
-              <span className="text-4xl">&#x2192;</span>
-              <StatusButton text="controller"/>
-              {this.renderCompleteButton()}
-            </div>
-            <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
-            <div className="flex w-5/6 h-1/2">
-              <div className="flex place-items-center">
-                <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
+    if (this.props.requesting) {
+      return <h1>Please wait - assemblies loading!</h1>
+    } else {
+      return (
+        <div className="w-full h-full relative flex flex-col">
+          <div className="absolute z-10 w-full mx-auto h-full flex">
+            <div className="flex flex-col w-2/3 h-full space-y-10 place-items-center">
+              <div className="mt-4 flex space-x-4">
+                <StatusButton text="main unit"/>
+                <span className="text-4xl">&#x2192;</span>
+                <StatusButton text="paper handling"/>
+                <span className="text-4xl">&#x2192;</span>
+                <StatusButton text="paper output"/>
+                <span className="text-4xl">&#x2192;</span>
+                <StatusButton text="finishing"/>
+                <span className="text-4xl">&#x2192;</span>
+                <StatusButton text="controller"/>
+                {this.renderCompleteButton()}
               </div>
-              <div className="w-4/5 flex flex-wrap space mx-auto" id="select-assemblies">
-                {this.renderAssemblies()}
+              <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
+              <div className="flex w-5/6 h-1/2">
+                <div className="flex place-items-center">
+                  <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
+                </div>
+                <div className="w-4/5 flex flex-wrap space mx-auto" id="select-assemblies">
+                  {this.renderAssemblies()}
+                </div>
+                  {this.renderNextButton()}
               </div>
-                {this.renderNextButton()}
             </div>
-          </div>
-          <div className="w-1/4 mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
-            <MachineAssemblies />
-          </div>
+            <div className="w-1/4 mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
+              <MachineAssemblies />
+            </div>
 
+          </div>
+          {this.renderPartsForAssembly()}
         </div>
-        {this.renderPartsForAssembly()}
-      </div>
-    );
+      );
+    }
   }
 }
 
@@ -150,13 +150,14 @@ const mapStateToProps = state => (
     allAssemblies: state.model.allAssemblies,
     remainingAssemblies: state.model.remainingAssemblies,
     remainingPickOneGroupIds: state.model.remainingPickOneGroupIds,
-    machineAssemblies: state.machine.assemblies
+    machineAssemblies: state.machine.assemblies,
+    requesting: state.requesting
   }
 )
 
 const mapDispatchToProps = dispatch => (
   {
-    addAllAssemblies: assemblies => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies}),
+    fetchAssemblies: (modelId) => dispatch(fetchAssemblies(modelId)),
     addAssembly: assembly => dispatch({type: 'ADD_ASSEMBLY', assembly: assembly}),
     removeClickedId: () => dispatch({type: 'REMOVE_CLICKED_ID', id: ""})
   }
