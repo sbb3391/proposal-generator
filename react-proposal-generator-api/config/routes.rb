@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :proposals
+  resources :proposals do 
+    resources :machines 
+  end
+  
   root "items_assemblies#index"
   resources :machine_assembly_items
   resources :pick_one_groups
