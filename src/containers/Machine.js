@@ -12,9 +12,14 @@ class Machine extends Component {
     .then( json => {
 
       // sets the default unit price amount to the branch floor price
-      json.assemblies.forEach( assembly => assembly.items.forEach( i => i.unitPrice = i.branchFloor))
 
-      this.props.addMachine(json)
+      json.assemblies.forEach( assembly => assembly.items.forEach( i => {
+        i.unitPrice = i.branchFloor
+      }))
+
+      const x = json
+
+      this.props.addMachine(x)
     })
   }
 

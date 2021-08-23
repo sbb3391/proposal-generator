@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_12_063442) do
+ActiveRecord::Schema.define(version: 2021_08_23_202547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,9 @@ ActiveRecord::Schema.define(version: 2021_08_12_063442) do
     t.string "location_zip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "proposal_id"
     t.index ["model_id"], name: "index_machines_on_model_id"
+    t.index ["proposal_id"], name: "index_machines_on_proposal_id"
   end
 
   create_table "model_assemblies", force: :cascade do |t|
@@ -102,5 +104,13 @@ ActiveRecord::Schema.define(version: 2021_08_12_063442) do
     t.index ["model_id"], name: "index_pick_one_groups_on_model_id"
   end
 
+  create_table "proposals", force: :cascade do |t|
+    t.string "customer_name"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "machines", "proposals"
   add_foreign_key "model_assemblies", "pick_one_groups"
 end
