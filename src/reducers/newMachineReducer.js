@@ -109,15 +109,22 @@ function newMachineReducer(state = defaultState, action) {
       const item = assembly.items.find( i => i.itemId == action.item.itemId)
       const itemIndex = assembly.items.indexOf(item)
 
-      debugger;
-      // debugger;
-      // return {
-      //   ...state,
-      //   machine: {
-      //     ...state.machine,
-      //     assemblies: []
-      //   }
-      // }
+      const newAssembly = Object.assign({}, assembly)
+      newAssembly.items[itemIndex].unitPrice = action.item.unitPrice
+      
+      const assemblyState = state.machine.assemblies
+      const firstHalf = assemblyState.slice(0, assemblyIndex)
+      const secondHalf = assemblyState.slice(assemblyIndex + 1)
+      
+      return {
+        ...state,
+        machine: {
+          ...state.machine,
+          assemblies: [
+            ...firstHalf, newAssembly, ...secondHalf
+          ]
+        }
+      }
     default:
       return {...state}
   }

@@ -1,3 +1,7 @@
 class ProposalSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :customer_name, :machines
+
+  def machines 
+  end
+
 end

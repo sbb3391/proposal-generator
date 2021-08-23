@@ -144,12 +144,7 @@ const pdf = (machine, totalPrice) => {
       },
       {
         columns: body
-      },
-      {
-        pageBreak: "before",
-        text: "new page"
       }
-      
     ]
   }
 

@@ -29,7 +29,7 @@ class Machine extends Component {
   }
 
   returnPercentFormat = (number) => {
-    return numeral(number).format('0%')
+    return numeral(number).format('0.0%')
   }
 
   handlePriceChange = (event) => {
@@ -40,6 +40,7 @@ class Machine extends Component {
     const assembly = this.props.machine.assemblies.find( assembly => assembly.id == assemblyId && assembly.modelId == modelId)
 
     const  changingItem = assembly.items.find( i => i.itemId == itemId)
+    changingItem.unitPrice = event.target.value
     
     this.props.changeItemPrice(changingItem)
   }
@@ -61,13 +62,14 @@ class Machine extends Component {
           return assembly.items.find( i => i.id == item.id).unitPrice
         }
 
-        let percent = parseFloat(item.branchFloor) / parseFloat(item.branchFloor)
+        let percent = parseFloat(item.unitPrice) / parseFloat(item.branchFloor)
         return(
           <tr>
             <td className="text-center w-20">1</td>
-            <td className="width-96">{item.description}</td>
+            <td className="w-96">{item.description}</td>
             <td id="branch-floor-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
             <td className="text-center w-36">
+              {/* use local state  */}
               <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} defaultValue={numeral(item.branchFloor).format('0.000')} onChange={this.handlePriceChange} />
             </td> 
             <td className="text-center w-28">{this.returnPercentFormat(percent)}</td>
@@ -84,15 +86,15 @@ class Machine extends Component {
   render() {
     return (
       <div className="w-full h-full flex justify-around">
-        <div className="w-3/5 h- mx-auto py-6 my-3 border-2 border-grey-200 rounded-lg text-center">
+        <div className="w-3/5 h- mx-auto py-10 my-3 border-2 border-grey-200 rounded-lg text-center">
           <table className="mx-auto h-full w-full text-center">
-            <thead className="w-full block text-center">
-              <tr className="border-b-2 border-black">
+            <thead className="w-full block text-center border-b-2 border-black mb-2">
+              <tr>
                 <td className="text-center w-20">Quantity</td>
                 <td className="text-center w-96">Item</td>
                 <td className="text-center w-36">Branch Floor</td>
                 <td className="text-center w-28">Selling Price</td>
-                <td className="text-center w-28">Percent of BF</td>
+                <td className="text-center w-28">% of BF</td>
               </tr>
             </thead>
             <tbody className="h-full overflow-auto block text-center">

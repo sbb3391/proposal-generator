@@ -9,7 +9,7 @@ class MachineOverview extends Component {
     let priceArray = [];
 
     if (this.props.machineAssemblies.length > 0) {
-      this.props.machineAssemblies.forEach(assembly => assembly.items.forEach( item => priceArray.push(item.branchFloor)))
+      this.props.machineAssemblies.forEach(assembly => assembly.items.forEach( item => priceArray.push(item.unitPrice)))
     }
 
     const totalPrice = priceArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)
