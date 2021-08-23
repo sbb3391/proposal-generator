@@ -59,7 +59,7 @@ class Machine extends Component {
         const sellingPriceValue = () => {
           const assembly = this.props.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId )
 
-          return assembly.items.find( i => i.id == item.id).unitPrice
+          return assembly.items.find( i => i.itemId == item.itemId).unitPrice
         }
 
         let percent = parseFloat(item.unitPrice) / parseFloat(item.branchFloor)
@@ -69,14 +69,9 @@ class Machine extends Component {
             <td className="w-96">{item.description}</td>
             <td id="branch-floor-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
             <td className="text-center w-36">
-              {/* use local state  */}
-              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} defaultValue={numeral(item.branchFloor).format('0.000')} onChange={this.handlePriceChange} />
+              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} onChange={this.handlePriceChange} />
             </td> 
             <td className="text-center w-28">{this.returnPercentFormat(percent)}</td>
-            {/* add in functionality to change selling price later */}
-            {/* <td>
-              <input type="number" defaultValue={this.returnCurrencyFormat(item.branchFloor)} className="text-center" />
-            </td> */}
           </tr>
         )
       })

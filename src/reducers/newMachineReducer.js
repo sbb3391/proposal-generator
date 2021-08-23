@@ -104,6 +104,10 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'CHANGE_ITEM_PRICE':
+      if (action.item.unitPrice === "") {
+        action.item.unitPrice = 0
+      }
+
       const assembly = state.machine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId)
       const assemblyIndex = state.machine.assemblies.indexOf(assembly)
       const item = assembly.items.find( i => i.itemId == action.item.itemId)
@@ -115,7 +119,7 @@ function newMachineReducer(state = defaultState, action) {
       const assemblyState = state.machine.assemblies
       const firstHalf = assemblyState.slice(0, assemblyIndex)
       const secondHalf = assemblyState.slice(assemblyIndex + 1)
-      
+
       return {
         ...state,
         machine: {
