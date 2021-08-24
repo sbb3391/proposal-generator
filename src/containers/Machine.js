@@ -10,14 +10,7 @@ class Machine extends Component {
     fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
     .then(resp => resp.json())
     .then( json => {
-
-      json.assemblies.forEach( assembly => assembly.items.forEach( i => {
-        i.unitPrice = i.branchFloor
-      }))
-
-      const x = json
-
-      this.props.addMachine(x)
+      this.props.addMachine(json)
     })
   }
 
@@ -29,7 +22,7 @@ class Machine extends Component {
         <div className="w-full h-full flex justify-around">
           <MachinePricing machine={this.props.machine} changeItemPrice={this.props.changePrice} />
           <div className="w-1/3 h-full flex place-items-center space-y-3">
-            <div className="flex flex-col h-1/3 w-full">
+            <div className="flex flex-col space-y-3 h-1/3 w-full">
               <MachineOverview machineAssemblies={this.props.machine.assemblies} />
             </div>
           </div>

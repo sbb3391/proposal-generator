@@ -1,5 +1,6 @@
 // import { combineReducers } from 'redux';
 import update from 'react-addons-update';
+import numeral from 'numeral';
 
 
 const defaultState = {
@@ -7,7 +8,8 @@ const defaultState = {
   clickedAssemblyId: null,
   machine: {
     completedMachine: false,
-    assemblies: []
+    assemblies: [],
+
   },
   model: {
     allAssemblies: [],
@@ -100,10 +102,21 @@ function newMachineReducer(state = defaultState, action) {
       }
 
     case 'ADD_MACHINE':
+      let sellingPrice = 0
+      let items = [];
+
+      action.machine.assemblies.forEach( assembly => assembly.items.forEach( item => {
+          items.push(parseFloat(item.unitPrice))
+        })
+      )
+
+      sellingPrice = numeral(items.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
+
       return {
         ...state,
         machine: {
-          assemblies: action.machine.assemblies
+          assemblies: action.machine.assemblies,
+          sellingPrice: sellingPrice
         }
       }
     case 'CHANGE_MACHINE_ITEM_PRICE':

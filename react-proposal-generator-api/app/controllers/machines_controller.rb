@@ -17,7 +17,7 @@ class MachinesController < ApplicationController
 
       assembly[:items].each do |item| 
         assembly_item = ItemsAssembly.find_by(assembly_id: assembly_id, item_id: item[:itemId])
-        i = Item.find_by(item_id: assembly_item.item_id)
+        i = Item.find_by(id: assembly_item.item_id)
         machine.machine_assembly_items.build(assembly_item_id: assembly_item.id, unit_price: i.branch_floor_price )
       end
     end
