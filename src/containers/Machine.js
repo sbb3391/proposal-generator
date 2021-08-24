@@ -11,10 +11,6 @@ class Machine extends Component {
     .then(resp => resp.json())
     .then( json => {
 
-      debugger;
-
-      // sets the default unit price amount to the branch floor price
-
       json.assemblies.forEach( assembly => assembly.items.forEach( i => {
         i.unitPrice = i.branchFloor
       }))

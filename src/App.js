@@ -4,6 +4,7 @@ import Edit from './components/Edit'
 import NewMachine from './containers/NewMachine'
 import Machine from './containers/Machine'
 import Proposals from './containers/Proposals'
+import Proposal from './containers/Proposal'
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -20,7 +21,8 @@ function App() {
             <Route path="/machine/new" component={NewMachine} />
             <Route path="/edit" component={Edit} />
             <Route path="/machines/:id" component={Machine} />
-            <Route path="/proposals" component={Proposals}/>
+            <Route path="/proposals" exact component={Proposals}/>
+            <Route path="/proposals/:id" component={Proposal} />
           </Switch>
         </div>
       </div>
