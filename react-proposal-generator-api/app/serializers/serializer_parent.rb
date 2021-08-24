@@ -35,9 +35,7 @@ class SerializerParent < ActiveModel::Serializer
       }
     end 
 
-    {
-      assemblies: assemblies_map
-    }
+    assemblies_map
 
   end
 

@@ -7,6 +7,7 @@ class UnitAssembly extends Component {
   }
 
   renderAssembliesAndItems = () => {
+    debugger;
     const filteredAssemblies = this.props.assemblies.filter( assembly => assembly.assembly_type == this.props.assemblyName)
 
     return filteredAssemblies.map( assembly => {
