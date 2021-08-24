@@ -13,6 +13,7 @@ class SerializerParent < ActiveModel::Serializer
       items = assembly.items.map do |item|
         assembly_item_id = ItemsAssembly.find_by(item_id: item.id, assembly_id: assembly.id)
         {
+          machineId: machine.id,
           modelId: machine.model_id,
           assemblyId: assembly.id,
           itemId: item.id,
