@@ -11,6 +11,15 @@ class Proposal extends Component {
     this.props.fetchProposal(this.props.match.params.id)
   }
 
+  renderMachines = () => {
+    if (this.props.proposal && this.props.proposal.machines && this.props.proposal.machines.length > 0 ) {
+      debugger;
+      return this.props.proposal.machines.map( machine => {
+        return <Machine machine={machine} />
+      })
+    }
+  }
+
   render() {
     if (this.props.requesting) {
       return <h1>please wait. Proposal loading....</h1>
@@ -20,6 +29,7 @@ class Proposal extends Component {
           <div className="py-8 border-black border-2 w-11/12 h-1/6 flex mx-auto rounded-md justify-around">
             <ProposalOverview proposal={this.props.proposal} />
           </div>
+          { this.renderMachines() }
         </div>
       );
     }
