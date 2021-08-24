@@ -11,7 +11,8 @@ const defaultState = {
     allAssemblies: [],
     remainingAssemblies: [],
     remainingPickOneGroupIds: []
-  }
+  },
+  proposal: {}
 }
 
 function newMachineReducer(state = defaultState, action) {
@@ -115,8 +116,6 @@ function newMachineReducer(state = defaultState, action) {
 
       const newAssembly = Object.assign({}, assembly)
       newAssembly.items[itemIndex].unitPrice = parseFloat(action.item.unitPrice)
-
-      debugger;
       
       const assemblyState = state.machine.assemblies
       const firstHalf = assemblyState.slice(0, assemblyIndex)
@@ -131,6 +130,13 @@ function newMachineReducer(state = defaultState, action) {
           ]
         }
       }
+    case 'ADD_PROPOSAL':
+      return {
+        ...state,
+        proposal: action.proposal,
+        requesting: false
+      }
+      
     default:
       return {...state}
   }
