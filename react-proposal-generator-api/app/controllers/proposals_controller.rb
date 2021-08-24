@@ -5,4 +5,10 @@ class ProposalsController < ApplicationController
 
     render json: proposals
   end
+
+  def show
+    proposal = Proposal.find(params[:id])
+
+    render json: proposal
+  end
 end

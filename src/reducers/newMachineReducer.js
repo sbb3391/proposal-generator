@@ -114,7 +114,9 @@ function newMachineReducer(state = defaultState, action) {
       const itemIndex = assembly.items.indexOf(item)
 
       const newAssembly = Object.assign({}, assembly)
-      newAssembly.items[itemIndex].unitPrice = action.item.unitPrice
+      newAssembly.items[itemIndex].unitPrice = parseFloat(action.item.unitPrice)
+
+      debugger;
       
       const assemblyState = state.machine.assemblies
       const firstHalf = assemblyState.slice(0, assemblyIndex)
