@@ -97,6 +97,18 @@ class EnginePick extends Component {
 
     setTimeout(() => button.class = "static-button", 200)
   }
+  
+  renderPickOneGroups = () => {
+    const pickOnes = this.props.allAssemblies.filter( assembly => assembly.assembly_type === this.props.step && assembly.pick_one_group )
+
+    return pickOnes.map( assembly => {
+      return(
+        <div>
+          <span className="text-xs">{assembly.name}</span>
+        </div>
+      )
+    })
+  }
 
 
 
@@ -107,7 +119,7 @@ class EnginePick extends Component {
       return (
         <div className="w-full h-full relative flex flex-col">
           <div className="absolute z-10 w-full mx-auto h-full flex">
-            <div className="flex flex-col w-2/3 h-full space-y-10 place-items-center">
+            <div className="flex flex-col w-2/3 h-full space-y-5 place-items-center">
               <div className="mt-4 flex space-x-4">
                 <StatusButton text="main unit"/>
                 <span className="text-4xl">&#x2192;</span>
@@ -121,6 +133,9 @@ class EnginePick extends Component {
                 {this.renderCompleteButton()}
               </div>
               <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
+              <div className="w-2/3 h-12 flex justify-center space-x-8">
+                {this.renderPickOneGroups()}
+              </div>
               <div className="flex w-5/6 h-1/2">
                 <div className="flex place-items-center">
                   <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
