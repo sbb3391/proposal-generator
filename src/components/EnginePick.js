@@ -97,17 +97,38 @@ class EnginePick extends Component {
 
     setTimeout(() => button.class = "static-button", 200)
   }
+
+  returnHTMLCheckmark = (argument) => {
+    if (argument) {
+      return "\u2705";
+    } else {
+      return "\u2610";
+    }
+  } 
   
   renderPickOneGroups = () => {
     const pickOnes = this.props.allAssemblies.filter( assembly => assembly.assembly_type === this.props.step && assembly.pick_one_group )
 
-    return pickOnes.map( assembly => {
-      return(
-        <div>
-          <span className="text-xs">{assembly.name}</span>
+    if ( pickOnes.length > 0 )
+    return(
+      <>
+        <span className="text-center">Pick one of the following:</span>
+        <div className="flex justify-center space-x-8">
+          {
+            pickOnes.map( assembly => {
+              const findAssemblyInMachineAssemblies = this.props.machineAssemblies.find( machineAssembly => machineAssembly === assembly ) 
+  
+              return(
+                <div className="flex space-x-2">
+                  <span>{this.returnHTMLCheckmark(findAssemblyInMachineAssemblies)}</span>
+                  <span className="text-xs w-36">{assembly.name}</span>
+                </div>
+              )
+            })
+          }
         </div>
-      )
-    })
+      </>
+    )
   }
 
 
@@ -133,7 +154,7 @@ class EnginePick extends Component {
                 {this.renderCompleteButton()}
               </div>
               <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
-              <div className="w-2/3 h-12 flex justify-center space-x-8">
+              <div className="w-2/3 h-12 flex flex-col justify-center space-x-8 space-y-1">
                 {this.renderPickOneGroups()}
               </div>
               <div className="flex w-5/6 h-1/2">
