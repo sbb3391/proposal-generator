@@ -12,10 +12,9 @@ class Proposal extends Component {
   }
 
   renderMachines = () => {
-    if (this.props.proposal && this.props.proposal.machines && this.props.proposal.machines.length > 0 ) {
-      debugger;
+    if (Object.keys(this.props.proposal).length > 0 ) {
       return this.props.proposal.machines.map( machine => {
-        return <Machine machine={machine} />
+        return <Machine machine={machine} changePrice={this.props.changeProposalMachineItemPrice} addMachine={null} match={this.props.match}/>
       })
     }
   }
@@ -29,7 +28,9 @@ class Proposal extends Component {
           <div className="py-8 border-black border-2 w-11/12 h-1/6 flex mx-auto rounded-md justify-around">
             <ProposalOverview proposal={this.props.proposal} />
           </div>
-          { this.renderMachines() }
+          <div className="w-11/12 h-5/6">
+            { this.renderMachines() }
+          </div>
         </div>
       );
     }
@@ -40,6 +41,7 @@ class Proposal extends Component {
 const mapDispatchToProps = dispatch => (
   {
     fetchProposal: (proposalId) => dispatch(fetchProposal(proposalId)),
+    changeProposalMachineItemPrice: item => dispatch({type: 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE', item: item})
   }
 )
 

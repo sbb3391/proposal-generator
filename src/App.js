@@ -5,10 +5,11 @@ import NewMachine from './containers/NewMachine'
 import Machine from './containers/Machine'
 import Proposals from './containers/Proposals'
 import Proposal from './containers/Proposal'
+import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-function App() {
+function App(props) {
   return (
     <Router >
       <div className="App w-full h-full">
@@ -20,7 +21,7 @@ function App() {
             <Route path="/" component={Home} exact/>
             <Route path="/machine/new" component={NewMachine} />
             <Route path="/edit" component={Edit} />
-            <Route path="/machines/:id" component={Machine} />
+            <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeMachineItemPrice} match={match.match}addMachine={props.addMachine}/>} />
             <Route path="/proposals" exact component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
           </Switch>
@@ -30,4 +31,18 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => (
+  {
+    machine: state.machine
+  }
+)
+
+const mapDispatchToProps = dispatch => (
+  {
+    addMachine: machine => dispatch({type: 'ADD_MACHINE', machine: machine}),
+    changeMachineItemPrice: item => dispatch({type: 'CHANGE_MACHINE_ITEM_PRICE', item: item})
+  }
+)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

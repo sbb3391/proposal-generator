@@ -104,7 +104,7 @@ function newMachineReducer(state = defaultState, action) {
           assemblies: action.machine.assemblies
         }
       }
-    case 'CHANGE_ITEM_PRICE':
+    case 'CHANGE_MACHINE_ITEM_PRICE':
       if (action.item.unitPrice === "") {
         action.item.unitPrice = 0
       }
@@ -131,12 +131,20 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'ADD_PROPOSAL':
+      action.proposal.machines.forEach( machine => {
+        machine.assemblies.forEach( assembly => {
+          assembly.items.forEach( item => {
+            item.unitPrice = item.branchFloor
+          })
+        })
+      })
+
       return {
         ...state,
         proposal: action.proposal,
         requesting: false
       }
-      
+
     default:
       return {...state}
   }
