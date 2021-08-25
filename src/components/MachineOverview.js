@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
-import { pdf } from './pdf'
+import { machinePdf } from '../pdf/machinePdf'
 import { connect } from 'react-redux';
 
 class MachineOverview extends Component {
 
   renderSaveChangesButton = totalPrice => { 
-    console.log("selling price", this.props.machine.sellingPrice)
-    console.log("total price", totalPrice)
     if (this.props.machine.sellingPrice !== totalPrice) {
       return(<button className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold">Save Changes</button>)
     }
@@ -27,7 +25,7 @@ class MachineOverview extends Component {
       <>
         <h1 className="text-center">Machine Overview</h1>
         <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
-        <button onClick={() => pdf(this.props.machine, totalPrice)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
+        <button onClick={() => machinePdf(this.props.machine)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
         { this.renderSaveChangesButton(totalPrice)}
       </>
     );

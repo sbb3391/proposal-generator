@@ -174,11 +174,11 @@ class EnginePick extends Component {
               <div className="w-2/3 h-12 flex flex-col justify-center space-x-8 space-y-1">
                 {this.renderPickOneGroups()}
               </div>
-              <div className="flex w-5/6 h-1/2 mt-4">
+              <div className="flex w-5/6 h-1/2 pt-4">
                 <div className="flex place-items-center">
                   <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
                 </div>
-                <div className="w-4/5 flex flex-wrap space mx-auto" id="select-assemblies">
+                <div className="w-4/5 flex flex-wrap mx-auto" id="select-assemblies">
                   {this.renderAssemblies()}
                 </div>
                   {this.renderNextButton()}

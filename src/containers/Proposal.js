@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import Machine from './Machine'
 import ProposalOverview from '../components/ProposalOverview'
 
-
 class Proposal extends Component {
 
   componentDidMount() {
