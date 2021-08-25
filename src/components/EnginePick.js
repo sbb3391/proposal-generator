@@ -50,14 +50,23 @@ class EnginePick extends Component {
   renderAssemblies = () => {
     const stepAssemblies = this.props.remainingAssemblies.filter( assembly => assembly.assembly_type === this.props.step)
 
-    return stepAssemblies.map( assembly => {
+    if (stepAssemblies.length > 0 ) {
+      return stepAssemblies.map( assembly => {
+        return(
+          <div className="relative assembly bg-blue-200 w-40 h-36 flex flex-col place-items-center justify-center border rounded-md mr-2 mb-2 mt-5" id={assembly.id}>
+            <h1 className="text-center font-bold cursor-pointer text-md hover:underline" id={assembly.id} onClick={this.handleAdd}>{assembly.name}</h1>
+            <span className="absolute right-1 bottom-1 text-md cursor-pointer text-lg transform duration-75 hover:-translate-y-1">&#128712;</span>
+          </div>
+        )
+      })
+    } else {
       return(
-        <div className="relative assembly bg-blue-200 w-40 h-36 flex flex-col place-items-center justify-center border rounded-md mr-2 mb-2" id={assembly.id}>
-          <h1 className="text-center font-bold cursor-pointer text-md hover:underline" id={assembly.id} onClick={this.handleAdd}>{assembly.name}</h1>
-          <span className="absolute right-1 bottom-1 text-md cursor-pointer text-lg transform duration-75 hover:-translate-y-1">&#128712;</span>
+        <div className="place-self-center w-3/4 h-18 mx-auto">
+          <h1 className="text-5xl text-center">No Additional Options Available</h1>
         </div>
       )
-    })
+    }
+
   }
 
   renderNextButton = () => {
@@ -105,6 +114,13 @@ class EnginePick extends Component {
       return "\u2610";
     }
   } 
+
+  titleCase = (str) => {
+    return str
+        .split(' ')
+        .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+}
   
   renderPickOneGroups = () => {
     const pickOnes = this.props.allAssemblies.filter( assembly => assembly.assembly_type === this.props.step && assembly.pick_one_group )
@@ -119,7 +135,7 @@ class EnginePick extends Component {
               const findAssemblyInMachineAssemblies = this.props.machineAssemblies.find( machineAssembly => machineAssembly === assembly ) 
   
               return(
-                <div className="flex space-x-2">
+                <div className="flex space-x-2 border-2 border-grey-200 rounded-md p-2">
                   <span>{this.returnHTMLCheckmark(findAssemblyInMachineAssemblies)}</span>
                   <span className="text-xs w-36">{assembly.name}</span>
                 </div>
@@ -134,6 +150,7 @@ class EnginePick extends Component {
 
 
   render() {
+    debugger;
     if (this.props.requesting) {
       return <h1>Please wait - assemblies loading!</h1>
     } else {
@@ -153,11 +170,11 @@ class EnginePick extends Component {
                 <StatusButton text="controller"/>
                 {this.renderCompleteButton()}
               </div>
-              <h1 className="text-2xl text-center h-8">Select {this.props.step} Assemblies:</h1>
+              <h1 className="text-2xl text-center h-8 mt-4">{this.titleCase(this.props.step)}:</h1>
               <div className="w-2/3 h-12 flex flex-col justify-center space-x-8 space-y-1">
                 {this.renderPickOneGroups()}
               </div>
-              <div className="flex w-5/6 h-1/2">
+              <div className="flex w-5/6 h-1/2 mt-4">
                 <div className="flex place-items-center">
                   <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
                 </div>

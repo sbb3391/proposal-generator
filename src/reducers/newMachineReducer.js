@@ -165,6 +165,7 @@ function newMachineReducer(state = defaultState, action) {
       const firstHalf = assemblyState.slice(0, assemblyIndex)
       const secondHalf = assemblyState.slice(assemblyIndex + 1)
 
+
       // needs to be a cleaner way to do this.
       return {
         ...state,
@@ -178,12 +179,19 @@ function newMachineReducer(state = defaultState, action) {
     case 'ADD_PROPOSAL':
       // sets default Unit Price to branch floor price. This should be set up in the backend.
       action.proposal.machines.forEach( machine => {
+        let sellingPrice1 = 0
+        let items1 = [];
         machine.assemblies.forEach( assembly => {
           assembly.items.forEach( item => {
-            item.unitPrice = item.branchFloor
+            items1.push(parseFloat(item.unitPrice))
           })
         })
+        sellingPrice1 = numeral(items1.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
+        machine.sellingPrice = sellingPrice1
+        debugger
       })
+
+      // sets Selling Price for each machine
 
       return {
         ...state,

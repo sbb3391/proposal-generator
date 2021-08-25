@@ -7,11 +7,16 @@ import MachinePricing from '../components/MachinePricing'
 class Machine extends Component {
 
   componentDidMount() {
-    fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
-    .then(resp => resp.json())
-    .then( json => {
-      this.props.addMachine(json)
-    })
+
+    // we don't want to fetch for a machine if we're viewing a proposal. The machines are generated
+    // in Proposal component and are already in the redux store
+    if ( !this.props.proposal ) {
+      fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
+      .then(resp => resp.json())
+      .then( json => {
+        this.props.addMachine(json)
+      })
+    }
   }
 
   render() {
@@ -23,7 +28,7 @@ class Machine extends Component {
           <MachinePricing machine={this.props.machine} changeItemPrice={this.props.changePrice} />
           <div className="w-1/3 h-full flex place-items-center space-y-3">
             <div className="flex flex-col space-y-3 h-1/3 w-full">
-              <MachineOverview machineAssemblies={this.props.machine.assemblies} />
+              <MachineOverview machine={this.props.machine} />
             </div>
           </div>
         </div>
