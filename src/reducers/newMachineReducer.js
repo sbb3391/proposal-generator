@@ -188,7 +188,6 @@ function newMachineReducer(state = defaultState, action) {
         })
         sellingPrice1 = numeral(items1.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
         machine.sellingPrice = sellingPrice1
-        debugger
       })
 
       // sets Selling Price for each machine

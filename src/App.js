@@ -12,7 +12,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App(props) {
   return (
     <Router >
-      <div className="App w-full h-full">
+      <div className="App absolute z-0 w-full h-full">
         <div className="w-full h-18">
           <Navbar />
         </div>
