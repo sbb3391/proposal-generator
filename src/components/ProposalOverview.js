@@ -16,6 +16,10 @@ class ProposalOverview extends Component {
     }
   }
 
+  renderPopWindow = () => {
+    return <PopWindow />
+  }
+
   render() {
     return (
       <>
@@ -26,7 +30,7 @@ class ProposalOverview extends Component {
         <button onClick={this.createPdf} className="border-black border-2 rounded-md p-2">Open PDF</button>
       </div>
       <div>
-        <button className="border-black border-2 rounded-md p-2">Edit Pricing Options</button>
+        <button onClick={this.renderPopWindow} className="border-black border-2 rounded-md p-2">Edit Pricing Options</button>
       </div>
       </>
     );
