@@ -1,4 +1,5 @@
 import Home from './containers/Home.js';
+import { DragDropContext } from 'react-beautiful-dnd';
 import Navbar from './containers/Navbar';
 import Edit from './components/Edit'
 import NewMachine from './containers/NewMachine'
@@ -6,10 +7,16 @@ import Machine from './containers/Machine'
 import Proposals from './containers/Proposals'
 import Proposal from './containers/Proposal'
 import { connect } from 'react-redux';
+import PopWindow from './containers/PopWindow'
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App(props) {
+
+  const renderPopWindow = () => {
+    return props.popWindow ? <PopWindow /> : null
+  }
+
   return (
     <Router >
       <div className="App absolute z-0 w-full h-full">
@@ -27,13 +34,15 @@ function App(props) {
           </Switch>
         </div>
       </div>
+      {renderPopWindow()}
     </Router>
   );
 }
 
 const mapStateToProps = state => (
   {
-    machine: state.machine
+    machine: state.machine,
+    popWindow: state.popWindow
   }
 )
 

@@ -16,7 +16,8 @@ const defaultState = {
     remainingAssemblies: [],
     remainingPickOneGroupIds: []
   },
-  proposal: {}
+  proposal: {},
+  popWindow: false
 }
 
 function newMachineReducer(state = defaultState, action) {
@@ -197,7 +198,23 @@ function newMachineReducer(state = defaultState, action) {
         proposal: action.proposal,
         requesting: false
       }
+    case 'TOGGLE_POP_WINDOW': 
+      if (state.popWindow) {
+        document.querySelector(".App").classList.remove("overflow-hidden", "filter", "blur-md")
 
+        return{
+          ...state,
+          popWindow: false
+        }
+      } else {
+        console.log(document.querySelector(".App"))
+        document.querySelector(".App").classList.add("overflow-hidden", "filter", "blur-md")
+
+        return{
+          ...state,
+          popWindow: true
+        }
+      }
     default:
       return {...state}
   }

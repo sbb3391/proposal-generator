@@ -1,23 +1,70 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 class PopWindow extends Component {
 
-  removePopWindow = () => {
-    const popWindow = document.querySelector("#popWindow")
-    const App = document.querySelector(".App")
-    App.classList.remove("overflow-hidden", "filter", "blur-md")
-    popWindow.remove()
+  renderDraggables = () => {
+    const finalSpaceCharacters = [
+      {
+        id: 'gary',
+        name: 'Gary Goodspeed',
+      },
+      {
+        id: "joe",
+        name: "Joe Bequette"
+      }
+    ]
+
+    return finalSpaceCharacters.map(({id, name}, index) => {
+      return(
+        <Draggable key={id} draggableId={id} index={index}>
+          {provided => (
+            <li ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+            </li>
+          )}
+        </Draggable>
+      )
+    })
   }
+
+
   render() {
-    console.log("Hello")
     return (
-      <div onClick={this.removePopWindow} id="popWindow" className="flex w-full h-full relative z-20">
-        <div className="w-2/3 h-3/4 mx-auto border-black border-2 place-self-center bg-white">
-          <h1>Hello</h1>
+      <DragDropContext>
+
+        <div onClick={this.props.togglePopWindow} id="popWindow" className="flex w-full h-full relative z-20">
+          <div className="w-2/3 h-3/4 mx-auto border-black border-2 place-self-center bg-white">
+            <div id="available-pdfs" className="flex flex-col w-full h-1/6 border-2 border-black space-y-2 py-3">
+              <h1 className="text-center">Available PDF's:</h1>
+              <div className="w-11/12 mx-auto h-5/6 bg-red-200">
+              
+              </div>
+            </div>
+            <div id="proposal-pdfs" className="w-full h-5/6 border-2 border-black">
+                <Droppable dropableId="characters">
+                  { (provided) => (
+                    <ul className="characters" {...provided.droppableProps} ref={provided.innerRef}>
+                      {this.renderDraggables()}
+                    </ul>
+                  )}
+                </Droppable>
+            </div>
+          </div>
         </div>
-      </div>
+      </DragDropContext>
     );
   }
 }
 
-export default PopWindow;
+const mapStateToProps = state => (
+  {}
+)
+
+const mapDispatchToProps = dispatch => (
+  {
+    togglePopWindow: () => dispatch({type: 'TOGGLE_POP_WINDOW'})
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(PopWindow);
