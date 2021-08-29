@@ -4,3 +4,4 @@
 log
 
 react-proposal-generator-api/log/development.log
+react-proposal-generator-api/node_modules/*
