@@ -42,7 +42,7 @@ class PopWindow extends Component {
               </div>
               {/* <PopPdfPick state={this.state} updateProposalPdfsState={this.updateProposalPdfsState}
               removeFromRemainingPdfsState={this.removeFromRemainingPdfsState}/> */}
-              <PopServiceContracts state={this.state} proposal={this.props.proposal}/>
+              <PopServiceContracts />
 
             </div>
           </div>

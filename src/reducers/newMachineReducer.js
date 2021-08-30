@@ -179,7 +179,6 @@ function newMachineReducer(state = defaultState, action) {
       }
     case 'ADD_PROPOSAL':
       // sets default Unit Price to branch floor price. This should be set up in the backend.
-      debugger;
       action.proposal.machines.forEach( machine => {
         let sellingPrice1 = 0
         let items1 = [];
@@ -214,6 +213,20 @@ function newMachineReducer(state = defaultState, action) {
         return{
           ...state,
           popWindow: true
+        }
+      }
+    case 'UPDATE_SERVICE_CONTRACT':
+      return{
+        ...state,
+        proposal: {
+          ...state.proposal,
+          machines: state.proposal.machines.map( machine => {
+            if (machine.machineId == action.machine.machineId) {
+              return action.machine
+            } else {
+              return machine
+            }
+          })
         }
       }
     default:
