@@ -24,8 +24,8 @@ class Proposal extends Component {
     } else {
       return (
         <div className="w-full h-full flex flex-col">
-          <div className="py-8 border-black border-2 w-11/12 h-1/6 flex mx-auto rounded-md justify-around">
-            <ProposalOverview proposal={this.props.proposal} />
+          <div className="border-black border-2 w-11/12 h-1/6 flex mx-auto rounded-md justify-around items-center content-center">
+            <ProposalOverview />
           </div>
           <div className="w-11/12 h-5/6">
             { this.renderMachines() }

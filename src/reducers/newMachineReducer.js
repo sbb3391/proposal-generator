@@ -178,7 +178,9 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'ADD_PROPOSAL':
-      // sets default Unit Price to branch floor price. This should be set up in the backend.
+      // sets proposal selling price 
+      action.proposal.sellingPrice = 0;
+      // sets the item selling price
       action.proposal.machines.forEach( machine => {
         let sellingPrice1 = 0
         let items1 = [];
@@ -189,6 +191,7 @@ function newMachineReducer(state = defaultState, action) {
         })
         sellingPrice1 = numeral(items1.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
         machine.sellingPrice = sellingPrice1
+        action.proposal.sellingPrice = action.proposal.sellingPrice + parseFloat(sellingPrice1)
       })
 
       // sets Selling Price for each machine

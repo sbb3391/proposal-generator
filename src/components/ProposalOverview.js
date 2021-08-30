@@ -17,11 +17,22 @@ class ProposalOverview extends Component {
     }
   }
 
+  pricing = () => {
+    const purchase = this.props.proposal.sellingPrice
+    return(
+      <div className="flex flex-col w-full place-self-center">
+        <span className="text-sm">Purchase: {numeral(purchase).format('$0,0.00')} </span>
+        <span className="text-sm">60 Month Lease: {numeral(purchase * .0205).format('$0,0.00')}/month</span>
+        <span className="text-sm">48 Month Lease: {numeral(purchase * .0226).format('$0,0.00')}/month</span>
+      </div>
+    )
+  }
+
   render() {
     return (
       <>
       <div>
-        <h1>Total Cost:</h1>
+        {this.props.proposal.machines ? this.pricing() : null}
       </div>
       <div>
         <button onClick={this.createPdf} className="border-black border-2 rounded-md p-2">Open PDF</button>
@@ -35,7 +46,9 @@ class ProposalOverview extends Component {
 }
 
 const mapStateToProps = state => (
-  {}
+  {
+    proposal: state.proposal
+  }
 )
 
 const mapDispatchToProps = dispatch => (
