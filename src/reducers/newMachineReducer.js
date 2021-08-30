@@ -233,20 +233,30 @@ function newMachineReducer(state = defaultState, action) {
       }
     case 'START_UPDATING_MACHINE':
       action.machine.requesting = true
+      
+      const proposal = {...state.proposal}
+      
+      const machineIndex = proposal.machines.indexOf(proposal.machines.find( findMachine => findMachine.machineId == action.machine.machineId))
+      proposal.machines[machineIndex] = action.machine
 
       return{
         ...state,
-        proposal: {
-          ...state.proposal,
-          machines: state.proposal.machines.map( machine => {
-            if (machine.machineId == action.machine.machineId) {
-              return action.machine
-            } else {
-              return machine
-            }
-          })
-        }
+        proposal: proposal
       }
+
+      // return{
+      //   ...state,
+      //   proposal: {
+      //     ...state.proposal,
+      //     machines: state.proposal.machines.map( machine => {
+      //       if (machine.machineId == action.machine.machineId) {
+      //         return action.machine
+      //       } else {
+      //         return machine
+      //       }
+      //     })
+      //   }
+      // }
     default:
       return {...state}
   }

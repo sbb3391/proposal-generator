@@ -1,7 +1,7 @@
 export function saveProposalMachine(machine) {
   const body = machine
   return (dispatch) => {
-    dispatch({type: "START_UPDATING_MACHINE"});
+    dispatch({type: "START_UPDATING_MACHINE", machine: machine});
     fetch(`http://localhost:3000/proposals/${machine.proposalId}/machines/${machine.machineId}`, {
       headers: {
         "Content-type": "application/json",
@@ -13,7 +13,6 @@ export function saveProposalMachine(machine) {
     .then(resp => resp.json())
     .then(proposal => {
       debugger;
-      dispatch({type: 'ADD_PROPOSAL', proposal: proposal})
     })
   }
 }

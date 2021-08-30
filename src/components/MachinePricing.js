@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
+import { connect } from 'react-redux';
 
 class MachinePricing extends Component {
 

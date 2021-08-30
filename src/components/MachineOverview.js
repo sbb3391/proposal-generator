@@ -7,7 +7,7 @@ class MachineOverview extends Component {
 
   renderSaveChangesButton = totalPrice => { 
     if (this.props.machine.sellingPrice !== totalPrice) {
-      return(<button className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold">Save Changes</button>)
+      return(<button onClick={() => this.props.saveMachine(this.props.machine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Changes</button>)
     }
   }
 
@@ -37,8 +37,9 @@ const mapStateToProps = (state) => (
   }
 )
 
-const mapDispatchToProps = (dispatch) => {
-
-}
+const mapDispatchToProps = (dispatch) => (
+  {
+  }
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(MachineOverview);

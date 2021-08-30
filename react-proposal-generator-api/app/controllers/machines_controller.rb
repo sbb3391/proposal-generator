@@ -26,4 +26,7 @@ class MachinesController < ApplicationController
 
     render json: machine, machine_id: machine.id
   end
+
+  def update
+  end
 end

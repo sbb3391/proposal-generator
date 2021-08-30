@@ -3,6 +3,7 @@ import { fetchProposal } from '../actions/fetchProposal'
 import { connect } from 'react-redux';
 import Machine from './Machine'
 import ProposalOverview from '../components/ProposalOverview'
+import { saveProposalMachine } from '../actions/saveProposalMachine'
 
 class Proposal extends Component {
 
@@ -13,7 +14,8 @@ class Proposal extends Component {
   renderMachines = () => {
     if (Object.keys(this.props.proposal).length > 0 ) {
       return this.props.proposal.machines.map( machine => {
-        return <Machine machine={machine} changePrice={this.props.changeProposalMachineItemPrice} addMachine={null} match={this.props.match} proposal={true}/>
+        return <Machine machine={machine} changePrice={this.props.changeProposalMachineItemPrice} 
+        saveMachine={this.props.saveProposalMachine} addMachine={null} match={this.props.match} proposal={true}/>
       })
     }
   }
@@ -40,12 +42,14 @@ class Proposal extends Component {
 const mapDispatchToProps = dispatch => (
   {
     fetchProposal: (proposalId) => dispatch(fetchProposal(proposalId)),
-    changeProposalMachineItemPrice: item => dispatch({type: 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE', item: item})
+    changeProposalMachineItemPrice: item => dispatch({type: 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE', item: item}),
+    saveProposalMachine: machine => dispatch(saveProposalMachine(machine))
   }
 )
 
 const mapStateToProps = state => (
-  { proposal: state.proposal,
+  { 
+    proposal: state.proposal,
     requesting: state.requesting
   }
 )
