@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { allPdf } from '../pdf/allPdf';
 import PopPdfPick from '../components/PopPdfPick'
+import PopServiceContracts from '../components/PopServiceContracts'
 
 class PopWindow extends Component {
 
@@ -39,9 +40,10 @@ class PopWindow extends Component {
               <div className="w-full border-grey-200 border-2 rounded-md">
                 Nav
               </div>
-              <PopPdfPick togglePopWindow={this.props.togglePopWindow} 
-              state={this.state} updateProposalPdfsState={this.updateProposalPdfsState}
-              removeFromRemainingPdfsState={this.removeFromRemainingPdfsState}/>
+              {/* <PopPdfPick state={this.state} updateProposalPdfsState={this.updateProposalPdfsState}
+              removeFromRemainingPdfsState={this.removeFromRemainingPdfsState}/> */}
+              <PopServiceContracts state={this.state} proposal={this.props.proposal}/>
+
             </div>
           </div>
         </div>
@@ -50,7 +52,9 @@ class PopWindow extends Component {
 }
 
 const mapStateToProps = state => (
-  {}
+  {
+    proposal: state.proposal
+  }
 )
 
 const mapDispatchToProps = dispatch => (
