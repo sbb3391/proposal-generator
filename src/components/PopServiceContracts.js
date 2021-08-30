@@ -18,18 +18,18 @@ class PopServiceContracts extends Component {
           <h1 className="text-center">{machine.assemblies.find( assembly => assembly.assembly_type === "engine").name}</h1>
           <div className="flex w-full space-x-3 justify-center">
             <label>Color Click</label>
-            <input type="number" className="w-32 border-black border-2 rounded-md" data-machine-id={machine.machineId} data-class="colorClick"
+            <input type="number" className="w-32 border-black border-2 rounded-md pl-2" data-machine-id={machine.machineId} data-class="colorClick"
             onChange={this.handleServiceChange} value={machine.colorClick} />
             <label>Annual Volume</label>
-            <input type="number" className="w-32 border-black border-2 rounded-md" data-machine-id={machine.machineId} data-class="annualColorVolume"
+            <input type="number" className="w-32 border-black border-2 rounded-md pl-2" data-machine-id={machine.machineId} data-class="annualColorVolume"
             onChange={this.handleServiceChange} value={machine.annualColorVolume}  />
           </div>
           <div className="flex w-full space-x-3 justify-center">
             <label>Mono Click</label>
-            <input type="number" className="w-32 border-black border-2 rounded-md" data-machine-id={machine.machineId} data-class="monoClick"
+            <input type="number" className="w-32 border-black border-2 rounded-md pl-2" data-machine-id={machine.machineId} data-class="monoClick"
             onChange={this.handleServiceChange} value={machine.monoClick} />
             <label>Annual Volume</label>
-            <input type="number" className="w-32 border-black border-2 rounded-md" data-machine-id={machine.machineId} data-class="annualMonoVolume"
+            <input type="number" className="w-32 border-black border-2 rounded-md pl-2" data-machine-id={machine.machineId} data-class="annualMonoVolume"
             onChange={this.handleServiceChange} value={machine.annualMonoVolume} />
           </div>
         </div>

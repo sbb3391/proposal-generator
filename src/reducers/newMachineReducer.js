@@ -191,10 +191,9 @@ function newMachineReducer(state = defaultState, action) {
         })
         sellingPrice1 = numeral(items1.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
         machine.sellingPrice = sellingPrice1
+        machine.requesting = false
         action.proposal.sellingPrice = action.proposal.sellingPrice + parseFloat(sellingPrice1)
       })
-
-      // sets Selling Price for each machine
 
       return {
         ...state,
@@ -219,6 +218,22 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'UPDATE_SERVICE_CONTRACT':
+      return{
+        ...state,
+        proposal: {
+          ...state.proposal,
+          machines: state.proposal.machines.map( machine => {
+            if (machine.machineId == action.machine.machineId) {
+              return action.machine
+            } else {
+              return machine
+            }
+          })
+        }
+      }
+    case 'START_UPDATING_MACHINE':
+      action.machine.requesting = true
+
       return{
         ...state,
         proposal: {
