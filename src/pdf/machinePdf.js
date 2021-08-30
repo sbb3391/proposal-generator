@@ -52,6 +52,23 @@ const machinePdf = (machine) => {
         break
     }
   })
+    
+  let serviceArr = [];
+
+  if (machine.colorClick) {
+    serviceArr.push([{text: "Color Impression:"}, {text: `$0${machine.colorClick} per impression`, fontSize: 10}])
+  }
+
+  if (machine.monoClick) {
+    serviceArr.push([{text: "Mono Impression:"}, {text: `$0${machine.monoClick} per impression`, fontSize: 10}])
+  }
+
+  let serviceData;
+  if (serviceArr.length === 0 ) {
+    serviceData = [["No Data Provided"], ["Provide Info"]]
+  } else {
+    serviceData = serviceArr
+  }
 
   const machineName = machine.assemblies.find( assembly => assembly.assembly_type === "engine").name
   
@@ -100,12 +117,11 @@ const machinePdf = (machine) => {
             },
             {
               table: {
-                widths: [240],
+                widths: [110, 110],
                 alignment: "center",
-                body: [
-                  ["Add Machine to Proposal to Add Maintanance Details"]
-                ]
-              }
+                body: serviceData
+              },
+              margin: [4,0,0,0]
             }
           ],
           [
@@ -144,8 +160,8 @@ const machinePdf = (machine) => {
         margin: [0,0,0,30]
       },
       {
-        pageBreak: "after",
-        columns: body
+        columns: body,
+        pageBreak: "after"
       }
     ]
   }
