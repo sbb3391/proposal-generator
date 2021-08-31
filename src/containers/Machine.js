@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import MachineOverview from '../components/MachineOverview'
 import MachinePricing from '../components/MachinePricing'
 // import Loading from '../components/Loading'
-import ReactLoading from 'react-loading';
+import GraphicLoading from '../components/GraphicLoading'
 
 class Machine extends Component {
 
@@ -28,11 +28,11 @@ class Machine extends Component {
       return(
         <div className="w-full h-full flex justify-around">
           <div className="w-3/5 mx-auto py-10 my-3 border-2 border-grey-200 rounded-lg text-center flex items-center justify-center">
-            <ReactLoading type="spin" color="#333EFF" height='20%' width='20%' />
+            <GraphicLoading />
           </div>
           <div className="w-1/3 h-full flex place-items-center space-y-3">
             <div className="flex flex-col space-y-3 h-1/3 w-full justify-center items-center">
-              <ReactLoading type="spin" color="#333EFF" height='20%' width='20%' />
+              <GraphicLoading />
             </div>
           </div>
         </div>     
