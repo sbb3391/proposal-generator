@@ -14,7 +14,7 @@ class Proposal extends Component {
 
   renderMachines = () => {
     if (Object.keys(this.props.proposal).length > 0 ) {
-      return this.props.proposal.machines.map( machine => {
+      return this.props.machines.map( machine => {
         return <Machine machine={machine} changePrice={this.props.changeProposalMachineItemPrice} 
         saveMachine={this.props.saveProposalMachine} addMachine={null} match={this.props.match} proposal={true}/>
       })
@@ -22,6 +22,7 @@ class Proposal extends Component {
   }
 
   render() {
+    console.log("Proposal", "Proposal Rendered")
     if (this.props.requesting) {
       return(
         <div className="w-full h-full flex items-center content-center justify-center place-content-center place-items-center">
@@ -54,8 +55,9 @@ const mapDispatchToProps = dispatch => (
 
 const mapStateToProps = state => (
   { 
+    machines: state.proposal.machines,
     proposal: state.proposal,
-    requesting: state.requesting
+    requesting: state.proposal.requesting
   }
 )
 

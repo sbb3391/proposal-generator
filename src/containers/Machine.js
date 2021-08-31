@@ -22,9 +22,9 @@ class Machine extends Component {
   }
 
   render() {
-    if ( this.props.machine.assemblies.length === 0 ) {
-      return <h1>Waiting</h1>
-    } else if (this.props.machine.requesting) {
+    console.log("Machine", "Machine Rendered")
+ 
+    if (this.props.machine.requesting) {
       return(
         <div className="w-full h-full flex justify-around">
           <div className="w-3/5 mx-auto py-10 my-3 border-2 border-grey-200 rounded-lg text-center flex items-center justify-center">

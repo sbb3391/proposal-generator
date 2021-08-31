@@ -232,18 +232,18 @@ function newMachineReducer(state = defaultState, action) {
       }
     case 'START_UPDATING_MACHINE':
       const machineIndex = state.proposal.machines.indexOf(action.machine)
-      action.machine.requesting = true
+      const newMachine = Object.assign({}, state.proposal.machines[machineIndex])
+      newMachine.requesting = true
 
       return{
         ...state,
         proposal: {
           ...state.proposal,
           machines: [
-            ...state.proposal.machines.slice(0, machineIndex), action.machine, ...state.proposal.machines.slice(machineIndex + 1)
+            ...state.proposal.machines.slice(0, machineIndex), newMachine, ...state.proposal.machines.slice(machineIndex + 1)
           ]
         }
       }
-      
     default:
       return {...state}
   }
