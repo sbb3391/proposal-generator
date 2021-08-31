@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import GraphicLoading from '../components/GraphicLoading'
 
 class Proposals extends Component {
 
@@ -25,6 +26,12 @@ class Proposals extends Component {
           </div>
         )
       })
+    } else {
+      return(
+        <div className="w-2/3 h-2/3 flex">
+          <GraphicLoading />
+        </div>
+      )
     }
   }
 

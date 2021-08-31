@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Machine from './Machine'
 import ProposalOverview from '../components/ProposalOverview'
 import { saveProposalMachine } from '../actions/saveProposalMachine'
+import GraphicLoading from '../components/GraphicLoading'
 
 class Proposal extends Component {
 
@@ -22,7 +23,11 @@ class Proposal extends Component {
 
   render() {
     if (this.props.requesting) {
-      return <h1>please wait. Proposal loading....</h1>
+      return(
+        <div className="w-2/3 h-2/3 flex">
+          <GraphicLoading />
+        </div>
+      )
     } else {
       return (
         <div className="w-full h-full flex flex-col">
@@ -43,9 +48,7 @@ const mapDispatchToProps = dispatch => (
   {
     fetchProposal: (proposalId) => dispatch(fetchProposal(proposalId)),
     changeProposalMachineItemPrice: item => dispatch({type: 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE', item: item}),
-    saveProposalMachine: machine => dispatch({type: "START_UPDATING_MACHINE", machine: machine})
-
-
+    saveProposalMachine: machine => dispatch(saveProposalMachine(machine))
   }
 )
 

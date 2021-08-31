@@ -32,8 +32,8 @@ class PopServiceContracts extends Component {
             <input type="number" className="w-32 border-black border-2 rounded-md pl-2" data-machine-id={machine.machineId} data-class="annualMonoVolume"
             onChange={this.handleServiceChange} value={machine.annualMonoVolume} />
           </div>
-          <div className="w-5/6 h-24 flex items-center content-center">
-            <textarea className="w-full h-full text-center border-grey border-2 rounded-md">
+          <div className="w-full h-24 text-center">
+            <textarea placeholder="Service comments for this machine..."className="w-11/12 h-full border-grey block mx-auto border-2 rounded-md">
 
             </textarea>
           </div>

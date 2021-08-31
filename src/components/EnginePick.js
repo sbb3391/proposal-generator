@@ -5,6 +5,7 @@ import MachineAssemblies from './MachineAssemblies'
 import StatusButton from './statusButton'
 import CompleteButton from './CompleteButton'
 import { fetchAssemblies } from '../actions/fetchAssemblies'
+import GraphicLoading from '../components/GraphicLoading'
 
 
 
@@ -150,9 +151,13 @@ class EnginePick extends Component {
 
 
   render() {
-    debugger;
     if (this.props.requesting) {
-      return <h1>Please wait - assemblies loading!</h1>
+    debugger;
+      return(
+        <div className="w-2/3 h-2/3 flex">
+          <GraphicLoading />
+        </div>
+      )
     } else {
       return (
         <div className="w-full h-full relative flex flex-col">

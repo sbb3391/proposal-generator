@@ -243,21 +243,7 @@ function newMachineReducer(state = defaultState, action) {
           ]
         }
       }
-
-      // return{
-      //   ...state,
-      //   proposal: {
-      //     ...state.proposal,
-      //     machines: state.proposal.machines.map( machine => {
-      //       if (machine.machineId == action.machine.machineId) {
-      //         action.machine.requesting = true
-      //         return action.machine
-      //       } else {
-      //         return machine
-      //       }
-      //     })
-      //   }
-      // }
+      
     default:
       return {...state}
   }

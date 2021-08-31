@@ -28,7 +28,7 @@ function App(props) {
             <Route path="/" component={Home} exact/>
             <Route path="/machine/new" component={NewMachine} />
             <Route path="/edit" component={Edit} />
-            <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeMachineItemPrice} match={match.match}addMachine={props.addMachine}/>} />
+            <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeMachineItemPrice} match={match.match} addMachine={props.addMachine}/>} />
             <Route path="/proposals" exact component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
           </Switch>
@@ -50,6 +50,7 @@ const mapDispatchToProps = dispatch => (
   {
     addMachine: machine => dispatch({type: 'ADD_MACHINE', machine: machine}),
     changeMachineItemPrice: item => dispatch({type: 'CHANGE_MACHINE_ITEM_PRICE', item: item})
+    
   }
 )
 
