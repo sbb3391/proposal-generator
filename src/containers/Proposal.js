@@ -43,7 +43,9 @@ const mapDispatchToProps = dispatch => (
   {
     fetchProposal: (proposalId) => dispatch(fetchProposal(proposalId)),
     changeProposalMachineItemPrice: item => dispatch({type: 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE', item: item}),
-    saveProposalMachine: machine => dispatch(saveProposalMachine(machine))
+    saveProposalMachine: machine => dispatch({type: "START_UPDATING_MACHINE", machine: machine})
+
+
   }
 )
 

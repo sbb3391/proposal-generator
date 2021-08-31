@@ -166,7 +166,6 @@ function newMachineReducer(state = defaultState, action) {
       const firstHalf = assemblyState.slice(0, assemblyIndex)
       const secondHalf = assemblyState.slice(assemblyIndex + 1)
 
-
       // needs to be a cleaner way to do this.
       return {
         ...state,
@@ -232,16 +231,17 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'START_UPDATING_MACHINE':
+      const machineIndex = state.proposal.machines.indexOf(action.machine)
       action.machine.requesting = true
-      
-      const proposal = {...state.proposal}
-      
-      const machineIndex = proposal.machines.indexOf(proposal.machines.find( findMachine => findMachine.machineId == action.machine.machineId))
-      proposal.machines[machineIndex] = action.machine
 
       return{
         ...state,
-        proposal: proposal
+        proposal: {
+          ...state.proposal,
+          machines: [
+            ...state.proposal.machines.slice(0, machineIndex), action.machine, ...state.proposal.machines.slice(machineIndex + 1)
+          ]
+        }
       }
 
       // return{
@@ -250,6 +250,7 @@ function newMachineReducer(state = defaultState, action) {
       //     ...state.proposal,
       //     machines: state.proposal.machines.map( machine => {
       //       if (machine.machineId == action.machine.machineId) {
+      //         action.machine.requesting = true
       //         return action.machine
       //       } else {
       //         return machine

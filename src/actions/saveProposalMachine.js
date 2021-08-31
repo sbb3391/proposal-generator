@@ -12,7 +12,7 @@ export function saveProposalMachine(machine) {
     })
     .then(resp => resp.json())
     .then(proposal => {
-      debugger;
+      
     })
   }
 }
