@@ -1,5 +1,5 @@
 class SerializerParent < ActiveModel::Serializer
-  def serialize_machine(machine)
+  def serialize_machine_assemblies(machine)
 
     items_assemblies = machine.machine_assembly_items.map do |mai|
       ItemsAssembly.find(mai.assembly_item_id)
@@ -38,6 +38,21 @@ class SerializerParent < ActiveModel::Serializer
 
     assemblies_map
 
+  end
+
+  def serialize_machine(machine)
+    {
+      machineId: machine.id,
+      modelId: machine.model_id,
+      proposalId: machine.proposal_id,
+      assemblies: serialize_machine_assemblies(machine),
+      colorClick: machine.color_click,
+      monoClick: machine.mono_click,
+      annualColorVolume: machine.annual_color_volume,
+      annualMonoVolume: machine.annual_mono_volume,
+      serviceComments: machine.service_comments,
+      pricingComments: machine.pricing_comments
+    }
   end
 
 end

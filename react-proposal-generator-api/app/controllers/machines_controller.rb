@@ -28,5 +28,17 @@ class MachinesController < ApplicationController
   end
 
   def update
+    params[:assemblies].each do |assembly| 
+      assembly[:items].each do |item|
+        assembly_item_id =  ItemsAssembly.find_by(item_id: item[:itemId], assembly_id: item[:assemblyId]).id
+        machine_assembly_item = MachineAssemblyItem.find_by(machine_id: item[:machineId], assembly_item_id: assembly_item_id)
+        machine_assembly_item.update(unit_price: item[:unitPrice])
+      end
+    end
+
+    machine_id = Machine.find(params[:machineId]).id
+    machine = Machine.find(machine_id)
+  
+    render json: machine, machine_id: machine.id
   end
 end

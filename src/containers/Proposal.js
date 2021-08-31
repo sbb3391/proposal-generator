@@ -57,7 +57,7 @@ const mapStateToProps = state => (
   { 
     machines: state.proposal.machines,
     proposal: state.proposal,
-    requesting: state.proposal.requesting
+    requesting: state.requesting
   }
 )
 

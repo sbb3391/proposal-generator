@@ -244,6 +244,22 @@ function newMachineReducer(state = defaultState, action) {
           ]
         }
       }
+    case 'UPDATE_PROPOSAL_MACHINE': 
+    // resuses a lot of code from start Updating Machine
+      debugger;
+      const findMachine1 = state.proposal.machines.find( machine => machine.machineId === action.machine.machine.machineId)
+      const indexMachine = state.proposal.machines.indexOf(findMachine1)
+      const newMachine1 = Object.assign({}, action.machine.machine)
+
+      return{
+        ...state,
+        proposal: {
+          ...state.proposal,
+          machines: [
+            ...state.proposal.machines.slice(0, indexMachine), newMachine1, ...state.proposal.machines.slice(indexMachine + 1)
+          ]
+        }
+      }
     default:
       return {...state}
   }
