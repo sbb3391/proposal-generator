@@ -152,9 +152,8 @@ class EnginePick extends Component {
 
   render() {
     if (this.props.requesting) {
-    debugger;
       return(
-        <div className="w-2/3 h-2/3 flex">
+        <div className="w-2/3 h-2/3 flex items-center content-center justify-center place-content-center place-items-center">
           <GraphicLoading />
         </div>
       )

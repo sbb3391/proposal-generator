@@ -31,22 +31,33 @@ class PopWindow extends Component {
     })
   }
 
+  renderSaveButton = () => {
+    if (this.props.proposal && this.props.proposal.machines.length > 0 ) {
+      return(
+        <div className="flex justify-center">
+          <button className="h-12 w-36 bg-blue-500 text-white rounded-md text-3xl  text-center">Save</button>
+        </div>
+      )
+    }
+  }
+
+
   render() {
     return (
       
       <div onClick={this.closePopWindow} id="pop-window" className="flex w-full h-full relative z-20">
           <div className="w-2/3 h-3/4 mx-auto border-black border-2 place-self-center bg-white py-4">
-            <div className="flex flex-col w-11/12 h-5/6 mx-auto">
+            <div className="flex flex-col space-y-3 w-11/12 h-full mx-auto">
               <div className="w-full border-grey-200 border-2 rounded-md">
                 Nav
               </div>
               {/* <PopPdfPick state={this.state} updateProposalPdfsState={this.updateProposalPdfsState}
               removeFromRemainingPdfsState={this.removeFromRemainingPdfsState}/> */}
 
-              <div className="w-full h-11/12 overflow-auto">
+              <div className="h-11/12 overflow-auto mx-auto w-4/5 border-grey-200 border-2 rounded-md">
                 <PopServiceContracts />
               </div>
-
+              {this.renderSaveButton()}
             </div>
           </div>
         </div>

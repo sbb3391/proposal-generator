@@ -28,7 +28,7 @@ class Proposals extends Component {
       })
     } else {
       return(
-        <div className="w-2/3 h-2/3 flex">
+        <div className="w-full h-full flex items-center content-center justify-center place-content-center place-items-center">
           <GraphicLoading />
         </div>
       )
@@ -37,7 +37,7 @@ class Proposals extends Component {
 
   render() {
     return (
-      <div className="px-8 py-8">
+      <div className="px-8 py-8 w-full h-full">
         {this.renderProposalCards()}
       </div>
     );

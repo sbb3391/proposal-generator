@@ -14,7 +14,7 @@ class PopServiceContracts extends Component {
   renderMachinesServiceInfo = () => {
     return this.props.proposal.machines.map( machine => {
       return(
-        <div className="flex flex-col w-2/3 mx-auto border-grey-200 border-2 rounded-md space-y-3 py-3">
+        <div className="flex flex-col w-4/5 mx-auto border-grey-200 border-2 rounded-md space-y-3 py-3">
           <h1 className="text-center">{machine.assemblies.find( assembly => assembly.assembly_type === "engine").name}</h1>
           <div className="flex w-full space-x-3 justify-center">
             <label>Color Click</label>
@@ -44,15 +44,20 @@ class PopServiceContracts extends Component {
 
   render() {
     return (
-      <div className="flex flex-col w-full h-full mx-auto space-y-5 pt-8">
-        {this.renderMachinesServiceInfo()}
+      <div>
+        <div className="flex flex-col w-full h-full mx-auto space-y-5 py-8">
+          {this.renderMachinesServiceInfo()}
+        </div>
       </div>
+      
     );
   }
 }
 
 const mapStateToProps = state => (
-  {proposal: state.proposal}
+  {
+    proposal: state.proposal
+  }
 )
 
 const mapDispatchToProps = dispatch => (
