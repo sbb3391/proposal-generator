@@ -14,7 +14,7 @@ class Proposal extends Component {
 
   renderMachines = () => {
     if (Object.keys(this.props.proposal).length > 0 ) {
-      return this.props.machines.map( machine => {
+      return this.props.proposal.machines.map( machine => {
         return <Machine machine={machine} changePrice={this.props.changeItemPrice} 
         saveMachine={this.props.saveProposalMachine} addMachine={null} match={this.props.match} machineType="proposal"/>
       })

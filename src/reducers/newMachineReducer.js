@@ -1,7 +1,7 @@
 // import { combineReducers } from 'redux';
 import update from 'react-addons-update';
 import numeral from 'numeral';
-import { changePreviewMachineItemPrice, changeMachineItemPrice, changeProposalItemPrice } from './changePriceFunctions'
+import { changePreviewMachineItemPrice, changeMachineItemPrice, changeProposalItemPrice, updateProposalSellingPrice } from './changePriceFunctions'
 
 
 const defaultState = {
@@ -123,7 +123,6 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'CHANGE_ITEM_PRICE': 
-    debugger;
       switch (action.machineType) {
         case 'proposal':
           return changeProposalItemPrice(action.item, state)
@@ -133,83 +132,14 @@ function newMachineReducer(state = defaultState, action) {
           return changePreviewMachineItemPrice(action.item, state)
       }
 
-    // case 'CHANGE_MACHINE_ITEM_PRICE':
-    //   // change_machine_item_price and change_proposal_machine_item_price need refactoring to make it reusable. code works but is not dry
-    //   if (action.item.unitPrice === "") {
-    //     action.item.unitPrice = 0
-    //   }
-
-    //   const assembly1 = state.machine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId)
-    //   const assemblyIndex1 = state.machine.assemblies.indexOf(assembly1)
-    //   const item1 = assembly1.items.find( i => i.itemId == action.item.itemId)
-    //   const itemIndex1 = assembly1.items.indexOf(item1)
-
-    //   const newAssembly1 = Object.assign({}, assembly1)
-    //   newAssembly1.items[itemIndex1].unitPrice = parseFloat(action.item.unitPrice)
-      
-    //   const assemblyState1 = state.machine.assemblies
-    //   const firstHalf1 = assemblyState1.slice(0, assemblyIndex1)
-    //   const secondHalf1 = assemblyState1.slice(assemblyIndex1 + 1)
-
-    //   return {
-    //     ...state,
-    //     machine: {
-    //       ...state.machine,
-    //       assemblies: [
-    //         ...firstHalf1, newAssembly1, ...secondHalf1
-    //       ]
-    //     }
-    //   }
-    // case 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE':
-    //    // change_machine_item_price and change_proposal_machine_item_price need refactoring to make it reusable. code works but is not dry
-    //   if (action.item.unitPrice === "") {
-    //     action.item.unitPrice = 0
-    //   }
-
-    //   const updatedMachine = state.proposal.machines.find( machine => machine.machineId === action.item.machineId)
-    //   const assembly = updatedMachine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId )
-    //   const assemblyIndex = updatedMachine.assemblies.indexOf(assembly)
-    //   const item = assembly.items.find( i => i.itemId == action.item.itemId )
-    //   const itemIndex = assembly.items.indexOf(item)
-      
-    //   const newAssembly = Object.assign({}, assembly)
-    //   newAssembly.items[itemIndex].unitPrice = parseFloat(action.item.unitPrice)
-
-    //   const assemblyState = updatedMachine.assemblies
-    //   const firstHalf = assemblyState.slice(0, assemblyIndex)
-    //   const secondHalf = assemblyState.slice(assemblyIndex + 1)
-
-    //   // needs to be a cleaner way to do this.
-    //   return {
-    //     ...state,
-    //     proposal: {
-    //       ...state.proposal,
-    //       machines: state.proposal.machines.map( (machine) => {
-    //         return machine === updatedMachine ? {...machine, assemblies: [...firstHalf, newAssembly, ...secondHalf ]} : machine 
-    //       })
-    //     }
-    //   }
+    
     case 'ADD_PROPOSAL':
-      // sets proposal selling price 
-      action.proposal.sellingPrice = 0;
-      // sets the item selling price
-      action.proposal.machines.forEach( machine => {
-        let sellingPrice1 = 0
-        let items1 = [];
-        machine.assemblies.forEach( assembly => {
-          assembly.items.forEach( item => {
-            items1.push(parseFloat(item.unitPrice))
-          })
-        })
-        sellingPrice1 = numeral(items1.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
-        machine.sellingPrice = sellingPrice1
-        machine.requesting = false
-        action.proposal.sellingPrice = action.proposal.sellingPrice + parseFloat(sellingPrice1)
-      })
-
+      const newProposal = Object.assign({}, action.proposal)
+      newProposal.sellingPrice = updateProposalSellingPrice(action.proposal)
+      
       return {
         ...state,
-        proposal: action.proposal,
+        proposal: newProposal,
         requesting: false
       }
     case 'TOGGLE_POP_WINDOW': 

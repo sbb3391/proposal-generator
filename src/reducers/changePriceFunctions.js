@@ -1,3 +1,5 @@
+import numeral from 'numeral';
+
 export function changePreviewMachineItemPrice(item, state) {
   if (item.unitPrice === "") {
     item.unitPrice = 0
@@ -50,6 +52,7 @@ export function changeMachineItemPrice(item, state) {
     ...state,
     machine: {
       ...state.machine,
+      showSave: true,
       assemblies: [
         ...firstHalf, newAssembly, ...secondHalf
       ]
@@ -62,7 +65,6 @@ export function changeProposalItemPrice(item, state, machine = {}) {
     item.unitPrice = 0
   }
 
-  debugger;
   const updatedMachine = state.proposal.machines.find( machine => machine.machineId === item.machineId)
   const assembly = updatedMachine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId )
   const assemblyIndex = updatedMachine.assemblies.indexOf(assembly)
@@ -77,13 +79,45 @@ export function changeProposalItemPrice(item, state, machine = {}) {
   const secondHalf = assemblyState.slice(assemblyIndex + 1)
 
   // needs to be a cleaner way to do this.
+
   return {
     ...state,
     proposal: {
       ...state.proposal,
+      sellingPrice: updateProposalSellingPrice(state.proposal),
       machines: state.proposal.machines.map( (machine) => {
-        return machine === updatedMachine ? {...machine, assemblies: [...firstHalf, newAssembly, ...secondHalf ]} : machine 
+        if (machine === updatedMachine ) {
+          return{
+            ...machine,
+            assemblies: [...firstHalf, newAssembly, ...secondHalf],
+            showSave: true
+          }
+        } else {
+          return machine 
+        }
       })
     }
   }
 }
+
+export function updateProposalSellingPrice(proposal) {
+  const newProposal = Object.assign({}, proposal)
+  newProposal.sellingPrice = 0;
+  // sets the item selling price
+  newProposal.machines.forEach( machine => {
+    let sellingPrice = 0
+    let items = [];
+    machine.assemblies.forEach( assembly => {
+      assembly.items.forEach( item => {
+        items.push(parseFloat(item.unitPrice))
+      })
+    })
+    sellingPrice = numeral(items.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
+    machine.sellingPrice = sellingPrice
+    machine.requesting = false
+    newProposal.sellingPrice = newProposal.sellingPrice + parseFloat(sellingPrice)
+  })
+
+  return newProposal.sellingPrice
+}
+
