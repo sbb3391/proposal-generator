@@ -16,7 +16,7 @@ function App(props) {
   const renderPopWindow = () => {
     return props.popWindow ? <PopWindow /> : null
   }
-  
+
   return (
     <Router >
       <div className="App absolute z-0 w-full h-full">
@@ -26,7 +26,7 @@ function App(props) {
         <div className="w-full h-5/6">
           <Switch>
             <Route path="/" component={Home} exact/>
-            <Route path="/machine/new" component={NewMachine} />
+            <Route path="/machine/new" render={() => <NewMachine type="new" />} />
             <Route path="/machines/preview" exact render={(match) => <Machine {...props} machine={props.previewMachine.machine} changePrice={props.changeItemPrice} 
                                                                         match={match.match} addMachine={props.addMachine} machineType="preview" />} />
             <Route path="/edit" component={Edit} />
@@ -34,6 +34,7 @@ function App(props) {
                                                               match={match.match} addMachine={props.addMachine} machineType="machine"/>} />
             <Route path="/proposals" exact component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
+            <Route path="/proposals/:proposalId/machines/:machineId/edit" render={() => <NewMachine type="edit"/>} />
           </Switch>
         </div>
       </div>

@@ -35,7 +35,7 @@ class Machine extends Component {
             </div>
           </div>
         </div>     
-      )       
+      ) 
     } else {
       return (
         <div className="w-full h-full flex justify-around">

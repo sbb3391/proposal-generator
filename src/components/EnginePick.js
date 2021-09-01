@@ -92,14 +92,6 @@ class EnginePick extends Component {
 
     if (button) {
     }
-
-    // window.onload(
-    //   setIn
-    // )
-    // setInterval(() => {
-    //   this.moveButtonUp(completeButton)
-    // }, 500)
-      
   }
 
   moveButtonUp = (button) => {
