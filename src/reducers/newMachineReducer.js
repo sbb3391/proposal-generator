@@ -123,6 +123,7 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'CHANGE_ITEM_PRICE': 
+    debugger;
       switch (action.machineType) {
         case 'proposal':
           return changeProposalItemPrice(action.item, state)
@@ -189,7 +190,6 @@ function newMachineReducer(state = defaultState, action) {
     //     }
     //   }
     case 'ADD_PROPOSAL':
-      debugger;
       // sets proposal selling price 
       action.proposal.sellingPrice = 0;
       // sets the item selling price

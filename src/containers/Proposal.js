@@ -15,7 +15,7 @@ class Proposal extends Component {
   renderMachines = () => {
     if (Object.keys(this.props.proposal).length > 0 ) {
       return this.props.machines.map( machine => {
-        return <Machine machine={machine} changePrice={this.props.changeMachineItemPrice} 
+        return <Machine machine={machine} changePrice={this.props.changeItemPrice} 
         saveMachine={this.props.saveProposalMachine} addMachine={null} match={this.props.match} machineType="proposal"/>
       })
     }
@@ -47,7 +47,7 @@ class Proposal extends Component {
 const mapDispatchToProps = dispatch => (
   {
     fetchProposal: (proposalId) => dispatch(fetchProposal(proposalId)),
-    changeMachineItemPrice: (item, machineType) => dispatch({type: 'CHANGE_MACHINE_ITEM_PRICE', item: item, machineType: machineType}),
+    changeItemPrice: (item, machineType) => dispatch({type: 'CHANGE_ITEM_PRICE', item: item, machineType: machineType}),
     saveProposalMachine: machine => dispatch(saveProposalMachine(machine))
   }
 )

@@ -57,34 +57,33 @@ export function changeMachineItemPrice(item, state) {
   }
 }
 
-export function changeProposalItemPrice(item, state) {
+export function changeProposalItemPrice(item, state, machine = {}) {
   if (item.unitPrice === "") {
     item.unitPrice = 0
   }
 
-  const assembly = state.machinePreview.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId)
-  const assemblyIndex = state.machinePreview.machine.assemblies.indexOf(assembly)
-  const findItem = assembly.items.find( i => i.itemId == item.itemId)
+  debugger;
+  const updatedMachine = state.proposal.machines.find( machine => machine.machineId === item.machineId)
+  const assembly = updatedMachine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId )
+  const assemblyIndex = updatedMachine.assemblies.indexOf(assembly)
+  const findItem = assembly.items.find( i => i.itemId == item.itemId )
   const itemIndex = assembly.items.indexOf(findItem)
-
+  
   const newAssembly = Object.assign({}, assembly)
   newAssembly.items[itemIndex].unitPrice = parseFloat(item.unitPrice)
-  
-  const assemblyState = state.machinePreview.machine.assemblies
+
+  const assemblyState = updatedMachine.assemblies
   const firstHalf = assemblyState.slice(0, assemblyIndex)
   const secondHalf = assemblyState.slice(assemblyIndex + 1)
 
-  debugger;
+  // needs to be a cleaner way to do this.
   return {
     ...state,
-    machinePreview: {
-      ...state.machinePreview,
-      machine: {
-        ...state.machinePreview.machine,
-        assemblies: [
-          ...firstHalf, newAssembly, ...secondHalf
-        ]
-      }
+    proposal: {
+      ...state.proposal,
+      machines: state.proposal.machines.map( (machine) => {
+        return machine === updatedMachine ? {...machine, assemblies: [...firstHalf, newAssembly, ...secondHalf ]} : machine 
+      })
     }
   }
 }
