@@ -6,9 +6,6 @@ import { connect } from 'react-redux';
 class MachineOverview extends Component {
 
   renderSaveChangesButton = totalPrice => { 
-    console.log("TotalPrice", totalPrice)
-    console.log("SellingPrice", this.props.machine.sellingPrice)
-    debugger;
     if (this.props.machine.sellingPrice !== totalPrice && this.props.machineType !== "preview") {
 
       return(<button onClick={() => this.props.saveMachine(this.props.machine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Changes</button>)
@@ -16,13 +13,14 @@ class MachineOverview extends Component {
   }
 
   render() {
-
+    console.log("Machine Overview Rerendering")
     let priceArray = [];
 
     if (this.props.machine.assemblies.length > 0) {
       this.props.machine.assemblies.forEach(assembly => assembly.items.forEach( item => priceArray.push(item.unitPrice)))
     }
 
+    debugger;
     const totalPrice = numeral(priceArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
     
     return (
