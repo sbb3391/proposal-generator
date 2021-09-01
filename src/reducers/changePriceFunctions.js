@@ -29,6 +29,34 @@ export function changePreviewMachineItemPrice(item, state) {
   }
 }
 
+export function changeMachineItemPrice(item, state) {
+  if (item.unitPrice === "") {
+    item.unitPrice = 0
+  }
+
+  const assembly = state.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId)
+  const assemblyIndex = state.machine.assemblies.indexOf(assembly)
+  const findItem = assembly.items.find( i => i.itemId == item.itemId)
+  const itemIndex = assembly.items.indexOf(findItem)
+
+  const newAssembly = Object.assign({}, assembly)
+  newAssembly.items[itemIndex].unitPrice = parseFloat(item.unitPrice)
+  
+  const assemblyState = state.machine.assemblies
+  const firstHalf = assemblyState.slice(0, assemblyIndex)
+  const secondHalf = assemblyState.slice(assemblyIndex + 1)
+
+  return {
+    ...state,
+    machine: {
+      ...state.machine,
+      assemblies: [
+        ...firstHalf, newAssembly, ...secondHalf
+      ]
+    }
+  }
+}
+
 export function changeProposalItemPrice(item, state) {
   if (item.unitPrice === "") {
     item.unitPrice = 0
@@ -59,7 +87,4 @@ export function changeProposalItemPrice(item, state) {
       }
     }
   }
-}
-
-export function changeMachineItemPrice(item, state) {
 }
