@@ -3,7 +3,6 @@ export function changePreviewMachineItemPrice(item, state) {
     item.unitPrice = 0
   }
 
-  debugger;
   const assembly = state.previewMachine.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId)
   const assemblyIndex = state.previewMachine.machine.assemblies.indexOf(assembly)
   const findItem = assembly.items.find( i => i.itemId == item.itemId)
@@ -16,7 +15,6 @@ export function changePreviewMachineItemPrice(item, state) {
   const firstHalf = assemblyState.slice(0, assemblyIndex)
   const secondHalf = assemblyState.slice(assemblyIndex + 1)
 
-  debugger;
   return {
     ...state,
     previewMachine: {
