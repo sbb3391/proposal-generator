@@ -4,7 +4,7 @@ export function fetchAssemblies(modelId) {
     fetch(`http://localhost:3000/models/${modelId}/assemblies`)
     .then(resp => resp.json())
     .then(assemblies => {
-      setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies}),
+      setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES_NEW', assemblies: assemblies}),
       1000)
     })
   }

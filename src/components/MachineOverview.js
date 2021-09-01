@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import numeral from 'numeral';
 import { machinePdf } from '../pdf/machinePdf'
 import { connect } from 'react-redux';
+import { editMachine } from '../actions/editMachine'
+import { NavLink } from "react-router-dom";
 
 class MachineOverview extends Component {
 
@@ -14,7 +16,7 @@ class MachineOverview extends Component {
 
   editButtonClick = (event) => {
     const machine = this.props.machine
-    debugger;
+    this.props.editMachine(machine)
   }
 
   render() {
@@ -45,6 +47,7 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
+    editMachine: machine => dispatch(editMachine(machine))
   }
 )
 

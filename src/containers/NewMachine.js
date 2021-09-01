@@ -1,13 +1,24 @@
 import React, { Component } from 'react';
 import PickModel from '../components/PickModel'
 import EnginePick from '../components/EnginePick'
+import { connect } from 'react-redux';
+
 
 
 class NewMachine extends Component {
 
-  state = {
-    step: "pickMachine"
+  getStartingStep = () => {
+    if (this.props.type === "new") {
+      return "pickMachine"
+    } else if (this.props.type === "edit" ) {
+      return "pickEngine"
+    }
   }
+
+  state = {
+    step: this.getStartingStep()
+  }
+
 
   updateStep = (newStep) => {
     this.setState({
@@ -20,7 +31,7 @@ class NewMachine extends Component {
       case 'pickMachine':
         return(<PickModel key='1' updateStep={this.updateStep}/>)
       case 'pickEngine':
-        return(<EnginePick key='2' updateStep={this.updateStep} step={"main unit"} nextStep={"pickPaper"} prevStep={"pickMachine"} />)
+        return(<EnginePick key='2' updateStep={this.updateStep} step={"main unit"} nextStep={"pickPaper"} prevStep={"pickMachine"}/>)
       case 'pickPaper':
         return(<EnginePick key='3' updateStep={this.updateStep} step={"paper handling"} nextStep={"pickOutput"} prevStep={"pickEngine"}/>)
       case 'pickOutput':
@@ -28,7 +39,7 @@ class NewMachine extends Component {
       case 'pickFinishing':
         return(<EnginePick key='5' updateStep={this.updateStep} step={"finishing"} nextStep={"pickController"} prevStep={"pickOutput"}/>)
       case 'pickController':
-        return(<EnginePick key='6' updateStep={this.updateStep} step={"controller"} nextStep={"submit"} prevStep={"pickFinishing"} />)
+        return(<EnginePick key='6' updateStep={this.updateStep} step={"controller"} nextStep={"submit"} prevStep={"pickFinishing"}/>)
       default:
         return(<PickModel key='error'/>)
     }
@@ -43,4 +54,15 @@ class NewMachine extends Component {
   }
 }
 
-export default NewMachine;
+const mapStateToProps = state => (
+  {
+    store: state
+  }
+)
+
+const mapDispatchToProps = dispatch => (
+  {
+  }
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewMachine);

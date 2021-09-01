@@ -34,7 +34,7 @@ function App(props) {
                                                               match={match.match} addMachine={props.addMachine} machineType="machine"/>} />
             <Route path="/proposals" exact component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
-            <Route path="/proposals/:proposalId/machines/:machineId/edit" render={() => <NewMachine type="edit"/>} />
+            <Route path="/edit" exact render={() => <NewMachine type="edit"/>} />
           </Switch>
         </div>
       </div>
