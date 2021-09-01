@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-const CompleteButton = ({machineAssemblies, previewMachine}) => {
+const SaveMachineButton = ({machineAssemblies, machine}) => {
   const history = useHistory()
 
   const createMachine = () => {
@@ -13,7 +13,7 @@ const CompleteButton = ({machineAssemblies, previewMachine}) => {
       }
     }
 
-    fetch('http://localhost:3000/machines/preview', {
+    fetch('http://localhost:3000/machines', {
     method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,8 +22,7 @@ const CompleteButton = ({machineAssemblies, previewMachine}) => {
     })
     .then(resp => resp.json())
     .then(json => {
-      debugger;
-      previewMachine(json)
+      machine(json)
       history.push(`/machines/${json.id}`)
     })
   }
@@ -44,8 +43,8 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    previewMachine: machine => dispatch({type: 'PREVIEW_MACHINE', machine: machine})
+    machine: machine => dispatch({type: 'ADD_MACHINE', machine: machine})
   }
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(CompleteButton);
+export default connect(mapStateToProps, mapDispatchToProps)(SaveMachineButton);

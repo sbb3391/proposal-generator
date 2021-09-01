@@ -27,6 +27,7 @@ function App(props) {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/machine/new" component={NewMachine} />
+            <Route path="/machine/preview" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeMachineItemPrice} match={match.match} addMachine={props.addMachine} />} />
             <Route path="/edit" component={Edit} />
             <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeMachineItemPrice} match={match.match} addMachine={props.addMachine}/>} />
             <Route path="/proposals" exact component={Proposals}/>
