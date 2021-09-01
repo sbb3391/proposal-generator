@@ -22,9 +22,8 @@ const CompleteButton = ({machineAssemblies, previewMachine}) => {
     })
     .then(resp => resp.json())
     .then(json => {
-      debugger;
       previewMachine(json)
-      history.push(`/machines/${json.id}`)
+      history.push(`/machines/preview`)
     })
   }
   return (

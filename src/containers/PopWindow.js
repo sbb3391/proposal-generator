@@ -13,6 +13,7 @@ class PopWindow extends Component {
   }
 
   closePopWindow = (event) => {
+    debugger;
     if (event.target.id === "pop-window" ) {
       this.props.togglePopWindow()
     }
@@ -32,7 +33,7 @@ class PopWindow extends Component {
   }
 
   renderSaveButton = () => {
-    if (this.props.proposal && this.props.proposal.machines.length > 0 ) {
+    if (this.props.proposal.machines && this.props.proposal.machines.length > 0 ) {
       return(
         <div className="flex justify-center">
           <button className="h-12 w-36 bg-blue-500 text-white rounded-md text-3xl  text-center">Save</button>

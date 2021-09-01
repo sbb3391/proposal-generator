@@ -1,6 +1,7 @@
 // import { combineReducers } from 'redux';
 import update from 'react-addons-update';
 import numeral from 'numeral';
+import { changePreviewMachineItemPrice, changeMachineItemPrice, changeProposalItemPrice } from './changePriceFunctions'
 
 
 const defaultState = {
@@ -17,6 +18,7 @@ const defaultState = {
     remainingPickOneGroupIds: []
   },
   proposal: {},
+  previewMachine: {},
   popWindow: false
 }
 
@@ -120,62 +122,72 @@ function newMachineReducer(state = defaultState, action) {
           sellingPrice: sellingPrice
         }
       }
-    case 'CHANGE_MACHINE_ITEM_PRICE':
-      // change_machine_item_price and change_proposal_machine_item_price need refactoring to make it reusable. code works but is not dry
-      if (action.item.unitPrice === "") {
-        action.item.unitPrice = 0
+    case 'CHANGE_ITEM_PRICE': 
+      switch (action.machineType) {
+        case 'proposal':
+          changeProposalItemPrice(action.item, state)
+        case 'machine':
+          changeMachineItemPrice(action.item, state)
+        case 'preview':
+          changePreviewMachineItemPrice(action.item, state)
       }
 
-      const assembly1 = state.machine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId)
-      const assemblyIndex1 = state.machine.assemblies.indexOf(assembly1)
-      const item1 = assembly1.items.find( i => i.itemId == action.item.itemId)
-      const itemIndex1 = assembly1.items.indexOf(item1)
+    // case 'CHANGE_MACHINE_ITEM_PRICE':
+    //   // change_machine_item_price and change_proposal_machine_item_price need refactoring to make it reusable. code works but is not dry
+    //   if (action.item.unitPrice === "") {
+    //     action.item.unitPrice = 0
+    //   }
 
-      const newAssembly1 = Object.assign({}, assembly1)
-      newAssembly1.items[itemIndex1].unitPrice = parseFloat(action.item.unitPrice)
+    //   const assembly1 = state.machine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId)
+    //   const assemblyIndex1 = state.machine.assemblies.indexOf(assembly1)
+    //   const item1 = assembly1.items.find( i => i.itemId == action.item.itemId)
+    //   const itemIndex1 = assembly1.items.indexOf(item1)
+
+    //   const newAssembly1 = Object.assign({}, assembly1)
+    //   newAssembly1.items[itemIndex1].unitPrice = parseFloat(action.item.unitPrice)
       
-      const assemblyState1 = state.machine.assemblies
-      const firstHalf1 = assemblyState1.slice(0, assemblyIndex1)
-      const secondHalf1 = assemblyState1.slice(assemblyIndex1 + 1)
+    //   const assemblyState1 = state.machine.assemblies
+    //   const firstHalf1 = assemblyState1.slice(0, assemblyIndex1)
+    //   const secondHalf1 = assemblyState1.slice(assemblyIndex1 + 1)
 
-      return {
-        ...state,
-        machine: {
-          ...state.machine,
-          assemblies: [
-            ...firstHalf1, newAssembly1, ...secondHalf1
-          ]
-        }
-      }
-    case 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE':
-       // change_machine_item_price and change_proposal_machine_item_price need refactoring to make it reusable. code works but is not dry
-      if (action.item.unitPrice === "") {
-        action.item.unitPrice = 0
-      }
+    //   return {
+    //     ...state,
+    //     machine: {
+    //       ...state.machine,
+    //       assemblies: [
+    //         ...firstHalf1, newAssembly1, ...secondHalf1
+    //       ]
+    //     }
+    //   }
+    // case 'CHANGE_PROPOSAL_MACHINE_ITEM_PRICE':
+    //    // change_machine_item_price and change_proposal_machine_item_price need refactoring to make it reusable. code works but is not dry
+    //   if (action.item.unitPrice === "") {
+    //     action.item.unitPrice = 0
+    //   }
 
-      const updatedMachine = state.proposal.machines.find( machine => machine.machineId === action.item.machineId)
-      const assembly = updatedMachine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId )
-      const assemblyIndex = updatedMachine.assemblies.indexOf(assembly)
-      const item = assembly.items.find( i => i.itemId == action.item.itemId )
-      const itemIndex = assembly.items.indexOf(item)
+    //   const updatedMachine = state.proposal.machines.find( machine => machine.machineId === action.item.machineId)
+    //   const assembly = updatedMachine.assemblies.find( assembly => assembly.id == action.item.assemblyId && assembly.modelId == action.item.modelId )
+    //   const assemblyIndex = updatedMachine.assemblies.indexOf(assembly)
+    //   const item = assembly.items.find( i => i.itemId == action.item.itemId )
+    //   const itemIndex = assembly.items.indexOf(item)
       
-      const newAssembly = Object.assign({}, assembly)
-      newAssembly.items[itemIndex].unitPrice = parseFloat(action.item.unitPrice)
+    //   const newAssembly = Object.assign({}, assembly)
+    //   newAssembly.items[itemIndex].unitPrice = parseFloat(action.item.unitPrice)
 
-      const assemblyState = updatedMachine.assemblies
-      const firstHalf = assemblyState.slice(0, assemblyIndex)
-      const secondHalf = assemblyState.slice(assemblyIndex + 1)
+    //   const assemblyState = updatedMachine.assemblies
+    //   const firstHalf = assemblyState.slice(0, assemblyIndex)
+    //   const secondHalf = assemblyState.slice(assemblyIndex + 1)
 
-      // needs to be a cleaner way to do this.
-      return {
-        ...state,
-        proposal: {
-          ...state.proposal,
-          machines: state.proposal.machines.map( (machine) => {
-            return machine === updatedMachine ? {...machine, assemblies: [...firstHalf, newAssembly, ...secondHalf ]} : machine 
-          })
-        }
-      }
+    //   // needs to be a cleaner way to do this.
+    //   return {
+    //     ...state,
+    //     proposal: {
+    //       ...state.proposal,
+    //       machines: state.proposal.machines.map( (machine) => {
+    //         return machine === updatedMachine ? {...machine, assemblies: [...firstHalf, newAssembly, ...secondHalf ]} : machine 
+    //       })
+    //     }
+    //   }
     case 'ADD_PROPOSAL':
       // sets proposal selling price 
       action.proposal.sellingPrice = 0;
@@ -200,6 +212,7 @@ function newMachineReducer(state = defaultState, action) {
         requesting: false
       }
     case 'TOGGLE_POP_WINDOW': 
+    debugger;
       if (state.popWindow) {
         document.querySelector(".App").classList.remove("overflow-hidden", "filter", "blur-md")
 
@@ -258,6 +271,13 @@ function newMachineReducer(state = defaultState, action) {
             ...state.proposal.machines.slice(0, indexMachine), newMachine1, ...state.proposal.machines.slice(indexMachine + 1)
           ]
         }
+      }
+    case 'PREVIEW_MACHINE': 
+      const newPreviewMachine = Object.assign({}, action.machine)
+
+      return{
+        ...state,
+        previewMachine: newPreviewMachine
       }
     default:
       return {...state}

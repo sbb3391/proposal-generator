@@ -16,7 +16,7 @@ function App(props) {
   const renderPopWindow = () => {
     return props.popWindow ? <PopWindow /> : null
   }
-
+  
   return (
     <Router >
       <div className="App absolute z-0 w-full h-full">
@@ -27,9 +27,11 @@ function App(props) {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/machine/new" component={NewMachine} />
-            <Route path="/machine/preview" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeMachineItemPrice} match={match.match} addMachine={props.addMachine} />} />
+            <Route path="/machines/preview" exact render={(match) => <Machine {...props} machine={props.previewMachine.machine} changePrice={props.changeItemPrice} 
+                                                                        match={match.match} addMachine={props.addMachine} machineType="preview" />} />
             <Route path="/edit" component={Edit} />
-            <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeMachineItemPrice} match={match.match} addMachine={props.addMachine}/>} />
+            <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeItemPrice} 
+                                                              match={match.match} addMachine={props.addMachine} machineType="machine"/>} />
             <Route path="/proposals" exact component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
           </Switch>
@@ -43,14 +45,15 @@ function App(props) {
 const mapStateToProps = state => (
   {
     machine: state.machine,
-    popWindow: state.popWindow
+    popWindow: state.popWindow,
+    previewMachine: state.previewMachine
   }
 )
 
 const mapDispatchToProps = dispatch => (
   {
     addMachine: machine => dispatch({type: 'ADD_MACHINE', machine: machine}),
-    changeMachineItemPrice: item => dispatch({type: 'CHANGE_MACHINE_ITEM_PRICE', item: item})
+    changeItemPrice: (item, machineType) => dispatch({type: 'CHANGE_ITEM_PRICE', item: item, machineType: machineType})
     
   }
 )

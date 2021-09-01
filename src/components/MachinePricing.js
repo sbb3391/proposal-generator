@@ -23,7 +23,7 @@ class MachinePricing extends Component {
     const  changingItem = assembly.items.find( i => i.itemId == itemId)
     changingItem.unitPrice = event.target.value
     
-    this.props.changeItemPrice(changingItem)
+    this.props.changeItemPrice(changingItem, this.props.machineType)
   }
 
   renderTableRows = () => {

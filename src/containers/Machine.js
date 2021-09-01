@@ -12,7 +12,8 @@ class Machine extends Component {
 
     // we don't want to fetch for a machine if we're viewing a proposal. The machines are generated
     // in Proposal component and are already in the redux store
-    if ( !this.props.proposal ) {
+    if ( this.props.machineType === "machine" ) {
+      debugger;
       fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
       .then(resp => resp.json())
       .then( json => {
@@ -22,7 +23,6 @@ class Machine extends Component {
   }
 
   render() {
- 
     if (this.props.machine.requesting) {
       return(
         <div className="w-full h-full flex justify-around">
@@ -39,7 +39,7 @@ class Machine extends Component {
     } else {
       return (
         <div className="w-full h-full flex justify-around">
-          <MachinePricing machine={this.props.machine} changeItemPrice={this.props.changePrice} />
+          <MachinePricing machine={this.props.machine} changeItemPrice={this.props.changePrice} machineType={this.props.machineType} />
           <div className="w-1/3 h-full flex place-items-center space-y-3">
             <div className="flex flex-col space-y-3 h-1/3 w-full">
               <MachineOverview machine={this.props.machine} saveMachine={this.props.saveMachine}/>

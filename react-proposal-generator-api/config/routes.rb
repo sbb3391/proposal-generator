@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :pick_one_groups
   resources :parts
   resources :machines
+  post '/machines/preview', to: 'machines#preview'
   resources :model_assemblies
   resources :items_assemblies
   resources :assemblies do 

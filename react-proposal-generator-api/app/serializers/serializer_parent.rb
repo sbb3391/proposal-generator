@@ -9,6 +9,10 @@ class SerializerParent < ActiveModel::Serializer
       Assembly.find(ia.assembly_id)
     end
 
+    def unitPrice(machine, assembly_item_id, item)
+      machine.id ? MachineAssemblyItem.find_by(machine_id: machine.id, assembly_item_id: assembly_item_id).unit_price : item.branch_floor_price
+    end
+
     assemblies_map = assemblies.uniq.map do |assembly| 
       items = assembly.items.map do |item|
         assembly_item_id = ItemsAssembly.find_by(item_id: item.id, assembly_id: assembly.id)
@@ -18,7 +22,7 @@ class SerializerParent < ActiveModel::Serializer
           assemblyId: assembly.id,
           itemId: item.id,
           description: item.description,
-          unitPrice: MachineAssemblyItem.find_by(machine_id: machine.id, assembly_item_id: assembly_item_id).unit_price,
+          unitPrice: unitPrice(machine, assembly_item_id, item),
           branchFloor: item.branch_floor_price,
           target: item.target_price,
           required: item.items_assemblies[0].required,
