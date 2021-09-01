@@ -6,7 +6,10 @@ import { connect } from 'react-redux';
 class MachineOverview extends Component {
 
   renderSaveChangesButton = totalPrice => { 
+    console.log("TotalPrice", totalPrice)
+    console.log("SellingPrice", this.props.machine.sellingPrice)
     if (this.props.machine.sellingPrice !== totalPrice) {
+
       return(<button onClick={() => this.props.saveMachine(this.props.machine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Changes</button>)
     }
   }

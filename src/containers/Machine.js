@@ -22,7 +22,6 @@ class Machine extends Component {
   }
 
   render() {
-    console.log("Machine", "Machine Rendered")
  
     if (this.props.machine.requesting) {
       return(
