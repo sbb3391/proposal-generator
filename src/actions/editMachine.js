@@ -8,7 +8,7 @@ export function editMachine(machine) {
     fetch(`http://localhost:3000/models/${machine.modelId}/assemblies`)
     .then(resp => resp.json())
     .then(assemblies => {
-      setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES_EDIT', assemblies: assemblies, machine: machine}),
+      setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies, machine: machine, type: "edit"}),
       1000)
     })
   }

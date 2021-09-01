@@ -2,6 +2,7 @@
 import update from 'react-addons-update';
 import numeral from 'numeral';
 import { changePreviewMachineItemPrice, changeMachineItemPrice, changeProposalItemPrice, updateProposalSellingPrice } from './changePriceFunctions'
+import { addAllAssembliesEdit, addAllAssembliesNew } from './addAllAssembliesFunctions';
 
 
 const defaultState = {
@@ -33,50 +34,12 @@ function newMachineReducer(state = defaultState, action) {
         ...state,
         requesting: true
       }
-    case 'ADD_ALL_ASSEMBLIES_NEW':
-      // This only gets called once to add all machine assemblies from fetch to the store
-      const requiredAssemblies = action.assemblies.filter( assembly => assembly.required_assembly)
-      const unrequiredAssemblies = action.assemblies.filter( assembly => !assembly.required_assembly)
-
-      // getting all pickOneGroups and adding it to store
-      const allPickOneGroups = action.assemblies.filter( assembly => assembly.pick_one_group )
-      const pickOneGroupIds = allPickOneGroups.map( assembly => assembly.pick_one_group.pick_one_group_id )
-      const uniquePickOneGroupIds = [...new Set(pickOneGroupIds)]
-
-      return {
-        ...state,
-          machine: {
-            assemblies: requiredAssemblies
-          },
-          model: {
-            ...state.model,
-              allAssemblies: action.assemblies,
-              remainingAssemblies: unrequiredAssemblies,
-              remainingPickOneGroupIds: uniquePickOneGroupIds
-          },
-          requesting: false
-      }
-    case 'ADD_ALL_ASSEMBLIES_EDIT':
-      const machineAssemblies = action.machine.assemblies
-      const remainingAssemblies2 = action.assemblies.filter( assembly => !machineAssemblies.includes( machineAssemblies.find( ma => ma.id === assembly.id)))
-
-      // getting all pickOneGroups and adding it to store
-      const allPickOneGroups2 = action.machine.assemblies.filter( assembly => assembly.pick_one_group )
-      const pickOneGroupIds2 = allPickOneGroups2.map( assembly => assembly.pick_one_group.pick_one_group_id )
-      const uniquePickOneGroupIds2 = [...new Set(pickOneGroupIds2)]
-
-      return {
-        ...state,
-          machine: {
-            assemblies: machineAssemblies
-          },
-          model: {
-            ...state.model,
-              allAssemblies: action.assemblies,
-              remainingAssemblies: remainingAssemblies2,
-              remainingPickOneGroupIds: uniquePickOneGroupIds2
-          },
-          requesting: false
+    case 'ADD_ALL_ASSEMBLIES':
+      switch (action.type) {
+        case "new":
+          return addAllAssembliesNew(state, action.machine, action.assemblies)
+        case "edit":
+          return addAllAssembliesEdit(state, action.machine, action.assemblies)
       }
     case 'ADD_ASSEMBLY':
       // this takes one assembly and adds it to the machine assembly (the one we're building)
