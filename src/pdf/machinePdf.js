@@ -65,22 +65,30 @@ const machinePdf = (machine) => {
   ]
   
   if (machine.colorClick) {
-    serviceArr.push([{text: "Color Impression:", margin: [0, 10, 0, 10]}, {text: `$0${machine.colorClick} per impression`, margin: [0, 10, 0, 10], fontSize: 10}])
+    serviceArr.push([
+      {text: "Color Impression:", margin: [0,10,0,0], border: [false, false, false, false]},
+      {text: `${machine.colorClick} per impression`, margin: [0,10,0,0], border: [false, false, false, false], fontSize: 10}
+    ])
+  } else {
+    serviceArr.push([
+      {text: "Color Impression:", margin: [0,10,0,0], border: [false, false, false, false]},
+      {text: `N/A`, margin: [0,10,0,0], border: [false, false, false, false], fontSize: 10}
+    ])
   }
   
   if (machine.monoClick) {
-    serviceArr.push([{text: "Mono Impression:"}, {text: `$0${machine.monoClick} per impression`, fontSize: 10}])
-  }
-  
-  let serviceData;
-  if (serviceArr.length === 0 ) {
-    serviceData = [["No Data Provided"], ["Provide Info"]]
+    serviceArr.push([
+      {text: "Mono Impression:", margin: [0,0,0,10], border: [false, false, false, false]},
+      {text: `${machine.monoClick} per impression`, margin: [0,0,0,10], border: [false, false, false, false], fontSize: 10}
+    ])
   } else {
-    serviceData = serviceTable
+    serviceArr.push([
+      {text: "Mono Impression:", margin: [0,0,0,10], border: [false, false, false, false]},
+      {text: `N/A`, margin: [0,0,0,10], border: [false, false, false, false], fontSize: 10}
+    ])
   }
 
   serviceTable[0].table.body = serviceArr;
-
   
   const machineName = machine.assemblies.find( assembly => assembly.assembly_type === "engine").name
   
@@ -131,46 +139,7 @@ const machinePdf = (machine) => {
               table: {
                 alignment: "center",
                 body: [
-                  [
-                    {
-                        "table": {
-                            "widths": [
-                                110,
-                                110
-                            ],
-                            "margin": [0, 50],
-                            "alignment": "center",
-                            "body": [
-                                [
-                                    {
-                                        "text": "Color Impression:",
-                                        margin: [0,10,0,0],
-                                        border: [false, false, false, false]
-                                    },
-                                    {
-                                        "text": "$0.06 per impression",
-                                        margin: [0,10,0,0],
-                                        border: [false, false, false, false],
-                                        "fontSize": 10
-                                    }
-                                ],
-                                [
-                                    {
-                                        "text": "Mono Impression:",
-                                        margin: [0,0,0,10],
-                                        border: [false, false, false, false]
-                                    },
-                                    {
-                                        "text": "$0.009 per impression",
-                                        margin: [0,0,0,10],
-                                        "fontSize": 10,
-                                        border: [false, false, false, false]
-                                    }
-                                ]
-                            ]
-                        }
-                    }
-                  ]
+                  serviceTable
                 ]
               },
               margin: [4,0,0,0]
