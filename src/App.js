@@ -29,12 +29,12 @@ function App(props) {
             <Route path="/machine/new" render={() => <NewMachine type="new" />} />
             <Route path="/machines/preview" exact render={(match) => <Machine {...props} machine={props.previewMachine.machine} changePrice={props.changeItemPrice} 
                                                                         match={match.match} addMachine={props.addMachine} machineType="preview" />} />
-            <Route path="/edit" component={Edit} />
+
+            <Route exact path="/machines/:id/edit" render={() => <NewMachine type="edit"/>} />
             <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeItemPrice} 
                                                               match={match.match} addMachine={props.addMachine} machineType="machine"/>} />
             <Route exact path="/proposals" component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
-            <Route path="/edit" exact render={() => <NewMachine type="edit"/>} />
           </Switch>
         </div>
       </div>

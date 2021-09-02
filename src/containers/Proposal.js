@@ -15,13 +15,14 @@ class Proposal extends Component {
   renderMachines = () => {
     if (Object.keys(this.props.proposal).length > 0 ) {
       return this.props.proposal.machines.map( machine => {
-        return <Machine machine={machine} changePrice={this.props.changeItemPrice} 
+        return <Machine history={this.props.history} machine={machine} changePrice={this.props.changeItemPrice} 
         saveMachine={this.props.saveProposalMachine} addMachine={null} match={this.props.match} machineType="proposal"/>
       })
     }
   }
 
   render() {
+    console.log("Proposal Rendering")
     if (this.props.requesting) {
       return(
         <div className="w-full h-full flex items-center content-center justify-center place-content-center place-items-center">

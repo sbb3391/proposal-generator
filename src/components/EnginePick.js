@@ -83,6 +83,18 @@ class EnginePick extends Component {
     }
   }
 
+  renderPreviousButton = () => {
+    if (this.props.nextStep === "pickPaper") {
+
+    } else {
+      return(
+        <div className="flex place-items-center">
+          <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
+        </div>
+      )
+    }
+  }
+
   renderCompleteButton = () => {
     if (this.props.remainingPickOneGroupIds.length === 0 ) {
       return <CompleteButton />
@@ -143,7 +155,6 @@ class EnginePick extends Component {
 
 
   render() {
-    console.log("Engine Pick Renders")
     if (this.props.requesting) {
       return(
         <div className="w-2/3 h-2/3 flex items-center content-center justify-center place-content-center place-items-center">
@@ -172,9 +183,6 @@ class EnginePick extends Component {
                 {this.renderPickOneGroups()}
               </div>
               <div className="flex w-5/6 h-1/2 pt-4">
-                <div className="flex place-items-center">
-                  <span className="text-6xl cursor-pointer" onClick={() => this.props.updateStep(this.props.prevStep)}>&#129184;</span>
-                </div>
                 <div className="w-4/5 flex flex-wrap mx-auto" id="select-assemblies">
                   {this.renderAssemblies()}
                 </div>

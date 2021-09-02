@@ -1,6 +1,4 @@
-import { fetchAssemblies} from './fetchAssemblies'
-
-export function editMachine(machine) {
+export const editMachine = (machine, history) => {
 
   return (dispatch) => {
     dispatch({type: 'ADD_MODEL', modelId: machine.modelId})
@@ -12,8 +10,7 @@ export function editMachine(machine) {
       1000)
     })
     .then( () => {
-      debugger;
-      window.history.pushState('/edit')
+      history.push(`/machines/${machine.machineId}/edit`)
     })
   }
 }

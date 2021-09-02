@@ -16,8 +16,7 @@ class MachineOverview extends Component {
 
   editButtonClick = (event) => {
     const machine = this.props.machine
-
-    this.props.editMachine(machine) 
+    this.props.editMachine(machine, this.props.history) 
   }
 
   render() {
@@ -48,7 +47,7 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    editMachine: machine => dispatch(editMachine(machine))
+    editMachine: (machine, history) => dispatch(editMachine(machine, history))
   }
 )
 
