@@ -128,8 +128,9 @@ class EnginePick extends Component {
 }
   
   renderPickOneGroups = () => {
+    // get all assemblies that are a part of a pick one group and also apart of the current step
     const pickOnes = this.props.allAssemblies.filter( assembly => assembly.assembly_type === this.props.step && assembly.pick_one_group )
-
+    
     if ( pickOnes.length > 0 )
     return(
       <>
@@ -137,7 +138,8 @@ class EnginePick extends Component {
         <div className="flex justify-center space-x-8">
           {
             pickOnes.map( assembly => {
-              const findAssemblyInMachineAssemblies = this.props.machineAssemblies.find( machineAssembly => machineAssembly === assembly ) 
+              const findAssemblyInMachineAssemblies = this.props.machineAssemblies.find( machineAssembly => machineAssembly.id === assembly.id ) 
+              debugger;
   
               return(
                 <div className="flex space-x-2 border-2 border-grey-200 rounded-md p-2">
@@ -155,6 +157,7 @@ class EnginePick extends Component {
 
 
   render() {
+    debugger;
     if (this.props.requesting) {
       return(
         <div className="w-2/3 h-2/3 flex items-center content-center justify-center place-content-center place-items-center">
@@ -183,6 +186,7 @@ class EnginePick extends Component {
                 {this.renderPickOneGroups()}
               </div>
               <div className="flex w-5/6 h-1/2 pt-4">
+                {this.renderPreviousButton()}
                 <div className="w-4/5 flex flex-wrap mx-auto" id="select-assemblies">
                   {this.renderAssemblies()}
                 </div>

@@ -36,7 +36,8 @@ class SerializerParent < ActiveModel::Serializer
         name: assembly.name,
         assembly_type: assembly.assembly_type,
         required_assembly: assembly.model_assemblies[0].required,
-        items: items
+        items: items,
+        pick_one_group: pick_one_group(machine.model_id, assembly.id)
       }
     end 
 
@@ -57,6 +58,17 @@ class SerializerParent < ActiveModel::Serializer
       serviceComments: machine.service_comments,
       pricingComments: machine.pricing_comments
     }
+  end
+
+  def pick_one_group(model_id, assembly_id)
+    id = ModelAssembly.find_by(model_id: model_id, assembly_id: assembly_id).pick_one_group_id
+    if id
+      {
+        pick_one_group_id: id,
+        pick_one_group_description: PickOneGroup.find(id).description,
+        pick_one_group_assemblies: PickOneGroup.find(id).model_assemblies
+      }
+    end
   end
 
 end

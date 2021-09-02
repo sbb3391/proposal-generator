@@ -1,6 +1,7 @@
 export const editMachine = (machine, history) => {
 
   return (dispatch) => {
+    debugger;
     dispatch({type: 'ADD_MODEL', modelId: machine.modelId})
     dispatch({type: "START_FETCHING_ASSEMBLIES"});
     fetch(`http://localhost:3000/models/${machine.modelId}/assemblies`)
