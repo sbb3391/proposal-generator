@@ -27,6 +27,7 @@ class NewMachine extends Component {
   }
 
   renderComponent = () => {
+    console.log("NewMachine Renders")
     switch (this.state.step) {
       case 'pickMachine':
         return(<PickModel key='1' updateStep={this.updateStep}/>)

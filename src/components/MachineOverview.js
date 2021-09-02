@@ -16,7 +16,13 @@ class MachineOverview extends Component {
 
   editButtonClick = (event) => {
     const machine = this.props.machine
-    this.props.editMachine(machine, this.props.history) 
+
+    if (this.props.machineType === "preview") {
+      window.history.pushState({}, "", '/machines/preview/edit')
+      this.props.testing()
+    } else {
+      this.props.editMachine(machine, this.props.history, this.props.machineType) 
+    }
   }
 
   render() {
@@ -47,7 +53,8 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    editMachine: (machine, history) => dispatch(editMachine(machine, history))
+    editMachine: (machine, history, machineType) => dispatch(editMachine(machine, history, machineType)),
+    testing: () => dispatch({type: "TESTING"})
   }
 )
 

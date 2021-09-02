@@ -1,5 +1,7 @@
-export const editMachine = (machine, history) => {
+export const editMachine = (machine, history, machineType) => {
 
+  history.push(`/machines/${machine.machineId}/edit`)
+    
   return (dispatch) => {
     dispatch({type: 'ADD_MODEL', modelId: machine.modelId})
     dispatch({type: "START_FETCHING_ASSEMBLIES"});
@@ -9,8 +11,8 @@ export const editMachine = (machine, history) => {
       setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies, machine: machine, machineStatus: "edit"}),
       1000)
     })
-    .then( () => {
-      history.push(`/machines/${machine.machineId}/edit`)
-    })
+    // .then( () => {
+    //   history.push(`/machines/${machine.machineId}/edit`)
+    // })
   }
 }

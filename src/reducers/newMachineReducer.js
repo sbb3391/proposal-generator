@@ -99,7 +99,6 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
 
-      
       let newRemainingAssemblies = [...state.model.remainingAssemblies]
       newRemainingAssemblies.push(findAssembly)
       returnThesePickOnesToRemainingAssemblies().forEach( assembly => newRemainingAssemblies.push(assembly))
@@ -226,6 +225,11 @@ function newMachineReducer(state = defaultState, action) {
             ...state.proposal.machines.slice(0, indexMachine), newMachine1, ...state.proposal.machines.slice(indexMachine + 1)
           ]
         }
+      }
+    case "TESTING":
+      return{
+        ...state,
+        testing: "testing"
       }
     case 'PREVIEW_MACHINE': 
       const newPreviewMachine = Object.assign({}, action.machine)

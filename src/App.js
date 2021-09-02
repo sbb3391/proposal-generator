@@ -27,10 +27,11 @@ function App(props) {
           <Switch>
             <Route path="/" component={Home} exact/>
             <Route path="/machine/new" render={() => <NewMachine type="new" />} />
+            <Route exact path="/machines/preview/edit" render={() => <NewMachine type="preview" />} />
             <Route path="/machines/preview" exact render={(match) => <Machine {...props} machine={props.previewMachine.machine} changePrice={props.changeItemPrice} 
                                                                         match={match.match} addMachine={props.addMachine} machineType="preview" />} />
 
-            <Route exact path="/machines/:id/edit" render={() => <NewMachine type="edit"/>} />
+            <Route path="/machines/:id/edit" render={() => <NewMachine type="edit"/>} />
             <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeItemPrice} 
                                                               match={match.match} addMachine={props.addMachine} machineType="machine"/>} />
             <Route exact path="/proposals" component={Proposals}/>
