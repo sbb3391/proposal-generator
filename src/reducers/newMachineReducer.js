@@ -35,7 +35,7 @@ function newMachineReducer(state = defaultState, action) {
         requesting: true
       }
     case 'ADD_ALL_ASSEMBLIES':
-      switch (action.type) {
+      switch (action.machineStatus) {
         case "new":
           return addAllAssembliesNew(state, action.machine, action.assemblies)
         case "edit":
@@ -128,7 +128,6 @@ function newMachineReducer(state = defaultState, action) {
         requesting: false
       }
     case 'TOGGLE_POP_WINDOW': 
-    debugger;
       if (state.popWindow) {
         document.querySelector(".App").classList.remove("overflow-hidden", "filter", "blur-md")
 

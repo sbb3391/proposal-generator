@@ -12,7 +12,6 @@ export function saveServiceInfo() {
     })
     .then(resp => resp.json())
     .then(proposal => {
-      debugger;
     })
   }
 }

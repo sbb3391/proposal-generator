@@ -40,7 +40,7 @@ export function addAllAssembliesEdit(state, machine, assemblies) {
       },
       model: {
         ...state.model,
-          allAssemblies: action.assemblies,
+          allAssemblies: assemblies,
           remainingAssemblies: remainingAssemblies,
           remainingPickOneGroupIds: uniquePickOneGroupIds
       },

@@ -32,7 +32,7 @@ function App(props) {
             <Route path="/edit" component={Edit} />
             <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeItemPrice} 
                                                               match={match.match} addMachine={props.addMachine} machineType="machine"/>} />
-            <Route path="/proposals" exact component={Proposals}/>
+            <Route exact path="/proposals" component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
             <Route path="/edit" exact render={() => <NewMachine type="edit"/>} />
           </Switch>

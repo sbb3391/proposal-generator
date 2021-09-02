@@ -16,7 +16,8 @@ class MachineOverview extends Component {
 
   editButtonClick = (event) => {
     const machine = this.props.machine
-    this.props.editMachine(machine)
+
+    this.props.editMachine(machine) 
   }
 
   render() {
@@ -33,7 +34,7 @@ class MachineOverview extends Component {
         <h1 className="text-center">Machine Overview</h1>
         <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
         <button onClick={() => machinePdf(this.props.machine)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
-        <button onClick={this.editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Proposal</button>
+        <button onClick={this.editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
         { this.renderSaveChangesButton(totalPrice)}
       </>
     );

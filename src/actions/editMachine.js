@@ -8,8 +8,12 @@ export function editMachine(machine) {
     fetch(`http://localhost:3000/models/${machine.modelId}/assemblies`)
     .then(resp => resp.json())
     .then(assemblies => {
-      setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies, machine: machine, type: "edit"}),
+      setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies, machine: machine, machineStatus: "edit"}),
       1000)
+    })
+    .then( () => {
+      debugger;
+      window.history.pushState('/edit')
     })
   }
 }

@@ -13,7 +13,6 @@ class PopWindow extends Component {
   }
 
   closePopWindow = (event) => {
-    debugger;
     if (event.target.id === "pop-window" ) {
       this.props.togglePopWindow()
     }
