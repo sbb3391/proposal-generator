@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 
 class UnitAssembly extends Component {
 
-  removeAssemblyFromMachine = () => {
-    debugger;
+  removeAssemblyFromMachine = (event) => {
+     const assembly = this.props.assemblies.find( assembly => assembly.id == event.target.dataset.assemblyId)
+
+     this.props.removeAssembly(assembly, this.props.step)
   }
 
   renderAssembliesAndItems = () => {
@@ -16,7 +18,7 @@ class UnitAssembly extends Component {
           <div className="flex space-x-2">
             <span className="show cursor-pointer">&#9650;</span>
             { assembly.required_assembly ? <h3 className="mb-2 font-bold border rounded-md bg-blue-100 pl-1">{assembly.name} ({assembly.items.length} Items)</h3> : 
-              <h3 className="mb-2 font-bold border rounded-md bg-blue-100 hover:text-color-red-500 cursor-pointer hover:underline hover:text-red-500 pl-1" onClick={this.removeAssemblyFromMachine}>{assembly.name} ({assembly.items.length} Items)</h3>
+              <h3 data-assembly-id={assembly.id} className="mb-2 font-bold border rounded-md bg-blue-100 hover:text-color-red-500 cursor-pointer hover:underline hover:text-red-500 pl-1" onClick={this.removeAssemblyFromMachine}>{assembly.name} ({assembly.items.length} Items)</h3>
             }
           </div>
           {assembly.items.map( item => {
@@ -45,7 +47,7 @@ class UnitAssembly extends Component {
 
 const mapDispatchToProps = (dispatch) => (
   {
-    removeAssembly: assembly => dispatch({type: "REMOVE_ASSEMBLY", assembly: assembly})
+    removeAssembly: (assembly, step) => dispatch({type: "REMOVE_ASSEMBLY", assembly: assembly, step: step})
   }
 )
 

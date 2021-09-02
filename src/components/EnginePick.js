@@ -203,7 +203,7 @@ class EnginePick extends Component {
               </div>
             </div>
             <div className="w-1/4 mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
-              <MachineAssemblies />
+              <MachineAssemblies step={this.props.step}/>
             </div>
 
           </div>

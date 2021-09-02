@@ -5,12 +5,12 @@ class MachineAssemblies extends Component {
   render() {
     return (
       <>
-        <UnitAssembly assemblyName ="engine" />
-        <UnitAssembly assemblyName="main unit"/>
-        <UnitAssembly assemblyName="paper handling"/>
-        <UnitAssembly assemblyName="paper output"/>
-        <UnitAssembly assemblyName="finishing"/>
-        <UnitAssembly assemblyName="controller"/>
+        <UnitAssembly step={this.props.step} assemblyName ="engine" />
+        <UnitAssembly step={this.props.step} assemblyName="main unit"/>
+        <UnitAssembly step={this.props.step} assemblyName="paper handling"/>
+        <UnitAssembly step={this.props.step} assemblyName="paper output"/>
+        <UnitAssembly step={this.props.step} assemblyName="finishing"/>
+        <UnitAssembly step={this.props.step} assemblyName="controller"/>
       </>
     );
   }

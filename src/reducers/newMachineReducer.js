@@ -82,7 +82,47 @@ function newMachineReducer(state = defaultState, action) {
       }
 
       return newState;
+    case 'REMOVE_ASSEMBLY':
+      const findAssembly = state.model.allAssemblies.find( assembly => assembly.id == action.assembly.id ) 
+      
+      const determinePickOneStatus = () => {
+        return action.assembly.pick_one_group ? action.assembly.pick_one_group.pick_one_group_id : null 
+      }
 
+      const returnThesePickOnesToRemainingAssemblies = () => {
+        if (determinePickOneStatus()) {
+          const pickOnes = state.model.allAssemblies.filter( assembly => assembly.pick_one_group )
+          const pickOnesToPlace = pickOnes.filter( po => po.pick_one_group.pick_one_group_id == determinePickOneStatus() && po !== findAssembly)
+          return pickOnesToPlace
+        } else {
+          return []
+        }
+      }
+
+      
+      let newRemainingAssemblies = [...state.model.remainingAssemblies]
+      newRemainingAssemblies.push(findAssembly)
+      returnThesePickOnesToRemainingAssemblies().forEach( assembly => newRemainingAssemblies.push(assembly))
+      
+      let newRemainingPickOneGroupIds = [...state.model.remainingPickOneGroupIds]
+      if (determinePickOneStatus()) {
+        newRemainingPickOneGroupIds.push(determinePickOneStatus())
+      }
+      
+      const machineAssemblyIndex = state.machine.assemblies.indexOf( state.machine.assemblies.find( assembly => assembly.id == action.assembly.id))
+      
+      return{
+        ...state,
+        model: {
+          ...state.model,
+          remainingAssemblies: newRemainingAssemblies,
+          remainingPickOneGroupIds: newRemainingPickOneGroupIds
+        },
+        machine: {
+          ...state.machine,
+          assemblies: [...state.machine.assemblies.slice(0, machineAssemblyIndex), ...state.machine.assemblies.slice(machineAssemblyIndex + 1)]
+        }
+      }
     case 'REMOVE_CLICKED_ID':
       return {
         ...state,
