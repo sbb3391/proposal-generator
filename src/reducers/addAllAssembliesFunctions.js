@@ -26,12 +26,13 @@ export function addAllAssembliesNew(state, machine, assemblies) {
 
 export function addAllAssembliesEdit(state, machine, assemblies) {
   const machineAssemblies = machine.assemblies
-  const remainingAssemblies = assemblies.filter( assembly => !machineAssemblies.includes( machineAssemblies.find( ma => ma.id === assembly.id)))
+  let remainingAssemblies = assemblies.filter( assembly => !machineAssemblies.includes( machineAssemblies.find( ma => ma.id === assembly.id)))
 
   // getting all pickOneGroups and adding it to store
   const allPickOneGroups = machineAssemblies.filter( assembly => assembly.pick_one_group )
   const pickOneGroupIds = allPickOneGroups.map( assembly => assembly.pick_one_group.pick_one_group_id )
   const uniquePickOneGroupIds = [...new Set(pickOneGroupIds)]
+
 
   return {
     ...state,
@@ -41,8 +42,8 @@ export function addAllAssembliesEdit(state, machine, assemblies) {
       model: {
         ...state.model,
           allAssemblies: assemblies,
-          remainingAssemblies: remainingAssemblies,
-          remainingPickOneGroupIds: uniquePickOneGroupIds
+          remainingAssemblies: remainingAssemblies.filter( assembly => !assembly.pick_one_group),
+          remainingPickOneGroupIds: []
       },
       requesting: false
   }

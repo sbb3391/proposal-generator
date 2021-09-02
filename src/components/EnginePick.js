@@ -95,9 +95,20 @@ class EnginePick extends Component {
     }
   }
 
-  renderCompleteButton = () => {
-    if (this.props.remainingPickOneGroupIds.length === 0 ) {
+  renderCompleteOption = () => {
+    const proposalAlert = () => {
+      alert("Figure out what to do after you edit a proposal machine")
+    }
+
+    if (this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "new") {
       return <CompleteButton />
+    } else if ( this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "edit" ) {
+      return(
+        <>
+          <span className="text-4xl">&#x2192;</span>
+          <button id="complete-button" className="static-button" onClick={proposalAlert}>Save Proposal Machine</button>
+        </>
+      )
     }
 
     const button = document.querySelector("#complete-button")
@@ -138,8 +149,7 @@ class EnginePick extends Component {
         <div className="flex justify-center space-x-8">
           {
             pickOnes.map( assembly => {
-              const findAssemblyInMachineAssemblies = this.props.machineAssemblies.find( machineAssembly => machineAssembly.id === assembly.id ) 
-              debugger;
+              const findAssemblyInMachineAssemblies = this.props.machineAssemblies.find( machineAssembly => machineAssembly.id === assembly.id )
   
               return(
                 <div className="flex space-x-2 border-2 border-grey-200 rounded-md p-2">
@@ -157,7 +167,6 @@ class EnginePick extends Component {
 
 
   render() {
-    debugger;
     if (this.props.requesting) {
       return(
         <div className="w-2/3 h-2/3 flex items-center content-center justify-center place-content-center place-items-center">
@@ -179,7 +188,7 @@ class EnginePick extends Component {
                 <StatusButton text="finishing"/>
                 <span className="text-4xl">&#x2192;</span>
                 <StatusButton text="controller"/>
-                {this.renderCompleteButton()}
+                {this.renderCompleteOption()}
               </div>
               <h1 className="text-2xl text-center h-8 mt-4">{this.titleCase(this.props.step)}:</h1>
               <div className="w-2/3 h-12 flex flex-col justify-center space-x-8 space-y-1">

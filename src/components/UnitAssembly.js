@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 class UnitAssembly extends Component {
 
   removeAssemblyFromMachine = () => {
+    debugger;
   }
 
   renderAssembliesAndItems = () => {
@@ -43,7 +44,9 @@ class UnitAssembly extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => (
-  {}
+  {
+    removeAssembly: assembly => dispatch({type: "REMOVE_ASSEMBLY", assembly: assembly})
+  }
 )
 
 const mapStateToProps = (state) => (
