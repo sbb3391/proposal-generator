@@ -38,7 +38,7 @@ class UnitAssembly extends Component {
             {assembly.items.map( item => {
               return(
                 <div className="flex space-x-2">
-                  { item.required ? <span className="inline-block align-top">&#9734;</span> : <span id={item.itemId} data-assembly-id={assembly.id} onClick={this.removeItemFromAssembly} className="text-xs cursor-pointer">&#10060;</span> }
+                  { item.required ? <span className="w-4"></span> : <span id={item.itemId} data-assembly-id={assembly.id} onClick={this.removeItemFromAssembly} className="text-xs cursor-pointer">&#10060;</span> }
                   <span className="text-xs">{item.description}</span>
                 </div>
 
