@@ -22,7 +22,6 @@ class Proposal extends Component {
   }
 
   render() {
-    console.log("Proposal Rendering")
     if (this.props.requesting) {
       return(
         <div className="w-full h-full flex items-center content-center justify-center place-content-center place-items-center">

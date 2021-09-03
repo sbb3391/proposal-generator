@@ -11,8 +11,5 @@ export const editMachine = (machine, history, machineType) => {
       setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies, machine: machine, machineStatus: "edit"}),
       1000)
     })
-    // .then( () => {
-    //   history.push(`/machines/${machine.machineId}/edit`)
-    // })
   }
 }

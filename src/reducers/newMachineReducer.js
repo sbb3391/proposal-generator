@@ -122,6 +122,28 @@ function newMachineReducer(state = defaultState, action) {
           assemblies: [...state.machine.assemblies.slice(0, machineAssemblyIndex), ...state.machine.assemblies.slice(machineAssemblyIndex + 1)]
         }
       }
+    case 'REMOVE_ITEM':
+      const eventAssembly = state.machine.assemblies.find( assembly => assembly.id == action.assembly.id)
+      const eventItem = eventAssembly.items.find( item => item.itemId == action.itemId)
+      const newItems = eventAssembly.items.filter( item => item !== eventItem)
+      const newAssembly = Object.assign({}, eventAssembly)
+      newAssembly.items = newItems
+
+      debugger;
+
+      return{
+        ...state,
+        machine: {
+          ...state.machine,
+          assemblies: state.machine.assemblies.map( assembly => {
+            if (assembly.id === newAssembly.id) {
+              return newAssembly
+            } else {
+              return assembly
+            }
+          })
+        }
+      }
     case 'REMOVE_CLICKED_ID':
       return {
         ...state,
