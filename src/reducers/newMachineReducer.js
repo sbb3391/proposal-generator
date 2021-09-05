@@ -46,13 +46,16 @@ function newMachineReducer(state = defaultState, action) {
       // and removes it from the list of remaining assemblies that are available for selection
 
       const indexOfAddedAssembly = state.model.remainingAssemblies.indexOf(action.assembly)
+      const addedAssembly = Object.assign({}, action.assembly)
+      const requiredItems = addedAssembly.items.filter( item => item.required )
+      addedAssembly.items = requiredItems
 
       let newState = {
         ...state,
-        clickedAssemblyId: action.assembly.id,
+        clickedAssemblyId: addedAssembly.id,
         machine: {
           ...state.machine,
-          assemblies: [...state.machine.assemblies, action.assembly]
+          assemblies: [...state.machine.assemblies, addedAssembly]
         },
         model: {
           ...state.model,
@@ -80,8 +83,20 @@ function newMachineReducer(state = defaultState, action) {
             }
         }
       }
-
       return newState;
+    case 'ADD_ITEM_TO_MACHINE': 
+      const findThisAssemblyInMachine = state.machine.assemblies.find( assembly => assembly.id == action.assemblyId )
+      const findThisAssemblyInAllAssemblies = state.model.allAssemblies.find( assembly => assembly.id == action.assemblyId)
+      let assemblyToAdd = Object.assign({}, findThisAssemblyInMachine)
+
+      const itemToAdd = findThisAssemblyInAllAssemblies.items.find( item => item.itemId == action.itemID)
+      
+      assemblyToAdd = {
+        ...assemblyToAdd,
+        items: [...assemblyToAdd.items, itemToAdd]
+      }
+
+      debugger;
     case 'REMOVE_ASSEMBLY':
       const findAssembly = state.model.allAssemblies.find( assembly => assembly.id == action.assembly.id ) 
       
