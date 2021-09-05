@@ -96,7 +96,25 @@ function newMachineReducer(state = defaultState, action) {
         items: [...assemblyToAdd.items, itemToAdd]
       }
 
-      debugger;
+      const anyRemainingItemsToAdd = () => {
+        const clickedAssemblyId = state.clickedAssemblyId
+        if (assemblyToAdd.items.length === findThisAssemblyInAllAssemblies.items.length) {
+          return null;
+        } else {
+          return clickedAssemblyId
+        }
+      }
+
+      return{
+        ...state,
+        clickedAssemblyId: anyRemainingItemsToAdd(),
+        machine: {
+          ...state.machine,
+          assemblies: state.machine.assemblies.map( assembly => {
+            return assembly.id == assemblyToAdd.id ? assemblyToAdd : assembly
+          })
+        }
+      }
     case 'REMOVE_ASSEMBLY':
       const findAssembly = state.model.allAssemblies.find( assembly => assembly.id == action.assembly.id ) 
       
@@ -143,8 +161,6 @@ function newMachineReducer(state = defaultState, action) {
       const newItems = eventAssembly.items.filter( item => item !== eventItem)
       const newAssembly = Object.assign({}, eventAssembly)
       newAssembly.items = newItems
-
-      debugger;
 
       return{
         ...state,

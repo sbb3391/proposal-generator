@@ -22,18 +22,24 @@ class PartsForAssembly extends Component {
   addItemToMachine = (event) => {
     const assemblyId = event.target.dataset.assemblyId
     const itemId = event.target.dataset.itemId
+    const findInItemsAssemblies = this.state.itemsAssemblies.find( itemAssembly => itemAssembly.item.id == itemId )
+    const indexInItemsAssemblies = this.state.itemsAssemblies.indexOf(findInItemsAssemblies)
+    
+    this.setState({
+      itemsAssemblies: [...this.state.itemsAssemblies.slice(0, indexInItemsAssemblies), ...this.state.itemsAssemblies.slice(indexInItemsAssemblies + 1)]
+    })
     
     this.props.addItem(assemblyId, itemId)
   }
 
   renderItemDetails = (itemAssembly) => {
-  return itemAssembly.required ? 
-  // <input className="h-8 pl-8" type="checkbox" checked disabled /> 
-  null :
-  <div className="flex space-x-5">
-    <label className="text-xl cursor-pointer hover:text-green-500 hover:underline" data-assembly-id={itemAssembly.assembly_id} data-item-id={itemAssembly.item.id}onClick={this.addItemToMachine}>{itemAssembly.item.description}</label>
-    <label className="text-sm">({itemAssembly.item.itemNumber})</label>
-  </div>
+    return itemAssembly.required ? 
+    // <input className="h-8 pl-8" type="checkbox" checked disabled /> 
+    null :
+    <div className="flex space-x-5">
+      <label className="text-xl cursor-pointer hover:text-green-500 hover:underline" data-assembly-id={itemAssembly.assembly_id} data-item-id={itemAssembly.item.id} onClick={this.addItemToMachine}>{itemAssembly.item.description}</label>
+      <label className="text-sm">({itemAssembly.item.itemNumber})</label>
+    </div>
   }
 
   renderItems = () => {
