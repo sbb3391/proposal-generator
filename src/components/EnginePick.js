@@ -18,7 +18,8 @@ class EnginePick extends Component {
 
   componentDidMount() {
     // only fetch once, on the first render to get all the assemblies
-    if (this.props.allAssemblies.length === 0) {
+    if (this.props.allAssemblies.length === 0 && this.props.type !== "edit" ) {
+      debugger;
       this.props.fetchAssemblies(this.props.modelId)
     }
   }
