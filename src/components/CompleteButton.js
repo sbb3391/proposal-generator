@@ -28,8 +28,7 @@ const CompleteButton = ({machineAssemblies, previewMachine}) => {
   }
   return (
     <>
-      <span className="text-4xl">&#x2192;</span>
-      <button id="complete-button" className="static-button" onClick={createMachine}>Complete</button>
+      <button id="complete-button" className="bg-green-500 text-white text-2xl p-2 h-12 text-center rounded-md" onClick={createMachine}>Complete Machine</button>
     </>
   );
 }

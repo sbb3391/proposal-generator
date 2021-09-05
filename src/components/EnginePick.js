@@ -106,8 +106,13 @@ class EnginePick extends Component {
     } else if ( this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "edit" ) {
       return(
         <>
-          <span className="text-4xl">&#x2192;</span>
-          <button id="complete-button" className="static-button" onClick={proposalAlert}>Save Proposal Machine</button>
+          <button id="complete-button" className="bg-green-500 text-white text-2xl p-2 h-12 text-center rounded-md" onClick={proposalAlert}>Save Proposal Machine</button>
+        </>
+      )
+    } else {
+      return(
+        <>
+          <span className="h-12"></span>
         </>
       )
     }
@@ -189,7 +194,6 @@ class EnginePick extends Component {
                 <StatusButton text="finishing"/>
                 <span className="text-4xl">&#x2192;</span>
                 <StatusButton text="controller"/>
-                {this.renderCompleteOption()}
               </div>
               <h1 className="text-2xl text-center h-8 mt-4">{this.titleCase(this.props.step)}:</h1>
               <div className="w-2/3 h-12 flex flex-col justify-center space-x-8 space-y-1">
@@ -203,10 +207,14 @@ class EnginePick extends Component {
                   {this.renderNextButton()}
               </div>
             </div>
-            <div className="w-1/4 mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
-              <MachineAssemblies step={this.props.step}/>
+            <div className="flex flex-col w-1/4 space-y-2">
+              <div className="w-full mx-auto h-full flex flex-col border-2 border-grey-400 rounded-md overflow-auto py-4 space-y-2" id="selected-items">
+                <MachineAssemblies step={this.props.step}/>
+              </div>
+              <div className="flex justify-center items-center content-center font-bold">
+                {this.renderCompleteOption()}
+              </div>
             </div>
-
           </div>
           {this.renderPartsForAssembly()}
         </div>
