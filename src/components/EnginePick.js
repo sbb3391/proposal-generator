@@ -115,11 +115,6 @@ class EnginePick extends Component {
         </>
       )
     }
-
-    const button = document.querySelector("#complete-button")
-
-    if (button) {
-    }
   }
 
   moveButtonUp = (button) => {

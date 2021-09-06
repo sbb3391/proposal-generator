@@ -287,6 +287,7 @@ function newMachineReducer(state = defaultState, action) {
     case 'PREVIEW_MACHINE': 
       const newPreviewMachine = Object.assign({}, action.machine)
 
+      debugger;
       return{
         ...state,
         previewMachine: newPreviewMachine

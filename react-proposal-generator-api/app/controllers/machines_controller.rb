@@ -43,8 +43,7 @@ class MachinesController < ApplicationController
   end
 
   def preview
-
-    machine = Machine.new(model_id: params[:model][:id])
+    @machine = Machine.new(model_id: params[:model][:id])
 
     params[:model][:assemblies].each do |assembly|
       assembly_id = assembly[:id]
@@ -52,11 +51,16 @@ class MachinesController < ApplicationController
       assembly[:items].each do |item| 
         assembly_item = ItemsAssembly.find_by(assembly_id: assembly_id, item_id: item[:itemId])
         i = Item.find_by(id: assembly_item.item_id)
-        machine.machine_assembly_items.build(assembly_item_id: assembly_item.id, unit_price: i.branch_floor_price )
+        @machine.machine_assembly_items.build(assembly_item_id: assembly_item.id, unit_price: i.branch_floor_price )
       end
     end
 
-    render json: machine, machine_id: machine.id
+    x = @machine.machine_assembly_items.map do |mai|
+      items_assembly = ItemsAssembly.find(mai.assembly_item_id)
+      Item.find_by(id:items_assembly.item_id).description
+    end
+
+    render json: @machine, machine_id: @machine.id, serializer: MachinePreviewSerializer
 
   end
 end

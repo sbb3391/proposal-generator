@@ -71,4 +71,58 @@ class SerializerParent < ActiveModel::Serializer
     end
   end
 
+  def filter_only_machine_items(machine) 
+
+  end
+
+  def serialize_machine_preview_assemblies(machine)
+    items_assemblies = machine.machine_assembly_items.map do |mai|
+      ItemsAssembly.find(mai.assembly_item_id)
+    end
+
+    assemblies = items_assemblies.map do |ia|
+      Assembly.find(ia.assembly_id)
+    end
+
+    def unitPrice(machine, assembly_item_id, item)
+      machine.id ? MachineAssemblyItem.find_by(machine_id: machine.id, assembly_item_id: assembly_item_id).unit_price : item.branch_floor_price
+    end
+
+    assemblies_map = assemblies.uniq.map do |assembly|
+      # looks through all possible items in the assembly and returns only those that were selected 
+      items_in_assembly = assembly.items.filter do |item|
+        items_assembly_id = ItemsAssembly.find_by(item_id: item.id, assembly_id: assembly.id).id
+        machine.machine_assembly_items.any? {|mai| mai.assembly_item_id === items_assembly_id}
+      end
+
+      items = items_in_assembly.map do |item|
+        assembly_item_id = ItemsAssembly.find_by(item_id: item.id, assembly_id: assembly.id) 
+        {
+          machineId: machine.id,
+          modelId: machine.model_id,
+          assemblyId: assembly.id,
+          itemId: item.id,
+          description: item.description,
+          unitPrice: unitPrice(machine, assembly_item_id, item),
+          branchFloor: item.branch_floor_price,
+          target: item.target_price,
+          required: item.items_assemblies[0].required,
+          part_type: item.part_type
+        }
+      end
+
+      {
+        modelId: machine.model_id,
+        id: assembly.id,
+        name: assembly.name,
+        assembly_type: assembly.assembly_type,
+        required_assembly: assembly.model_assemblies[0].required,
+        items: items,
+        pick_one_group: pick_one_group(machine.model_id, assembly.id)
+      }
+    end 
+
+    assemblies_map
+  end
+
 end

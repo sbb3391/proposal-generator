@@ -5,15 +5,15 @@ export function changePreviewMachineItemPrice(item, state) {
     item.unitPrice = 0
   }
 
-  const assembly = state.previewMachine.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId)
-  const assemblyIndex = state.previewMachine.machine.assemblies.indexOf(assembly)
+  const assembly = state.previewMachine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId)
+  const assemblyIndex = state.previewMachine.assemblies.indexOf(assembly)
   const findItem = assembly.items.find( i => i.itemId == item.itemId)
   const itemIndex = assembly.items.indexOf(findItem)
 
   const newAssembly = Object.assign({}, assembly)
   newAssembly.items[itemIndex].unitPrice = parseFloat(item.unitPrice)
   
-  const assemblyState = state.previewMachine.machine.assemblies
+  const assemblyState = state.previewMachine.assemblies
   const firstHalf = assemblyState.slice(0, assemblyIndex)
   const secondHalf = assemblyState.slice(assemblyIndex + 1)
 
@@ -21,12 +21,9 @@ export function changePreviewMachineItemPrice(item, state) {
     ...state,
     previewMachine: {
       ...state.previewMachine,
-      machine: {
-        ...state.previewMachine.machine,
-        assemblies: [
-          ...firstHalf, newAssembly, ...secondHalf
-        ]
-      }
+      assemblies: [
+        ...firstHalf, newAssembly, ...secondHalf
+      ]
     }
   }
 }

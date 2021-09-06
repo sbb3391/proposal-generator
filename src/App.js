@@ -28,7 +28,7 @@ function App(props) {
             <Route path="/" component={Home} exact/>
             <Route path="/machine/new" render={() => <NewMachine type="new" />} />
             <Route exact path="/machines/preview/edit" render={() => <NewMachine type="preview" />} />
-            <Route path="/machines/preview" exact render={(match) => <Machine {...props} machine={props.previewMachine.machine} changePrice={props.changeItemPrice} 
+            <Route path="/machines/preview" exact render={(match) => <Machine {...props} machine={props.previewMachine} changePrice={props.changeItemPrice} 
                                                                         match={match.match} addMachine={props.addMachine} machineType="preview" />} />
 
             <Route path="/machines/:id/edit" render={() => <NewMachine type="edit"/>} />
