@@ -20,7 +20,8 @@ const defaultState = {
   },
   proposal: {},
   previewMachine: {},
-  popWindow: false
+  popWindow: false,
+  machineSave: false
 }
 
 function newMachineReducer(state = defaultState, action) {
@@ -234,6 +235,23 @@ function newMachineReducer(state = defaultState, action) {
         return{
           ...state,
           popWindow: true
+        }
+      }
+    case 'TOGGLE_MACHINE_SAVE': 
+    debugger;
+      if (state.machineSave) {
+        document.querySelector(".App").classList.remove("overflow-hidden", "filter", "blur-md")
+
+        return{
+          ...state,
+          machineSave: false
+        }
+      } else {
+        document.querySelector(".App").classList.add("overflow-hidden", "filter", "blur-md")
+
+        return{
+          ...state,
+          machineSave: true
         }
       }
     case 'UPDATE_SERVICE_CONTRACT':

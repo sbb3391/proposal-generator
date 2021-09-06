@@ -8,6 +8,8 @@ import Proposals from './containers/Proposals'
 import Proposal from './containers/Proposal'
 import { connect } from 'react-redux';
 import PopWindow from './containers/PopWindow'
+import { savePreviewMachine } from './actions/savePreviewMachine.js';
+import MachineSave from './containers/MachineSave.js';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -17,6 +19,11 @@ function App(props) {
     return props.popWindow ? <PopWindow /> : null
   }
 
+  const renderMachineSave = () => {
+    return props.machineSave ? <MachineSave /> : null
+  }
+
+  debugger;
   return (
     <Router >
       <div className="App absolute z-0 w-full h-full">
@@ -29,17 +36,18 @@ function App(props) {
             <Route path="/machine/new" render={() => <NewMachine type="new" />} />
             <Route exact path="/machines/preview/edit" render={() => <NewMachine type="preview" />} />
             <Route path="/machines/preview" exact render={(match) => <Machine {...props} machine={props.previewMachine} changePrice={props.changeItemPrice} 
-                                                                        match={match.match} addMachine={props.addMachine} machineType="preview" />} />
+                                                                        match={match.match} addMachine={props.addMachine} machineType="preview" saveMachine={props.savePreviewMachine} />} />
 
             <Route path="/machines/:id/edit" render={() => <NewMachine type="edit"/>} />
             <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeItemPrice} 
-                                                              match={match.match} addMachine={props.addMachine} machineType="machine"/>} />
+                                                              match={match.match} addMachine={props.addMachine} machineType="machine" /> } />
             <Route exact path="/proposals" component={Proposals}/>
             <Route path="/proposals/:id" component={Proposal} />
           </Switch>
         </div>
       </div>
       {renderPopWindow()}
+      {renderMachineSave()}
     </Router>
   );
 }
@@ -48,14 +56,16 @@ const mapStateToProps = state => (
   {
     machine: state.machine,
     popWindow: state.popWindow,
-    previewMachine: state.previewMachine
+    previewMachine: state.previewMachine,
+    machineSave: state.machineSave
   }
 )
 
 const mapDispatchToProps = dispatch => (
   {
     addMachine: machine => dispatch({type: 'ADD_MACHINE', machine: machine}),
-    changeItemPrice: (item, machineType) => dispatch({type: 'CHANGE_ITEM_PRICE', item: item, machineType: machineType})
+    changeItemPrice: (item, machineType) => dispatch({type: 'CHANGE_ITEM_PRICE', item: item, machineType: machineType}),
+    savePreviewMachine: machine => dispatch(savePreviewMachine(machine))
     
   }
 )

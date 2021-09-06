@@ -12,7 +12,7 @@ const machinePdf = (machine) => {
   ]
 
   machine.assemblies.forEach( (assembly) => {
-    let columnIndex = machine.assemblies.indexOf(assembly) % 2 !== 0 ? 0 : 1
+    let columnIndex = machine.assemblies.indexOf(assembly) % 2 !== 0 ? 1 : 0
 
     let newAssembly; 
     newAssembly = {text: assembly.name, fontSize: 16, color: "blue", bold: true}
@@ -53,8 +53,8 @@ const machinePdf = (machine) => {
     }
   })
 
-  const serviceArr = []
-    
+  // handles the creation of the maintanance for each machine
+  let serviceArr = []  
   let serviceTable = [
       {
         table: {
@@ -89,10 +89,29 @@ const machinePdf = (machine) => {
   }
 
   serviceTable[0].table.body = serviceArr;
-  
+
   const machineName = machine.assemblies.find( assembly => assembly.assembly_type === "engine").name
   
   const totalPrice = machine.sellingPrice
+
+  let pricingTable = [
+    {
+      table: {
+        widths: [140, 80],
+        alignment: "center",
+        body: [
+          [{text: "Purchase:", border: [false, false, false, false], fontSize: 10, margin: [0,10,0,0]}, {text: `${numeral(totalPrice).format('$0,0.00')}`, border: [false, false, false, false], fontSize: 10, margin: [0,10,0,0]}],
+          [{text: "36 Month $1 Out:", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0334).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
+          [{text: "36 Month Fair Market", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0303).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
+          [{text: "48 Month $1 Out:", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0265).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
+          [{text: "48 Month Fair Market", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0224).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
+          [{text: "60 Month $1 Out:", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0215).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
+          [{text: "60 Month Fair Market", border: [false, false, false, false], fontSize: 10, margin: [0,0,0,10]}, {text: `${numeral(totalPrice * .0205).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10, margin: [0,0,0,10]}]
+        ]
+      }
+    }
+  ]
+
   
   let dd = {
     content: [
@@ -156,15 +175,9 @@ const machinePdf = (machine) => {
             },
             {
               table: {
-                widths: [140, 90],
+                alignment: "center",
                 body: [
-                  [{text: "Purchase:", border: [true, true, false, false], fontSize: 10}, {text: `${numeral(totalPrice).format('$0,0.00')}`, fontSize: 10}],
-                  [{text: "36 Month $1 Out:", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0334).format('$0,0.00')}/mo`, fontSize: 10}],
-                  [{text: "36 Month Fair Market", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0303).format('$0,0.00')}/mo`, fontSize: 10}],
-                  [{text: "48 Month $1 Out:", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0265).format('$0,0.00')}/mo`, fontSize: 10}],
-                  [{text: "48 Month Fair Market", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0224).format('$0,0.00')}/mo`, fontSize: 10}],
-                  [{text: "60 Month $1 Out:", border: [true, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0215).format('$0,0.00')}/mo`, fontSize: 10}],
-                  [{text: "60 Month Fair Market", border: [true, false, false, true], fontSize: 10}, {text: `${numeral(totalPrice * .0205).format('$0,0.00')}/mo`, fontSize: 10}]
+                  pricingTable
                 ]
               },
               margin: [4,0,0,0]

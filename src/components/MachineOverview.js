@@ -14,6 +14,12 @@ class MachineOverview extends Component {
     }
   }
 
+  renderSaveMachinePreviewButton = () => {
+    if (this.props.machineType === "preview") {
+      return(<button onClick={() => this.props.toggleMachineSave(this.props.machine, this.props.saveMachine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Machine</button>)
+    }
+  }
+
   editButtonClick = (event) => {
     const machine = this.props.machine
 
@@ -41,6 +47,7 @@ class MachineOverview extends Component {
         <button onClick={() => machinePdf(this.props.machine)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
         <button onClick={this.editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
         { this.renderSaveChangesButton(totalPrice)}
+        { this.renderSaveMachinePreviewButton() }
       </>
     );
   }
@@ -54,7 +61,8 @@ const mapStateToProps = (state) => (
 const mapDispatchToProps = (dispatch) => (
   {
     editMachine: (machine, history, machineType) => dispatch(editMachine(machine, history, machineType)),
-    testing: () => dispatch({type: "TESTING"})
+    testing: () => dispatch({type: "TESTING"}),
+    toggleMachineSave: (machine, saveMachine) => dispatch({type: "TOGGLE_MACHINE_SAVE", machine: machine, saveMachine: saveMachine})
   }
 )
 

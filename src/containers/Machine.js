@@ -22,7 +22,6 @@ class Machine extends Component {
   }
 
   render() {
-    debugger;
     if (this.props.machine.requesting) {
       return(
         <div className="w-full h-full flex justify-around">
