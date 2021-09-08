@@ -20,6 +20,7 @@ const defaultState = {
   },
   proposal: {},
   previewMachine: {},
+  customers: [],
   popWindow: false,
   machineSave: false
 }
@@ -309,6 +310,12 @@ function newMachineReducer(state = defaultState, action) {
       return{
         ...state,
         previewMachine: newPreviewMachine
+      }
+    case 'ADD_CUSTOMERS':
+      debugger;
+      return{
+        ...state,
+        customers: action.customers
       }
     default:
       return {...state}
