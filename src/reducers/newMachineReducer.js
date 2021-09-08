@@ -312,10 +312,24 @@ function newMachineReducer(state = defaultState, action) {
         previewMachine: newPreviewMachine
       }
     case 'ADD_CUSTOMERS':
-      debugger;
       return{
         ...state,
         customers: action.customers
+      }
+    case 'FLIP_CUSTOMER_CARD':
+      debugger;
+      return{
+        ...state,
+        customers: state.customers.map( customer => {
+          if (customer.id == action.customerId) {
+            const customerSide = () => {return customer.side == "front" ? "back" : "front"}
+            
+            customer.side = customerSide()
+            return customer
+          } else {
+            return customer
+          }
+        })
       }
     default:
       return {...state}

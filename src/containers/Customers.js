@@ -21,9 +21,9 @@ class Customers extends Component {
     debugger;
     return customer.proposals.map( proposal => {
       return(
-        <div>
-          <span>Name: {proposal.name}</span>
-          <span>Last Updated: {proposal.lastUpdated}</span>
+        <div className="flex flex-col">
+          <span className="underline cursor-pointer text-sm" onClick={() => this.props.flipCustomerCard(customer.id)}>{proposal.name}</span>
+          <span className="text-sm">Last Updated: {proposal.lastUpdated}</span>
         </div>
       )
     })
@@ -33,13 +33,13 @@ class Customers extends Component {
     return this.props.customers.map( customer => {
       if (customer.side === "front") {
         return(
-          <div className="w-1/6 h-32 border-2 border-grey-200 rounded-md flex items-center">
-            <h1 className="w-full text-center text-2xl">{customer.customer_name}</h1>
+          <div className="w-1/6 h-48 border-2 border-grey-200 rounded-md flex items-center">
+            <h1 onClick={() => this.props.flipCustomerCard(customer.id)} className="w-full text-center text-2xl hover:underline cursor-pointer">{customer.customer_name}</h1>
           </div>
         ) 
       } else {
         return(
-          <div className="w-1/6 h-32 border-2 border-grey-200 rounded-md flex items-center content-center place-items-center">
+          <div className="w-1/6 h-48 overflow-auto border-2 border-grey-200 rounded-md flex items-center content-center place-items-center">
             <div className="flex flex-col w-full space-y-2">
               {this.renderCustomerProposals(customer)}
             </div>   
@@ -51,7 +51,7 @@ class Customers extends Component {
 
   render() {
     return (
-      <div className="w-full flex flex-wrap">
+      <div className="w-11/12 mx-auto flex flex-wrap space-x-6 space-y-4 py-8">
         {this.renderCustomers()}
       </div>
     );
@@ -66,7 +66,8 @@ const mapStateToProps = state => (
 
 const mapDispatchToProps = dispatch => (
   {
-    addCustomers: customers => dispatch({type: 'ADD_CUSTOMERS', customers: customers})
+    addCustomers: customers => dispatch({type: 'ADD_CUSTOMERS', customers: customers}),
+    flipCustomerCard: customerId => dispatch({type: "FLIP_CUSTOMER_CARD", customerId: customerId})
   }
 )
 
