@@ -2,7 +2,7 @@ class MachineSerializer < SerializerParent
   attributes :id, :assemblies, :machine
 
   def assemblies
-    serialize_machine_assemblies(self.object)
+    serialize_machine_preview_assemblies(self.object)
   end
 
   def machine

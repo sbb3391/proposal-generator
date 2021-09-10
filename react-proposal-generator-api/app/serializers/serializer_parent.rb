@@ -1,6 +1,6 @@
 class SerializerParent < ActiveModel::Serializer
-  def serialize_machine_assemblies(machine)
 
+  def serialize_machine_assemblies(machine)
     items_assemblies = machine.machine_assembly_items.map do |mai|
       ItemsAssembly.find(mai.assembly_item_id)
     end
@@ -13,9 +13,11 @@ class SerializerParent < ActiveModel::Serializer
       machine.id ? MachineAssemblyItem.find_by(machine_id: machine.id, assembly_item_id: assembly_item_id).unit_price : item.branch_floor_price
     end
 
+    x = []
     assemblies_map = assemblies.uniq.map do |assembly| 
       items = assembly.items.map do |item|
-        assembly_item_id = ItemsAssembly.find_by(item_id: item.id, assembly_id: assembly.id)
+        assembly_item_id = ItemsAssembly.find_by(item_id: item.id, assembly_id: assembly.id).id
+        x.push( MachineAssemblyItem.find_by(machine_id: machine.id, assembly_item_id: assembly_item_id))
         {
           machineId: machine.id,
           modelId: machine.model_id,
@@ -43,6 +45,13 @@ class SerializerParent < ActiveModel::Serializer
 
     assemblies_map
 
+    x.each do |x, index|
+      if x
+        puts x
+      else 
+        puts `can't find index #{index}`
+      end
+    end
   end
 
   def serialize_machine(machine)
@@ -50,7 +59,7 @@ class SerializerParent < ActiveModel::Serializer
       machineId: machine.id,
       modelId: machine.model_id,
       proposalId: machine.proposal_id,
-      assemblies: serialize_machine_assemblies(machine),
+      assemblies: serialize_machine_preview_assemblies(machine),
       colorClick: machine.color_click,
       monoClick: machine.mono_click,
       annualColorVolume: machine.annual_color_volume,

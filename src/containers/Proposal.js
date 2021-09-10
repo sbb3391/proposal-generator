@@ -9,7 +9,6 @@ import GraphicLoading from '../components/GraphicLoading'
 class Proposal extends Component {
 
   componentDidMount() {
-    debugger;
     this.props.fetchProposal(this.props.match.params.id)
   }
 

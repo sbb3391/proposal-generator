@@ -102,10 +102,10 @@ class EnginePick extends Component {
 
     if (this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "new") {
       if (this.props.match.params.proposalId) {
-        return <CompleteButton value={"Add to Proposal"} fetchUrl={`/proposals/${this.props.match.params.proposalId}/machines/create`} fetchAction="POST" 
+        return <CompleteButton value={"Add to Proposal"} fetchUrl={`proposals/${this.props.match.params.proposalId}/machines`} fetchAction="POST" 
                 newUrl={`/proposals/${this.props.match.params.proposalId}`} dispatch={(json) => {return null} }/>
       } else {
-        return <CompleteButton value="Preview Machine" fetchUrl={`/machines/preview`} fetchAction="POST" newUrl={'/machines/preview'} 
+        return <CompleteButton value="Preview Machine" fetchUrl={`machines/preview`} fetchAction="POST" newUrl={'/machines/preview'} 
                 dispatch={this.props.previewMachine}/>
       }
     } else if ( this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "edit" ) {

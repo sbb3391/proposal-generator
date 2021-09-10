@@ -10,7 +10,9 @@ class MachinesController < ApplicationController
   end 
   
   def create
-    machine = Machine.create(model_id: params[:model][:id])
+    proposal = Proposal.find(params[:proposal_id])
+    
+    machine = Machine.create(model_id: params[:model][:id], proposal_id: proposal.id, customer_id: proposal ? Customer.find(proposal.customer_id).id : nil)
 
     params[:model][:assemblies].each do |assembly|
       assembly_id = assembly[:id]

@@ -14,8 +14,7 @@ const CompleteButton = (props) => {
       }
     }
 
-    debugger;
-    fetch(`${props.fetchUrl}`, {
+    fetch(`http://localhost:3000/${props.fetchUrl}`, {
     method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,8 +37,7 @@ const CompleteButton = (props) => {
 
 const mapStateToProps = state => (
   {
-    machineAssemblies: state.machine.assemblies,
-    state: state
+    machineAssemblies: state.machine.assemblies
   }
 )
 
