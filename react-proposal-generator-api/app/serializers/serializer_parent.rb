@@ -13,11 +13,9 @@ class SerializerParent < ActiveModel::Serializer
       machine.id ? MachineAssemblyItem.find_by(machine_id: machine.id, assembly_item_id: assembly_item_id).unit_price : item.branch_floor_price
     end
 
-    x = []
     assemblies_map = assemblies.uniq.map do |assembly| 
       items = assembly.items.map do |item|
         assembly_item_id = ItemsAssembly.find_by(item_id: item.id, assembly_id: assembly.id).id
-        x.push( MachineAssemblyItem.find_by(machine_id: machine.id, assembly_item_id: assembly_item_id))
         {
           machineId: machine.id,
           modelId: machine.model_id,
@@ -44,14 +42,16 @@ class SerializerParent < ActiveModel::Serializer
     end 
 
     assemblies_map
+  end
 
-    x.each do |x, index|
-      if x
-        puts x
-      else 
-        puts `can't find index #{index}`
-      end
+  def calculate_selling_price(machine) 
+    items_prices = []
+
+    machine.machine_assembly_items.each do |item|
+      items_prices.push(item.unit_price.to_f)
     end
+
+    items_prices.reduce(0, :+)
   end
 
   def serialize_machine(machine)
@@ -65,7 +65,8 @@ class SerializerParent < ActiveModel::Serializer
       annualColorVolume: machine.annual_color_volume,
       annualMonoVolume: machine.annual_mono_volume,
       serviceComments: machine.service_comments,
-      pricingComments: machine.pricing_comments
+      pricingComments: machine.pricing_comments,
+      sellingPrice: calculate_selling_price(machine)
     }
   end
 
@@ -78,10 +79,6 @@ class SerializerParent < ActiveModel::Serializer
         pick_one_group_assemblies: PickOneGroup.find(id).model_assemblies
       }
     end
-  end
-
-  def filter_only_machine_items(machine) 
-
   end
 
   def serialize_machine_preview_assemblies(machine)
