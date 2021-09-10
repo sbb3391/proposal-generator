@@ -23,8 +23,6 @@ function App(props) {
   const renderMachineSave = () => {
     return props.machineSave ? <MachineSave /> : null
   }
-
-  debugger;
   return (
     <Router >
       <div className="App absolute z-0 w-full h-full">
@@ -44,6 +42,7 @@ function App(props) {
                                                               match={match.match} addMachine={props.addMachine} machineType="machine" /> } />
             <Route path="/customers" component={Customers} />                                               
             <Route exact path="/proposals" component={Proposals}/>
+            <Route path="/proposals/:proposalId/machine/new" render={(match) => <NewMachine type="new" match={match.match} /> } />
             <Route path="/proposals/:id" component={Proposal} />
           </Switch>
         </div>

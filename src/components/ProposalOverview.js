@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { proposalPdf } from '../pdf/proposalPdf'
 import { renderToString } from 'react-dom/server'
 import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
 
 // required for PDFMake
 import { buildQueries } from "@testing-library/react";
@@ -39,6 +40,11 @@ class ProposalOverview extends Component {
       </div>
       <div>
         <button onClick={this.props.togglePopWindow} className="border-black border-2 rounded-md p-2">Edit Pricing Options</button>
+      </div>
+      <div>
+        <NavLink to={`/proposals/${this.props.match.params.id}/machine/new`}>
+          <button className="border-black border-2 rounded-md p-2">Add Machine</button>
+        </NavLink>
       </div>
       </>
     );

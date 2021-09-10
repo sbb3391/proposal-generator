@@ -21,7 +21,7 @@ class Proposals extends Component {
         return(
           <div className="w-1/6 h-36 border-2 border-black rounded-md flex flex-col place-items-center">
             <NavLink to={`/proposals/${proposal.id}`} exact>
-              <h1 className="cuursor-pointer" id={proposal.id} onClick={this.handleProposalClick}>{proposal.customer_name}</h1>
+              <h1 className="cursor-pointer" id={proposal.id} onClick={this.handleProposalClick}>{proposal.customer_name}</h1>
             </NavLink>
           </div>
         )

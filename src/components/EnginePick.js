@@ -101,7 +101,13 @@ class EnginePick extends Component {
     }
 
     if (this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "new") {
-      return <CompleteButton />
+      if (this.props.match.params.proposalId) {
+        return <CompleteButton value={"Add to Proposal"} fetchUrl={`/proposals/${this.props.match.params.proposalId}/machines/create`} fetchAction="POST" 
+                newUrl={`/proposals/${this.props.match.params.proposalId}`} dispatch={(json) => {return null} }/>
+      } else {
+        return <CompleteButton value="Preview Machine" fetchUrl={`/machines/preview`} fetchAction="POST" newUrl={'/machines/preview'} 
+                dispatch={this.props.previewMachine}/>
+      }
     } else if ( this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "edit" ) {
       return(
         <>
@@ -233,7 +239,8 @@ const mapDispatchToProps = dispatch => (
   {
     fetchAssemblies: (modelId) => dispatch(fetchAssemblies(modelId)),
     addAssembly: assembly => dispatch({type: 'ADD_ASSEMBLY', assembly: assembly}),
-    removeClickedId: () => dispatch({type: 'REMOVE_CLICKED_ID', id: ""})
+    removeClickedId: () => dispatch({type: 'REMOVE_CLICKED_ID', id: ""}),
+    previewMachine: machine => dispatch({type: 'PREVIEW_MACHINE', machine: machine})
   }
 )
 

@@ -2,18 +2,20 @@ import React from 'react';
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux';
 
-const CompleteButton = ({machineAssemblies, previewMachine}) => {
+const CompleteButton = (props) => {
   const history = useHistory()
+
 
   const createMachine = () => {
     const data = {
       model: {
-        id: machineAssemblies[0].model_id,
-        assemblies: machineAssemblies
+        id: props.machineAssemblies[0].model_id,
+        assemblies: props.machineAssemblies
       }
     }
 
-    fetch('http://localhost:3000/machines/preview', {
+    debugger;
+    fetch(`${props.fetchUrl}`, {
     method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -22,13 +24,13 @@ const CompleteButton = ({machineAssemblies, previewMachine}) => {
     })
     .then(resp => resp.json())
     .then(json => {
-      previewMachine(json)
-      history.push(`/machines/preview`)
+      props.dispatch(json)
+      history.push(`${props.newUrl}`)
     })
   }
   return (
     <>
-      <button id="complete-button" className="bg-green-500 text-white text-2xl p-2 h-12 text-center rounded-md" onClick={createMachine}>Complete Machine</button>
+      <button id="complete-button" className="bg-green-500 text-white text-2xl p-2 h-12 text-center rounded-md" onClick={createMachine}>{props.value}</button>
     </>
   );
 }
@@ -36,13 +38,13 @@ const CompleteButton = ({machineAssemblies, previewMachine}) => {
 
 const mapStateToProps = state => (
   {
-    machineAssemblies: state.machine.assemblies
+    machineAssemblies: state.machine.assemblies,
+    state: state
   }
 )
 
 const mapDispatchToProps = dispatch => (
   {
-    previewMachine: machine => dispatch({type: 'PREVIEW_MACHINE', machine: machine})
   }
 )
 

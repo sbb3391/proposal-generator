@@ -9,6 +9,7 @@ import GraphicLoading from '../components/GraphicLoading'
 class Proposal extends Component {
 
   componentDidMount() {
+    debugger;
     this.props.fetchProposal(this.props.match.params.id)
   }
 
@@ -32,7 +33,7 @@ class Proposal extends Component {
       return (
         <div className="w-full h-full flex flex-col">
           <div className="border-black border-2 w-11/12 h-1/6 flex mx-auto rounded-md justify-around items-center content-center">
-            <ProposalOverview />
+            <ProposalOverview match={this.props.match} />
           </div>
           <div className="w-11/12 h-5/6">
             { this.renderMachines() }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from "react-router-dom";
 
 class Customers extends Component {
 
@@ -18,15 +19,30 @@ class Customers extends Component {
   }
 
   renderCustomerProposals = (customer) => {
-    debugger;
     return customer.proposals.map( proposal => {
+      const date = new Date(`${proposal.lastUpdated}`)
+      const options = {
+        month: "short",
+        day: "numeric",
+        year: "numeric",
+        hour: "numeric",
+        minute: "numeric"
+      }
+      debugger;
       return(
-        <div className="flex flex-col">
-          <span className="underline cursor-pointer text-sm" onClick={() => this.props.flipCustomerCard(customer.id)}>{proposal.name}</span>
-          <span className="text-sm">Last Updated: {proposal.lastUpdated}</span>
-        </div>
-      )
+      
+        <tr className={this.returnRowClass(customer.proposals, proposal)}>
+            <NavLink className="cursor-pointer" to={`/proposals/${proposal.id}`}>
+              <td className="cursor-pointer hover:underline text-xs w-1/2" >{proposal.name}</td>
+            </NavLink>
+            <td className="text-xs w-1/2">{date.toLocaleString("en-us", options)}</td>
+        </tr>
+        )
     })
+  }
+
+  returnRowClass = (array, arrayElement) => {
+    return array.indexOf(arrayElement) % 2 === 0 ? "bg-blue-200" : null
   }
 
   renderCustomers = () => {
@@ -39,9 +55,19 @@ class Customers extends Component {
         ) 
       } else {
         return(
-          <div className="w-1/6 h-48 overflow-auto border-2 border-grey-200 rounded-md flex items-center content-center place-items-center">
-            <div className="flex flex-col w-full space-y-2">
-              {this.renderCustomerProposals(customer)}
+          <div className="w-1/6 h-48 overflow-auto border-2 border-grey-200 rounded-md">
+            <div className="w-full">
+              <table>
+                <thead>
+                  <tr>
+                    <td className="text-xs">Proposal Name</td>
+                    <td className="text-xs">Last Updated</td>
+                  </tr>      
+                </thead>
+                <tbody>
+                  {this.renderCustomerProposals(customer)}
+                </tbody>
+              </table>
             </div>   
           </div>
         )
