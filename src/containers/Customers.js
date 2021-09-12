@@ -28,7 +28,7 @@ class Customers extends Component {
         hour: "numeric",
         minute: "numeric"
       }
-      debugger;
+
       return(
       
         <tr className={this.returnRowClass(customer.proposals, proposal)}>
@@ -56,6 +56,9 @@ class Customers extends Component {
       } else {
         return(
           <div className="w-1/6 h-48 overflow-auto border-2 border-grey-200 rounded-md">
+            <div className="w-full text-right">
+              <span className="text-green-400 font-bold text-4xl hover:text-green-500 cursor-pointer">&#43;</span>
+            </div>
             <div className="w-full">
               <table>
                 <thead>
