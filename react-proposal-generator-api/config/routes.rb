@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :images
   resources :customers
   resources :proposals do 
     resources :machines 

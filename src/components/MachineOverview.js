@@ -32,6 +32,7 @@ class MachineOverview extends Component {
   }
 
   render() {
+    debugger;
     let priceArray = [];
 
     if (this.props.machine.assemblies.length > 0) {

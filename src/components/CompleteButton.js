@@ -23,6 +23,7 @@ const CompleteButton = (props) => {
     })
     .then(resp => resp.json())
     .then(json => {
+      debugger;
       props.dispatch(json)
       history.push(`${props.newUrl}`)
     })

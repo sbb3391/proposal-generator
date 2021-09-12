@@ -66,7 +66,8 @@ class SerializerParent < ActiveModel::Serializer
       annualMonoVolume: machine.annual_mono_volume,
       serviceComments: machine.service_comments,
       pricingComments: machine.pricing_comments,
-      sellingPrice: calculate_selling_price(machine)
+      sellingPrice: calculate_selling_price(machine),
+      image: Image.find_by(id: machine.image_id)
     }
   end
 

@@ -6,7 +6,6 @@ const proposalPdf = (machinesArray) => {
     content: []
   }
 
-  debugger;
   machinesArray.map( machine => {
     machinePdf(machine).content.forEach( i => {
       dd.content.push(i)

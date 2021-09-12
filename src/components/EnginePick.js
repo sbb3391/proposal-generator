@@ -101,7 +101,7 @@ class EnginePick extends Component {
     }
 
     if (this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "new") {
-      if (this.props.match.params.proposalId) {
+      if (this.props.match && this.props.match.params.proposalId) {
         return <CompleteButton value={"Add to Proposal"} fetchUrl={`proposals/${this.props.match.params.proposalId}/machines`} fetchAction="POST" 
                 newUrl={`/proposals/${this.props.match.params.proposalId}`} dispatch={(json) => {return null} }/>
       } else {

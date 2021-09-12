@@ -14,12 +14,15 @@ class MachinesController < ApplicationController
     
     machine = Machine.create(model_id: params[:model][:id], proposal_id: proposal.id, customer_id: proposal ? Customer.find(proposal.customer_id).id : nil)
 
+    image_items = []
+
     params[:model][:assemblies].each do |assembly|
       assembly_id = assembly[:id]
 
       assembly[:items].each do |item| 
         assembly_item = ItemsAssembly.find_by(assembly_id: assembly_id, item_id: item[:itemId])
         i = Item.find_by(id: assembly_item.item_id)
+        i.image ? image_items.push(i.id) : nil
         machine.machine_assembly_items.build(assembly_item_id: assembly_item.id, unit_price: i.branch_floor_price )
       end
     end
