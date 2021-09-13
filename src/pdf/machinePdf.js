@@ -15,7 +15,7 @@ const machinePdf = (machine) => {
     let columnIndex = machine.assemblies.indexOf(assembly) % 2 !== 0 ? 1 : 0
 
     let newAssembly; 
-    newAssembly = {text: assembly.name, fontSize: 16, color: "blue", bold: true}
+    newAssembly = {text: assembly.name, fontSize: 16, color: "blue", bold: true, margin: [20, 0]}
     
     body[columnIndex].push(newAssembly);
 
@@ -101,25 +101,21 @@ const machinePdf = (machine) => {
         alignment: "center",
         body: [
           [{text: "Purchase:", border: [false, false, false, false], fontSize: 10, margin: [0,10,0,0]}, {text: `${numeral(totalPrice).format('$0,0.00')}`, border: [false, false, false, false], fontSize: 10, margin: [0,10,0,0]}],
-          [{text: "36 Month $1 Out:", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0334).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
-          [{text: "36 Month Fair Market", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0303).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
-          [{text: "48 Month $1 Out:", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0265).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
           [{text: "48 Month Fair Market", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0224).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
-          [{text: "60 Month $1 Out:", border: [false, false, false, false], fontSize: 10}, {text: `${numeral(totalPrice * .0215).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10}],
           [{text: "60 Month Fair Market", border: [false, false, false, false], fontSize: 10, margin: [0,0,0,10]}, {text: `${numeral(totalPrice * .0205).format('$0,0.00')}/mo`, border: [false, false, false, false], fontSize: 10, margin: [0,0,0,10]}]
         ]
       }
     }
   ]
 
-  
   let dd = {
     content: [
       {
+        pageBreak: "before",
         svg: `<svg width="525" height="40">
                 <rect rx="10" ry="10" width="525" height="40"
                 style="fill:blue;stroke:black;;opacity:0.5" />
-                <text x='${Math.floor(((machineName).length / 48) * 100)}%'  y="57%" font-family="Verdana" font-size="20" bold="true" fill="white">${machineName}</text>
+                <text  x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="20" bold="true" fill="white">${machineName}</text>
          </svg>`  
       },
       {
@@ -132,7 +128,7 @@ const machinePdf = (machine) => {
         svg: `<svg width="525" height="30">
                 <rect rx="10" ry="10" width="525" height="30"
                 style="fill:blue;stroke:black;;opacity:0.5" />
-                <text x="35%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Included Components</text>
+                <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="18" bold="true" fill="white">Included Components</text>
          </svg>`,
          margin: [0, 0, 0, 20]
       },
@@ -150,7 +146,7 @@ const machinePdf = (machine) => {
               svg: `<svg width="260" height="30">
                       <rect rx="10" ry="10" width="250" height="30"
                       style="fill:blue;stroke:black;;opacity:0.5" />
-                      <text x="22%" y="75%" font-family="Verdana" font-size="18" bold="true" fill="white">Maintance Details</text>
+                      <text  x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="18" bold="true" fill="white">Maintance Details</text>
                </svg>`,
                margin: [0, 0, 0, 10],
             },
@@ -187,15 +183,16 @@ const machinePdf = (machine) => {
       },
       {
         pageBreak: "before",
-        text: 'Component Detail',
-        style: 'header',
-        alignment: 'center',
-        fontSize: 24,
-        margin: [0,0,0,30]
+        svg: `<svg width="525" height="40">
+        <rect rx="10" ry="10" width="525" height="40"
+        style="fill:blue;stroke:black;;opacity:0.5" />
+        <text  x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="Verdana" font-size="20" bold="true" fill="white">Component Detail</text>
+ </svg>`,
+        margin: [0, 0, 0, 40]
       },
       {
-        columns: body,
-        pageBreak: "after"
+        margin: [20, 0],
+        columns: body
       }
     ]
   }

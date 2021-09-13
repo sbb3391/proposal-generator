@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   resources :images
-  resources :customers
+  resources :customers do 
+    resources :proposals
+  end
   resources :proposals do 
     resources :machines 
   end

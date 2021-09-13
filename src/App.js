@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import PopWindow from './containers/PopWindow'
 import { savePreviewMachine } from './actions/savePreviewMachine.js';
 import MachineSave from './containers/MachineSave.js';
+import NewProposal from './components/NewProposal.js';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -40,7 +41,8 @@ function App(props) {
             <Route path="/machines/:id/edit" render={() => <NewMachine type="edit"/>} />
             <Route path="/machines/:id" render={(match) => <Machine {...props} machine={props.machine} changePrice={props.changeItemPrice} 
                                                               match={match.match} addMachine={props.addMachine} machineType="machine" /> } />
-            <Route path="/customers" component={Customers} />                                               
+            <Route exact path="/customers" component={Customers} />  
+            <Route path="/customers/:id/proposals/new" render={(match) => <NewProposal match={match.match} />} />                                         
             <Route exact path="/proposals" component={Proposals}/>
             <Route path="/proposals/:proposalId/machine/new" render={(match) => <NewMachine type="new" match={match.match} /> } />
             <Route path="/proposals/:id" component={Proposal} />

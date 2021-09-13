@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
+
 
 class Customers extends Component {
 
@@ -41,8 +43,35 @@ class Customers extends Component {
     })
   }
 
+  renderProposalsTable = (customer) => {
+    debugger;
+    if (customer && customer.proposals.length > 0 ) {
+      return(
+        <table>
+          <thead>
+            <tr>
+              <td className="text-xs">Proposal Name</td>
+              <td className="text-xs">Last Updated</td>
+            </tr>      
+          </thead>
+          <tbody>
+            {this.renderCustomerProposals(customer)}
+          </tbody>
+        </table>
+      )
+    } else {
+      return null
+    }
+  }
+
   returnRowClass = (array, arrayElement) => {
     return array.indexOf(arrayElement) % 2 === 0 ? "bg-blue-200" : null
+  }
+
+  createNewProposal = (event) => {
+    const id = event.target.id
+    window.history.pushState({}, "", `/customers/${id}/proposals/new`)
+    this.props.newProposal()
   }
 
   renderCustomers = () => {
@@ -57,20 +86,12 @@ class Customers extends Component {
         return(
           <div className="w-1/6 h-48 overflow-auto border-2 border-grey-200 rounded-md">
             <div className="w-full text-right">
-              <span className="text-green-400 font-bold text-4xl hover:text-green-500 cursor-pointer">&#43;</span>
+              <NavLink to={`/customers/${customer.id}/proposals/new`}>
+                <span className="text-green-400 font-bold text-4xl hover:text-green-500 cursor-pointer">&#43;</span>
+              </NavLink>
             </div>
             <div className="w-full">
-              <table>
-                <thead>
-                  <tr>
-                    <td className="text-xs">Proposal Name</td>
-                    <td className="text-xs">Last Updated</td>
-                  </tr>      
-                </thead>
-                <tbody>
-                  {this.renderCustomerProposals(customer)}
-                </tbody>
-              </table>
+              { this.renderProposalsTable(customer)}
             </div>   
           </div>
         )
@@ -96,7 +117,8 @@ const mapStateToProps = state => (
 const mapDispatchToProps = dispatch => (
   {
     addCustomers: customers => dispatch({type: 'ADD_CUSTOMERS', customers: customers}),
-    flipCustomerCard: customerId => dispatch({type: "FLIP_CUSTOMER_CARD", customerId: customerId})
+    flipCustomerCard: customerId => dispatch({type: "FLIP_CUSTOMER_CARD", customerId: customerId}),
+    newProposal: () => dispatch({type: "NEW_PROPOSAL"})
   }
 )
 

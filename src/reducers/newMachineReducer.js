@@ -306,7 +306,6 @@ function newMachineReducer(state = defaultState, action) {
     case 'PREVIEW_MACHINE': 
       const newPreviewMachine = Object.assign({}, action.machine)
 
-      debugger;
       return{
         ...state,
         previewMachine: newPreviewMachine
@@ -317,7 +316,6 @@ function newMachineReducer(state = defaultState, action) {
         customers: action.customers
       }
     case 'FLIP_CUSTOMER_CARD':
-      debugger;
       return{
         ...state,
         customers: state.customers.map( customer => {
@@ -326,10 +324,18 @@ function newMachineReducer(state = defaultState, action) {
             
             customer.side = customerSide()
             return customer
+          } if (customer.side === "back") {
+            customer.side = "front"
+            return customer
           } else {
             return customer
           }
         })
+      }
+    case 'NEW_PROPOSAL':
+      return{
+        ...state,
+        customers: []
       }
     default:
       return {...state}

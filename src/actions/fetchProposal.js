@@ -4,7 +4,6 @@ export function fetchProposal(proposalId) {
     fetch(`http://localhost:3000/proposals/${proposalId}`)
     .then(resp => resp.json())
     .then(proposal => {
-      debugger;
       dispatch({type: 'ADD_PROPOSAL', proposal: proposal})
     })
   }
