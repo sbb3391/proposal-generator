@@ -111,7 +111,6 @@ const machinePdf = (machine) => {
   let dd = {
     content: [
       {
-        pageBreak: "before",
         svg: `<svg width="525" height="40">
                 <rect rx="10" ry="10" width="525" height="40"
                 style="fill:blue;stroke:black;;opacity:0.5" />
@@ -192,7 +191,8 @@ const machinePdf = (machine) => {
       },
       {
         margin: [20, 0],
-        columns: body
+        columns: body,
+        pageBreak: "after"
       }
     ]
   }

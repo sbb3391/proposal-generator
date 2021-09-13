@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import numeral from 'numeral';
-import { machinePdf } from '../pdf/machinePdf'
+import { proposalPdf } from '../pdf/proposalPdf'
 import { connect } from 'react-redux';
 import { editMachine } from '../actions/editMachine'
 import { useHistory } from 'react-router-dom'
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const MachineOverview = (props) => {
 
@@ -33,6 +36,10 @@ const MachineOverview = (props) => {
     }
   }
 
+  const createPdf = () => {
+    pdfMake.createPdf(proposalPdf([props.machine], "preview")).open()
+  }
+
   let priceArray = [];
 
   if (props.machine.assemblies.length > 0) {
@@ -45,7 +52,7 @@ const MachineOverview = (props) => {
     <>
       <h1 className="text-center">Machine Overview</h1>
       <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
-      <button onClick={() => machinePdf(props.machine)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
+      <button onClick={createPdf} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
       <button onClick={editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
       { renderSaveChangesButton(totalPrice)}
       { renderSaveMachinePreviewButton() }
