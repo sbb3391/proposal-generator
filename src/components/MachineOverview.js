@@ -3,55 +3,54 @@ import numeral from 'numeral';
 import { machinePdf } from '../pdf/machinePdf'
 import { connect } from 'react-redux';
 import { editMachine } from '../actions/editMachine'
-import { NavLink } from "react-router-dom";
+import { useHistory } from 'react-router-dom'
 
-class MachineOverview extends Component {
+const MachineOverview = (props) => {
 
-  renderSaveChangesButton = totalPrice => { 
-    if (this.props.machine.showSave && this.props.machineType !== "preview") {
+  const history = useHistory();
 
-      return(<button onClick={() => this.props.saveMachine(this.props.machine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Changes</button>)
+  const renderSaveChangesButton = totalPrice => { 
+    if (props.machine.showSave && props.machineType !== "preview") {
+
+      return(<button onClick={() => props.saveMachine(props.machine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Changes</button>)
     }
   }
 
-  renderSaveMachinePreviewButton = () => {
-    if (this.props.machineType === "preview") {
-      return(<button onClick={() => this.props.toggleMachineSave(this.props.machine, this.props.saveMachine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Machine</button>)
+  const renderSaveMachinePreviewButton = () => {
+    if (props.machineType === "preview") {
+      return(<button onClick={() => props.toggleMachineSave(props.machine, props.saveMachine)} className="border border-black rounded-md w-36 mx-auto bg-green-500 text-white bold cursor-pointer">Save Machine</button>)
     }
   }
 
-  editButtonClick = (event) => {
-    const machine = this.props.machine
+  const editButtonClick = (event) => {
+    const machine = props.machine
 
-    if (this.props.machineType === "preview") {
-      window.history.pushState({}, "", '/machines/preview/edit')
-      this.props.testing()
+    if (props.machineType === "preview") {
+      history.pushState('/machines/preview/edit')
+      props.testing()
     } else {
-      this.props.editMachine(machine, this.props.history, this.props.machineType) 
+      props.editMachine(machine, props.history, props.machineType) 
     }
   }
 
-  render() {
-    debugger;
-    let priceArray = [];
+  let priceArray = [];
 
-    if (this.props.machine.assemblies.length > 0) {
-      this.props.machine.assemblies.forEach(assembly => assembly.items.forEach( item => priceArray.push(item.unitPrice)))
-    }
-
-    const totalPrice = numeral(priceArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
-    
-    return (
-      <>
-        <h1 className="text-center">Machine Overview</h1>
-        <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
-        <button onClick={() => machinePdf(this.props.machine)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
-        <button onClick={this.editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
-        { this.renderSaveChangesButton(totalPrice)}
-        { this.renderSaveMachinePreviewButton() }
-      </>
-    );
+  if (props.machine.assemblies.length > 0) {
+    props.machine.assemblies.forEach(assembly => assembly.items.forEach( item => priceArray.push(item.unitPrice)))
   }
+
+  const totalPrice = numeral(priceArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
+  
+  return (
+    <>
+      <h1 className="text-center">Machine Overview</h1>
+      <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
+      <button onClick={() => machinePdf(props.machine)} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
+      <button onClick={editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
+      { renderSaveChangesButton(totalPrice)}
+      { renderSaveMachinePreviewButton() }
+    </>
+  );
 }
 
 const mapStateToProps = (state) => (
@@ -63,7 +62,7 @@ const mapDispatchToProps = (dispatch) => (
   {
     editMachine: (machine, history, machineType) => dispatch(editMachine(machine, history, machineType)),
     testing: () => dispatch({type: "TESTING"}),
-    toggleMachineSave: (machine, saveMachine) => dispatch({type: "TOGGLE_MACHINE_SAVE", machine: machine, saveMachine: saveMachine})
+    toggleMachineSave: (machine, saveMachine) => dispatch({type: "TOGGLE_MACHINE_SAVE", machine: machine, saveMachine: saveMachine}),
   }
 )
 

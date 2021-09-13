@@ -6,13 +6,13 @@ const proposalPdf = (machinesArray) => {
     const dd = {
       content: [
         {
-          svg: `<svg x="0" y="0" width="100%" height="100%">
-                  <svg x="0" y="0" width="100%" height="100%">
-                    <foreignobject width="100%" height="100%">
-                  <img width="100%" src="https://upload.wikimedia.org/wikipedia/commons/a/a0/SG100344.JPG" />
-            </foreignobject>
-          </svg>
-        </svg>`
+          svg: `<svg width="200" height="200"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <svg>
+                      <image href="mdn_logo_only_color.png" height="200" width="200"/>
+                    </svg>
+                  </svg>`
+              
         }
       ]
     }
