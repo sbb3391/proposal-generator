@@ -26,8 +26,8 @@ const MachineOverview = (props) => {
     const machine = props.machine
 
     if (props.machineType === "preview") {
-      history.pushState('/machines/preview/edit')
       props.testing()
+      history.push('/machines/preview/edit')
     } else {
       props.editMachine(machine, props.history, props.machineType) 
     }

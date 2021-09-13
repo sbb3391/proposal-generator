@@ -12,6 +12,8 @@ class NewMachine extends Component {
       return "pickMachine"
     } else if (this.props.type === "edit" ) {
       return "pickEngine"
+    } else if (this.props.type === "preview") {
+      return "pickEngine"
     }
   }
 
@@ -46,6 +48,7 @@ class NewMachine extends Component {
   }
 
   render() {
+    debugger;
     return (
       <div className="w-full h-full flex">
           {this.renderComponent()}

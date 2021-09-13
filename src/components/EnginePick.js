@@ -114,6 +114,9 @@ class EnginePick extends Component {
           <button id="complete-button" className="bg-green-500 text-white text-2xl p-2 h-12 text-center rounded-md" onClick={proposalAlert}>Save Proposal Machine</button>
         </>
       )
+    } else if (this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "preview") {
+      return <CompleteButton value="Preview Machine" fetchUrl={`machines/preview`} fetchAction="POST" newUrl={'/machines/preview'} 
+                dispatch={this.props.previewMachine}/>
     } else {
       return(
         <>
