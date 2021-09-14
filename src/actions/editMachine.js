@@ -1,6 +1,8 @@
-export const editMachine = (machine, history, machineType) => {
+export const editMachine = (machine, proposalId, history, machineType) => {
 
-  history.push(`/machines/${machine.machineId}/edit`)
+  debugger;
+
+  history.push(`/proposals/${proposalId}/machines/${machine.machineId}/edit`)
     
   return (dispatch) => {
     dispatch({type: 'ADD_MODEL', modelId: machine.modelId})

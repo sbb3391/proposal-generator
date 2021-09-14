@@ -109,9 +109,11 @@ class EnginePick extends Component {
                 dispatch={this.props.previewMachine}/>
       }
     } else if ( this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "edit" ) {
+      debugger;
       return(
         <>
-          <button id="complete-button" className="bg-green-500 text-white text-2xl p-2 h-12 text-center rounded-md" onClick={proposalAlert}>Save Proposal Machine</button>
+          <CompleteButton value={"Update Machine"} fetchUrl={`machines/${this.props.match.params.id}`} fetchAction="PATCH" 
+                newUrl={`/proposals/${this.props.match.params.proposalId}`} dispatch={(json) => {return null} }/>
         </>
       )
     } else if (this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "preview") {
@@ -234,7 +236,8 @@ const mapStateToProps = state => (
     remainingAssemblies: state.model.remainingAssemblies,
     remainingPickOneGroupIds: state.model.remainingPickOneGroupIds,
     machineAssemblies: state.machine.assemblies,
-    requesting: state.requesting
+    requesting: state.requesting,
+    proposal: state.proposal
   }
 )
 

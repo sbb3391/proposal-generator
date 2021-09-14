@@ -48,7 +48,6 @@ class NewMachine extends Component {
   }
 
   render() {
-    debugger;
     return (
       <div className="w-full h-full flex">
           {this.renderComponent()}

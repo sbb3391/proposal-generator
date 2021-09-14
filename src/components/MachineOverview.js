@@ -32,7 +32,7 @@ const MachineOverview = (props) => {
       props.testing()
       history.push('/machines/preview/edit')
     } else {
-      props.editMachine(machine, props.history, props.machineType) 
+      props.editMachine(machine, props.match.params.id, props.history, props.machineType) 
     }
   }
 
@@ -67,7 +67,7 @@ const mapStateToProps = (state) => (
 
 const mapDispatchToProps = (dispatch) => (
   {
-    editMachine: (machine, history, machineType) => dispatch(editMachine(machine, history, machineType)),
+    editMachine: (machine, proposalId, history, machineType) => dispatch(editMachine(machine, proposalId, history, machineType)),
     testing: () => dispatch({type: "TESTING"}),
     toggleMachineSave: (machine, saveMachine) => dispatch({type: "TOGGLE_MACHINE_SAVE", machine: machine, saveMachine: saveMachine}),
   }
