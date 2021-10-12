@@ -112,7 +112,7 @@ class EnginePick extends Component {
       debugger;
       return(
         <>
-          <CompleteButton value={"Update Machine"} fetchUrl={`machines/${this.props.match.params.id}`} fetchAction="PATCH" 
+          <CompleteButton value={"Update Machine"} fetchUrl={`machines/${this.props.match.params.machineId}`} fetchAction="PATCH" 
                 newUrl={`/proposals/${this.props.match.params.proposalId}`} dispatch={(json) => {return null} }/>
         </>
       )

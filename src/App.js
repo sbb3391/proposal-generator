@@ -46,6 +46,7 @@ function App(props) {
             <Route exact path="/proposals" component={Proposals}/>
             <Route path="/proposals/:proposalId/machine/new" render={(match) => <NewMachine type="new" match={match.match} /> } />
             <Route path="/proposals/:id" component={Proposal} />
+            <Route path="/edit" component={Edit}/>
           </Switch>
         </div>
       </div>

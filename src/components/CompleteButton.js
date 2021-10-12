@@ -15,7 +15,7 @@ const CompleteButton = (props) => {
     }
 
     fetch(`http://localhost:3000/${props.fetchUrl}`, {
-    method: 'POST',
+    method: props.fetchAction,
       headers: {
         'Content-Type': 'application/json',
       },

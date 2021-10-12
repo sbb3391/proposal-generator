@@ -1,7 +1,5 @@
 export const editMachine = (machine, proposalId, history, machineType) => {
 
-  debugger;
-
   history.push(`/proposals/${proposalId}/machines/${machine.machineId}/edit`)
     
   return (dispatch) => {
