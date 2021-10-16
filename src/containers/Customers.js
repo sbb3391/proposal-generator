@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 class Customers extends Component {
 
   componentDidMount() {
-    fetch('http://localhost:3000/customers')
+    fetch('https://proposals-api.herokuapp.com/customers')
     .then(resp => resp.json())
     .then(json => {
       // default each customer to show front

@@ -9,7 +9,7 @@ class PartsForAssembly extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/assemblies/${this.props.assemblyId}/items_assemblies`)
+    fetch(`https://proposals-api.herokuapp.com/assemblies/${this.props.assemblyId}/items_assemblies`)
     .then(resp => resp.json())
     .then(json => {
       this.setState({

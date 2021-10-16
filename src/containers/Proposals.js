@@ -8,7 +8,7 @@ class Proposals extends Component {
   state = { proposals: [] }
 
   componentDidMount() {
-    fetch("http://localhost:3000/proposals")
+    fetch("https://proposals-api.herokuapp.com/proposals")
     .then( resp => resp.json())
     .then( json => {
       this.setState({proposals: json})

@@ -14,7 +14,7 @@ const CompleteButton = (props) => {
       }
     }
 
-    fetch(`http://localhost:3000/${props.fetchUrl}`, {
+    fetch(`https://proposals-api.herokuapp.com/${props.fetchUrl}`, {
     method: props.fetchAction,
       headers: {
         'Content-Type': 'application/json',

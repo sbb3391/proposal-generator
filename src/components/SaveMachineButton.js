@@ -13,7 +13,7 @@ const SaveMachineButton = ({machineAssemblies, machine}) => {
       }
     }
 
-    fetch('http://localhost:3000/machines', {
+    fetch('https://proposals-api.herokuapp.com/machines', {
     method: 'POST',
       headers: {
         'Content-Type': 'application/json',

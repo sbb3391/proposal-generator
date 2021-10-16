@@ -13,7 +13,7 @@ class Machine extends Component {
     // we don't want to fetch for a machine if we're viewing a proposal. The machines are generated
     // in Proposal component and are already in the redux store
     if ( this.props.machineType === "machine" ) {
-      fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
+      fetch(`https://proposals-api.herokuapp.com/machines/${this.props.match.params.id}`)
       .then(resp => resp.json())
       .then( json => {
         this.props.addMachine(json)
