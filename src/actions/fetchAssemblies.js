@@ -1,6 +1,7 @@
 export function fetchAssemblies(modelId) {
   return (dispatch) => {
     dispatch({type: "START_FETCHING_ASSEMBLIES"});
+    debugger;
     fetch(`https://proposals-api.herokuapp.com/models/${modelId}/assemblies`)
     .then(resp => resp.json())
     .then(assemblies => {

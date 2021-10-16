@@ -27,7 +27,6 @@ class PickModel extends Component {
     fetch('https://proposals-api.herokuapp.com/models')
     .then( resp => resp.json())
     .then( json => {
-      debugger;
       this.setState({
         models: json.map( model => {
           return{name: model.name, id: model.id}
