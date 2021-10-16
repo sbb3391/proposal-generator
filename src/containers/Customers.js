@@ -10,6 +10,7 @@ class Customers extends Component {
     fetch('https://proposals-api.herokuapp.com/customers')
     .then(resp => resp.json())
     .then(json => {
+      debugger;
       // default each customer to show front
       json.forEach( customer => {
         customer.side = "front"

@@ -24,7 +24,13 @@ class PickModel extends Component {
   }
 
   componentDidMount() {
-    fetch('https://proposals-api.herokuapp.com/models')
+    fetch('https://proposals-api.herokuapp.com/models', {
+      method: 'GET',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
     .then( resp => resp.json())
     .then( json => {
       this.setState({
