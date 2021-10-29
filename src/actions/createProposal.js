@@ -6,7 +6,7 @@ export function createProposal(customerId, proposalName, history) {
   debugger;
 
   return (dispatch) => {
-    fetch(`https://proposals-api.herokuapp.com/customers/${customerId}/proposals`, {
+    fetch(`http://localhost:3000/customers/${customerId}/proposals`, {
       headers: {
         "Content-type": "application/json",
         'Content-Type': 'application/json'

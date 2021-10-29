@@ -2,7 +2,7 @@ export function saveProposalMachine(machine) {
   const body = machine
   return (dispatch) => {
     dispatch({type: "START_UPDATING_MACHINE", machine: machine});
-    fetch(`https://proposals-api.herokuapp.com/proposals/${machine.proposalId}/machines/${machine.machineId}`, {
+    fetch(`http://localhost:3000/proposals/${machine.proposalId}/machines/${machine.machineId}`, {
       headers: {
         "Content-type": "application/json",
         'Content-Type': 'application/json'

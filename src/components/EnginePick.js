@@ -109,7 +109,6 @@ class EnginePick extends Component {
                 dispatch={this.props.previewMachine}/>
       }
     } else if ( this.props.remainingPickOneGroupIds.length === 0 && this.props.type === "edit" ) {
-      debugger;
       return(
         <>
           <CompleteButton value={"Update Machine"} fetchUrl={`machines/${this.props.match.params.machineId}`} fetchAction="PATCH" 
@@ -147,7 +146,7 @@ class EnginePick extends Component {
         .split(' ')
         .map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase())
         .join(' ');
-}
+  }
   
   renderPickOneGroups = () => {
     // get all assemblies that are a part of a pick one group and also apart of the current step
@@ -175,8 +174,6 @@ class EnginePick extends Component {
     )
   }
 
-
-
   render() {
     if (this.props.requesting) {
       return(
@@ -190,15 +187,15 @@ class EnginePick extends Component {
           <div className="absolute z-10 w-full mx-auto h-full flex">
             <div className="flex flex-col w-2/3 h-full space-y-5 place-items-center">
               <div className="mt-4 flex space-x-4">
-                <StatusButton text="main unit"/>
+                <StatusButton text="main unit" step={this.props.step}/>
                 <span className="text-4xl">&#x2192;</span>
-                <StatusButton text="paper handling"/>
+                <StatusButton text="paper handling" step={this.props.step}/>
                 <span className="text-4xl">&#x2192;</span>
-                <StatusButton text="paper output"/>
+                <StatusButton text="paper output" step={this.props.step}/>
                 <span className="text-4xl">&#x2192;</span>
-                <StatusButton text="finishing"/>
+                <StatusButton text="finishing" step={this.props.step}/>
                 <span className="text-4xl">&#x2192;</span>
-                <StatusButton text="controller"/>
+                <StatusButton text="controller" step={this.props.step}/>
               </div>
               <h1 className="text-2xl text-center h-8 mt-4">{this.titleCase(this.props.step)}:</h1>
               <div className="w-2/3 h-12 flex flex-col justify-center space-x-8 space-y-1">

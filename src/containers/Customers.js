@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 class Customers extends Component {
 
   componentDidMount() {
-    fetch('https://proposals-api.herokuapp.com/customers')
+    fetch('http://localhost:3000/customers')
     .then(resp => resp.json())
     .then(json => {
       debugger;
