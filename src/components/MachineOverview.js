@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import numeral from 'numeral';
 import { proposalPdf } from '../pdf/proposalPdf'
 import { connect } from 'react-redux';
-import { editMachine } from '../actions/editMachine'
+import { editMachine } from '../actions/fetches'
 import { useHistory } from 'react-router-dom'
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";

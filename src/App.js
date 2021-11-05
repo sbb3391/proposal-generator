@@ -12,7 +12,6 @@ import PopWindow from './containers/PopWindow'
 import { savePreviewMachine } from './actions/savePreviewMachine.js';
 import MachineSave from './containers/MachineSave.js';
 import NewProposal from './components/NewProposal.js';
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App(props) {

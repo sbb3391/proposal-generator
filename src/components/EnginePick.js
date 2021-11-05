@@ -4,7 +4,7 @@ import PartsForAssembly from './PartsForAssembly'
 import MachineAssemblies from './MachineAssemblies'
 import StatusButton from './statusButton'
 import CompleteButton from './CompleteButton'
-import { fetchAssemblies } from '../actions/fetchAssemblies'
+import { fetchAssemblies } from '../actions/fetches'
 import GraphicLoading from '../components/GraphicLoading'
 
 

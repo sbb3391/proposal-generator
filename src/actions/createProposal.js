@@ -3,8 +3,6 @@ export function createProposal(customerId, proposalName, history) {
     proposal_name: proposalName
   }
 
-  debugger;
-
   return (dispatch) => {
     fetch(`http://localhost:3000/customers/${customerId}/proposals`, {
       headers: {

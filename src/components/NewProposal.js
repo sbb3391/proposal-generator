@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {createProposal} from '../actions/createProposal'
+import {createProposal} from '../actions/fetches'
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom'
 

@@ -13,6 +13,13 @@ const store = createStore(
   rootReducer, composeEnhancers(applyMiddleware(thunk))
 )
 
+if (process.env.NODE_ENV === "production") {
+  window.name = process.env.REACT_APP_PRODUCTION_FETCH
+} else {
+  window.name = process.env.REACT_APP_DEVELOPMENT_FETCH
+}
+
+
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

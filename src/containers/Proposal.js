@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { fetchProposal } from '../actions/fetchProposal'
+import { fetchProposal } from '../actions/fetches'
 import { connect } from 'react-redux';
 import Machine from './Machine'
 import ProposalOverview from '../components/ProposalOverview'
-import { saveProposalMachine } from '../actions/saveProposalMachine'
+import { saveProposalMachine } from '../actions/fetches'
 import GraphicLoading from '../components/GraphicLoading'
 
 class Proposal extends Component {
