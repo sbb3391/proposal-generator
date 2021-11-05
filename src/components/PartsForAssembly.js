@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchPartsForAssembly } from '../actions/fetches'
 
 class PartsForAssembly extends Component {
 
@@ -9,14 +10,14 @@ class PartsForAssembly extends Component {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/assemblies/${this.props.assemblyId}/items_assemblies`)
-    .then(resp => resp.json())
-    .then(json => {
+    let changeStateFunction = (json) => {
       this.setState({
         itemsAssemblies: json,
         assemblyName: json[0].assemblyName
       })
-    })
+    }
+
+    fetchPartsForAssembly(this.props.assemblyId, changeStateFunction)
   }
 
   addItemToMachine = (event) => {

@@ -113,7 +113,7 @@ export const createMachine = (props, history) => {
     }
   }
 
-  fetch(`http://localhost:3000/${props.fetchUrl}`, {
+  fetch(`${fetchUrl}/${props.fetchUrl}`, {
   method: props.fetchAction,
     headers: {
       'Content-Type': 'application/json',
@@ -127,3 +127,10 @@ export const createMachine = (props, history) => {
   })
 }
 
+export const fetchPartsForAssembly= (assemblyId, changeStateFunction) => {
+  fetch(`http://localhost:3000/assemblies/${assemblyId}/items_assemblies`)
+  .then(resp => resp.json())
+  .then(json => {
+    changeStateFunction(json)
+  })
+}
