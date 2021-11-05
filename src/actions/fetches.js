@@ -57,7 +57,6 @@ export function fetchAssemblies(modelId) {
 }
 
 export function fetchProposal(proposalId) {
-  debugger;
   return (dispatch) => {
     dispatch({type: "START_FETCHING_ASSEMBLIES"});
     fetch(`${fetchUrl()}/proposals/${proposalId}`)
@@ -104,5 +103,27 @@ export function saveProposalMachine(machine) {
       dispatch({type: "UPDATE_PROPOSAL_MACHINE", machine: machine})
     })
   }
+}
+
+export const createMachine = (props, history) => {
+  const data = {
+    model: {
+      id: props.machineAssemblies[0].model_id,
+      assemblies: props.machineAssemblies
+    }
+  }
+
+  fetch(`http://localhost:3000/${props.fetchUrl}`, {
+  method: props.fetchAction,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data)
+  })
+  .then(resp => resp.json())
+  .then(json => {
+    props.dispatch(json)
+    history.push(`${props.newUrl}`)
+  })
 }
 

@@ -9,7 +9,7 @@ import Proposal from './containers/Proposal'
 import Customers from  './containers/Customers'
 import { connect } from 'react-redux';
 import PopWindow from './containers/PopWindow'
-import { savePreviewMachine } from './actions/savePreviewMachine.js';
+import { savePreviewMachine } from './actions/fetches';
 import MachineSave from './containers/MachineSave.js';
 import NewProposal from './components/NewProposal.js';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
