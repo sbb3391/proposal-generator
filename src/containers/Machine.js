@@ -5,19 +5,18 @@ import MachineOverview from '../components/MachineOverview'
 import MachinePricing from '../components/MachinePricing'
 // import Loading from '../components/Loading'
 import GraphicLoading from '../components/GraphicLoading'
+import { fetchMachine } from "../fetchesactions/fetches"
 
 class Machine extends Component {
 
   componentDidMount() {
 
+    let addMachine = this.props.addMachine
+
     // we don't want to fetch for a machine if we're viewing a proposal. The machines are generated
     // in Proposal component and are already in the redux store
     if ( this.props.machineType === "machine" ) {
-      fetch(`http://localhost:3000/machines/${this.props.match.params.id}`)
-      .then(resp => resp.json())
-      .then( json => {
-        this.props.addMachine(json)
-      })
+      fetchMachine(this.props.match.params.id, addMachine)
     }
   }
 
