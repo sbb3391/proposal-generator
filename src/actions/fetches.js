@@ -143,3 +143,17 @@ export const fetchModels = (changeStateFunction, resetMachineFunction) => {
       resetMachineFunction()
     })
 }
+
+export const fetchCustomers = (addCustomers) => {
+  fetch(`${fetchUrl()}/customers`)
+  .then(resp => resp.json())
+  .then(json => {
+    // default each customer to show front
+    json.forEach( customer => {
+      customer.side = "front"
+    })
+  
+    addCustomers(json)
+    
+  })
+}

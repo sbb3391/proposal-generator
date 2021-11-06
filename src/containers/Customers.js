@@ -2,23 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { useHistory } from 'react-router-dom'
+import { fetchCustomers } from '../actions/fetches'
 
 
 class Customers extends Component {
 
   componentDidMount() {
-    fetch('http://localhost:3000/customers')
-    .then(resp => resp.json())
-    .then(json => {
-      debugger;
-      // default each customer to show front
-      json.forEach( customer => {
-        customer.side = "front"
-      })
+    let addCustomers = this.props.addCustomers
 
-      this.props.addCustomers(json)
-      
-    })
+    fetchCustomers(addCustomers)
   }
 
   renderCustomerProposals = (customer) => {
