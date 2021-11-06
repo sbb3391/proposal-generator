@@ -5,7 +5,7 @@ import MachineOverview from '../components/MachineOverview'
 import MachinePricing from '../components/MachinePricing'
 // import Loading from '../components/Loading'
 import GraphicLoading from '../components/GraphicLoading'
-import { fetchMachine } from "../fetchesactions/fetches"
+import { fetchMachine } from "../actions/fetches"
 
 class Machine extends Component {
 
