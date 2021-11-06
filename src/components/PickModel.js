@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import uuid from 'react-uuid'
 import { connect } from 'react-redux';
+import { fetchModels } from "../actions/fetches"
 
 class PickModel extends Component {
 
@@ -24,16 +25,30 @@ class PickModel extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/models')
-    .then( resp => resp.json())
-    .then( json => {
+    let changeStateFunction = (json) => {
       this.setState({
         models: json.map( model => {
           return{name: model.name, id: model.id}
         })
       })
+    }
+
+    let resetMachineFunction = () => {
       this.props.resetMachine()
-    })
+    }
+
+    fetchModels(changeStateFunction, resetMachineFunction)
+
+    // fetch('http://localhost:3000/models')
+    // .then( resp => resp.json())
+    // .then( json => {
+    //   this.setState({
+    //     models: json.map( model => {
+    //       return{name: model.name, id: model.id}
+    //     })
+    //   })
+    //   this.props.resetMachine()
+    // })
   }
 
   render() {
