@@ -50,6 +50,7 @@ export function fetchAssemblies(modelId) {
     fetch(`${fetchUrl()}/models/${modelId}/assemblies`)
     .then(resp => resp.json())
     .then(assemblies => {
+      console.log(assemblies)
       setTimeout(() => dispatch({type: 'ADD_ALL_ASSEMBLIES', assemblies: assemblies, machineStatus: "new", machine: {}}),
       1000)
     })
