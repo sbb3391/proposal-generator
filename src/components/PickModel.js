@@ -38,17 +38,6 @@ class PickModel extends Component {
     }
 
     fetchModels(changeStateFunction, resetMachineFunction)
-
-    // fetch('http://localhost:3000/models')
-    // .then( resp => resp.json())
-    // .then( json => {
-    //   this.setState({
-    //     models: json.map( model => {
-    //       return{name: model.name, id: model.id}
-    //     })
-    //   })
-    //   this.props.resetMachine()
-    // })
   }
 
   render() {
