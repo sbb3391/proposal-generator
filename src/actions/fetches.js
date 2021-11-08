@@ -166,10 +166,10 @@ export const fetchMachine = (machineId, addMachine) => {
   })
 }
 
-export const fetchCustomersForSelectBox = () => {
+export const fetchCustomersForSelectBox = (addCustomersToState) => {
   fetch(`${fetchUrl()}/customers`)
   .then(resp => resp.json())
   .then(json => {
-    debugger;
+    addCustomersToState(json)
   })
 }

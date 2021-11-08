@@ -239,7 +239,6 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'TOGGLE_MACHINE_SAVE': 
-    debugger;
       if (state.machineSave) {
         document.querySelector(".App").classList.remove("overflow-hidden", "filter", "blur-md")
 

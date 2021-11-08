@@ -5,11 +5,27 @@ import { fetchCustomersForSelectBox } from '../actions/fetches';
 class MachineSave extends Component {
 
   state = {
+    selectValue: "none",
     customers: []
   }
 
   componentDidMount() {
-    fetchCustomersForSelectBox()
+    let addCustomersToState = (customersArray) => {
+      this.setState({
+        customers: customersArray.map( customer => {
+          return{id: customer.id, name: customer.customer_name}
+        })
+      })
+    }
+
+    fetchCustomersForSelectBox(addCustomersToState)
+  }
+
+  handleSelection(event) {
+
+    this.setState({
+      selectValue: event.target.value
+    })
   }
 
   closeMachineSave = (event) => {
@@ -18,11 +34,13 @@ class MachineSave extends Component {
     }
   }
 
-
-
+  renderCustomers(customers) {
+    return customers.map( customer => {
+      return <option id={customer.id}>{customer.name}</option>
+    })
+  }
 
   submitNewProposalForm = () => {
-
   }
 
   render() {
@@ -33,11 +51,11 @@ class MachineSave extends Component {
               <h1 className="w-11/12 mx-auto text-center">Create a Proposal:</h1>
               <div className="flex flex-col space-y-2 w-11/12 mx-auto">
                 <label className="text-2xl">Customer Name</label>
-                <select className="w-1/2 h-12 mx-auto border border-black rounded-md px-2" value="" onChange={(e) => this.handleSelection()} readOnly>
+                <select className="w-1/2 h-12 mx-auto border border-black rounded-md px-2" value={this.state.selectValue} onChange={(event) => this.handleSelection(event)} readOnly>
                   <option value="none" disabled hidden>
-                    Select Model
+                    Select Customer
                   </option>
-                  {this.renderCustomers()}
+                  {this.renderCustomers(this.state.customers)}
                 </select>
               </div>
               <div className="flex flex-col space-y-2 w-11/12 mx-auto ">
