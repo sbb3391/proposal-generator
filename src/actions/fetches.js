@@ -128,7 +128,7 @@ export const createMachine = (props, history) => {
 }
 
 export const fetchPartsForAssembly= (assemblyId, changeStateFunction) => {
-  fetch(`${fetchUrl}/assemblies/${assemblyId}/items_assemblies`)
+  fetch(`${fetchUrl()}/assemblies/${assemblyId}/items_assemblies`)
   .then(resp => resp.json())
   .then(json => {
     changeStateFunction(json)
