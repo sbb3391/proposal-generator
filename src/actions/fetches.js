@@ -159,7 +159,7 @@ export const fetchCustomers = (addCustomers) => {
 }
 
 export const fetchMachine = (machineId, addMachine) => {
-  fetch(`${fetchUrl}/machines/${machineId}`)
+  fetch(`${fetchUrl()}/machines/${machineId}`)
   .then(resp => resp.json())
   .then( json => {
     addMachine(json)
