@@ -114,7 +114,7 @@ export const createMachine = (props, history) => {
     }
   }
 
-  fetch(`${fetchUrl}/${props.fetchUrl}`, {
+  fetch(`${fetchUrl()}/${props.fetchUrl}`, {
   method: props.fetchAction,
     headers: {
       'Content-Type': 'application/json',
@@ -129,7 +129,7 @@ export const createMachine = (props, history) => {
 }
 
 export const fetchPartsForAssembly= (assemblyId, changeStateFunction) => {
-  fetch(`${fetchUrl}/assemblies/${assemblyId}/items_assemblies`)
+  fetch(`${fetchUrl()}/assemblies/${assemblyId}/items_assemblies`)
   .then(resp => resp.json())
   .then(json => {
     changeStateFunction(json)
@@ -160,9 +160,17 @@ export const fetchCustomers = (addCustomers) => {
 }
 
 export const fetchMachine = (machineId, addMachine) => {
-  fetch(`${fetchUrl}/machines/${machineId}`)
+  fetch(`${fetchUrl()}/machines/${machineId}`)
   .then(resp => resp.json())
   .then( json => {
     addMachine(json)
+  })
+}
+
+export const fetchCustomersForSelectBox = () => {
+  fetch(`${fetchUrl()}/customers`)
+  .then(resp => resp.json())
+  .then(json => {
+    debugger;
   })
 }

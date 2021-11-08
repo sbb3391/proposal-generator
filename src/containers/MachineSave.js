@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { fetchCustomersForSelectBox } from '../actions/fetches';
 
 class MachineSave extends Component {
+
+  state = {
+    customers: []
+  }
+
+  componentDidMount() {
+    fetchCustomersForSelectBox()
+  }
+
   closeMachineSave = (event) => {
     if (event.target.id === "machine-save" ) {
       this.props.toggleMachineSave()
     }
   }
+
+
+
 
   submitNewProposalForm = () => {
 
@@ -20,7 +33,12 @@ class MachineSave extends Component {
               <h1 className="w-11/12 mx-auto text-center">Create a Proposal:</h1>
               <div className="flex flex-col space-y-2 w-11/12 mx-auto">
                 <label className="text-2xl">Customer Name</label>
-                <input id="customer-name" className="h-12 border border-black rounded-md px-2"></input>
+                <select className="w-1/2 h-12 mx-auto border border-black rounded-md px-2" value="" onChange={(e) => this.handleSelection()} readOnly>
+                  <option value="none" disabled hidden>
+                    Select Model
+                  </option>
+                  {this.renderCustomers()}
+                </select>
               </div>
               <div className="flex flex-col space-y-2 w-11/12 mx-auto ">
                 <label className="text-2xl">Proposal Name</label>
