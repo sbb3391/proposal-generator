@@ -44,7 +44,7 @@ class PickModel extends Component {
     return (
       <div className="w-1/2 mx-auto h-1/2 place-self-center">
         <div className="flex flex-col">
-          <h1 className="text-center text-3xl mt-4">{window.name}</h1>
+          <h1 className="text-center text-3xl mt-4">Select Product:</h1>
           <form>
             <div className="flex mt-4">
               <select className="w-1/2 h-12 mx-auto border border-black rounded-md px-2" value={this.state.selectValue} onChange={(e) => this.handleSelection(this.props.updateStep, e)} readOnly>
