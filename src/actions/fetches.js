@@ -165,3 +165,11 @@ export const fetchMachine = (machineId, addMachine) => {
     addMachine(json)
   })
 }
+
+export const fetchCustomersForSelectBox = () => {
+  fetch(`${fetchUrl()}/customers`)
+  .then(resp => resp.json())
+  .then(json => {
+    debugger;
+  })
+}
