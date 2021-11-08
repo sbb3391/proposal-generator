@@ -113,7 +113,7 @@ export const createMachine = (props, history) => {
     }
   }
 
-  fetch(`${fetchUrl}/${props.fetchUrl}`, {
+  fetch(`${fetchUrl()}/${props.fetchUrl}`, {
   method: props.fetchAction,
     headers: {
       'Content-Type': 'application/json',
