@@ -2,7 +2,7 @@ function fetchUrl() {
  if (process.env.NODE_ENV === "development") {
    return "http://localhost:3000"
  } else {
-   return "https://proposals-api.herokuapp.com/"
+   return "https://proposals-api.herokuapp.com"
  }
 }
 
@@ -109,11 +109,11 @@ export const createMachine = (props, history) => {
   const data = {
     model: {
       id: props.machineAssemblies[0].model_id,
+      proposal_name: props.proposalName,
+      customer_id: props.customerId,
       assemblies: props.machineAssemblies
     }
   }
-
-  debugger;
 
   fetch(`${fetchUrl()}/${props.fetchUrl}`, {
   method: props.fetchAction,
@@ -125,7 +125,13 @@ export const createMachine = (props, history) => {
   .then(resp => resp.json())
   .then(json => {
     props.dispatch(json)
-    history.push(`${props.newUrl}`)
+    if (props.newUrl === "proposals") {
+      props.toggleMachineSave()
+      history.push(`/proposals/${json.machine.proposalId}`)
+    }
+    else {
+      history.push(`${props.newUrl}`)
+    }
   })
 }
 

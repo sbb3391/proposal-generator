@@ -13,6 +13,8 @@ const MachineSave = (props) => {
   const [customers, setCustomers] = useState([])
   const [selectValue, setSelectValue] = useState("none")
   const [fetchUrl, setFetchUrl] = useState("")
+  const [proposalName, setProposalName] = useState("a")
+  const [customerId, setCustomerId] = useState(null)
 
   useEffect(() => {
     let addCustomersTostate = (customersArray) => {
@@ -26,15 +28,25 @@ const MachineSave = (props) => {
     const selectBoxOptions = event.target.options
     const optionId = selectBoxOptions[event.target.selectedIndex].id
 
-    setSelectValue(event.target.value)
-    setFetchUrl(`/customers/${optionId}/proposals`)
+    setCustomerId(optionId)
 
+    setSelectValue(event.target.value)
+    setFetchUrl(`machines`)
+
+  }
+
+  const handleProposalChange = (event) => {
+    setProposalName(event.target.value)
   }
 
   const closeMachineSave = (event) => {
     if (event.target.id === "machine-save" ) {
       props.toggleMachineSave()
     }
+  }
+
+  const newProposalUrl = (proposalId) => {
+    return `proposals/${proposalId}`
   }
 
   const renderCustomers = (customers) => {
@@ -59,12 +71,12 @@ const MachineSave = (props) => {
             </div>
             <div className="flex flex-col space-y-2 w-11/12 mx-auto ">
               <label className="text-2xl">Proposal Name</label>
-              <input id="propsal-name" className="h-12 border border-black rounded-md px-2"></input>
+              <input id="propsal-name" className="h-12 border border-black rounded-md px-2" value={proposalName} onChange={(event) => handleProposalChange(event)}></input>
             </div>
             <div className="flex content-center items-center">
               {/* <button onClick={createMachine(props, history)} className="font-bold text-2xl rounded-md p-2 mx-auto bg-green-500 text-white bold cursor-pointer">Create Proposal and Add Machine</button> */}
-              <CompleteButton value={"Create Proposal"} fetchUrl={fetchUrl} fetchAction="POST" 
-                 dispatch={(json) => {return null} }/>
+              <CompleteButton value={"Create Proposal"} customerId={customerId} proposalName={proposalName} fetchUrl={fetchUrl} fetchAction="POST" 
+                 dispatch={(json) => {return null} } newUrl={"proposals"} toggleMachineSave={props.toggleMachineSave}/>
             </div>
           </div>
       </div>
