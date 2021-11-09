@@ -113,6 +113,8 @@ export const createMachine = (props, history) => {
     }
   }
 
+  debugger;
+
   fetch(`${fetchUrl()}/${props.fetchUrl}`, {
   method: props.fetchAction,
     headers: {
