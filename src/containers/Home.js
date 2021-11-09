@@ -5,7 +5,7 @@ class Home extends Component {
     return (
       <div className="flex w-full h-full place-content-center place-items-center">
         <div className="">
-          <iframe width="800" height="475" src="https://www.youtube.com/embed/pt86IhW8gwg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="640" height="360" src="https://www.loom.com/embed/a6975475db714be49880e268f5e3f0ca" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
         </div>
       </div>
     );
@@ -13,3 +13,4 @@ class Home extends Component {
 }
 
 export default Home;
+
