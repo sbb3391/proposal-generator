@@ -39,16 +39,14 @@ class PickModel extends Component {
       this.props.resetMachine()
     }
 
-    setTimeout(() => fetchModels(changeStateFunction, resetMachineFunction), 1000)
+    setTimeout(() => fetchModels(changeStateFunction, resetMachineFunction), 2000)
   
   }
 
   renderLoadingGraphic() {
-    setTimeout(() => {
-      if (this.state.models.length < 1) {
-        return <GraphicLoading />
-      }
-    }, 500)
+    if (this.state.models.length < 1) {
+      return <GraphicLoading />
+    }
   }
 
   render() {
