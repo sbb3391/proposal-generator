@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import uuid from 'react-uuid'
 import { connect } from 'react-redux';
 import { fetchModels } from "../actions/fetches"
+import GraphicLoading from './GraphicLoading'
 
 class PickModel extends Component {
 
@@ -26,6 +27,7 @@ class PickModel extends Component {
 
   componentDidMount() {
     let changeStateFunction = (json) => {
+
       this.setState({
         models: json.map( model => {
           return{name: model.name, id: model.id}
@@ -37,22 +39,36 @@ class PickModel extends Component {
       this.props.resetMachine()
     }
 
-    fetchModels(changeStateFunction, resetMachineFunction)
+    setTimeout(() => fetchModels(changeStateFunction, resetMachineFunction), 1000)
+  
+  }
+
+  renderLoadingGraphic() {
+    setTimeout(() => {
+      if (this.state.models.length < 1) {
+        return <GraphicLoading />
+      }
+    }, 500)
   }
 
   render() {
     return (
       <div className="w-1/2 mx-auto h-1/2 place-self-center">
         <div className="flex flex-col">
-          <h1 className="text-center text-3xl mt-4">Select Product</h1>
           <form>
             <div className="flex mt-4">
-              <select className="w-1/2 h-12 mx-auto border border-black rounded-md px-2" value={this.state.selectValue} onChange={(e) => this.handleSelection(this.props.updateStep, e)} readOnly>
-                <option value="none" disabled hidden>
-                  Select Model
-                </option>
-                {this.renderModelOptions(this.state.models)}
-              </select>
+              <div className="w-64 h-48 absolute flex place-items-center justify-center">
+                {this.renderLoadingGraphic()}
+              </div>
+              <div className="w-full flex flex-col space-y-6">
+                <h1 className="text-center text-3xl mt-4">Select Product</h1>
+                <select className="w-1/2 h-12 mx-auto border border-black rounded-md px-2" value={this.state.selectValue} onChange={(e) => this.handleSelection(this.props.updateStep, e)} readOnly>
+                  <option value="none" disabled hidden>
+                    Select Model
+                  </option>
+                  {this.renderModelOptions(this.state.models)}
+                </select>
+              </div>
             </div>
           </form>
         </div>
