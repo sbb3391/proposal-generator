@@ -40,6 +40,14 @@ const MachineOverview = (props) => {
     pdfMake.createPdf(proposalPdf([props.machine], "preview")).open()
   }
 
+  const renderImageOrFileInput = () => {
+    if (props.machine.image_url) {
+      return <img src={props.machine.image_url} />
+    } else {
+      return <input type="file" />
+    }
+  }
+
   let priceArray = [];
 
   if (props.machine.assemblies.length > 0) {
@@ -49,15 +57,22 @@ const MachineOverview = (props) => {
   const totalPrice = numeral(priceArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
   
   return (
-    <>
-      <h1 className="text-center">Machine Overview</h1>
-      <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
-      <button onClick={createPdf} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
-      <button onClick={editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
-      { renderSaveChangesButton(totalPrice)}
-      { renderSaveMachinePreviewButton() }
-    </>
+    <div className="flex flex-col space-y-6">
+      <div className="place-items-center h-36">
+          {renderImageOrFileInput()}
+      </div>
+      <div className="flex flex-col space-y-3">
+        <h1 className="text-center">Machine Overview</h1>
+        <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
+        <button onClick={createPdf} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
+        <button onClick={editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
+        { renderSaveChangesButton(totalPrice)}
+        { renderSaveMachinePreviewButton() }
+      </div>
+      
+    </div>
   );
+
 }
 
 const mapStateToProps = (state) => (
