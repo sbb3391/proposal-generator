@@ -6,6 +6,8 @@ import { editMachine } from '../actions/fetches'
 import { useHistory } from 'react-router-dom'
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
+import S3 from 'react-aws-s3';
+
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const MachineOverview = (props) => {
@@ -44,8 +46,47 @@ const MachineOverview = (props) => {
     if (props.machine.image_url) {
       return <img src={props.machine.image_url} />
     } else {
-      return <input type="file" />
+      return <input type="file" onChange={() => uploadImage()} />
     }
+  }
+
+  
+  const uploadImage = () => {
+
+    const config = {
+      bucketName: 'machine-images-bucket',
+      region: 'us-east-2',
+      dirName: 'machine-images',
+      accessKeyId: "AKIA6A2PKIBMJRUE3Z53",
+      secretAccessKey: "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"
+    }
+
+    const selectedFile = document.querySelector('input[type=file]').files[0]
+
+    const ReactS3Client = new S3(config);
+    const newFileName =`${props.machine.image_key}.png`;
+
+    ReactS3Client
+    .uploadFile(selectedFile, newFileName)
+    .then(data => {
+      alert(data.location)
+    })
+    .catch(err => console.error(err))
+
+    // const uploadFile = () => {
+    //   fs.readFile(fileName, (err, data) => {
+    //      if (err) throw err;
+    //      const params = {
+    //          Bucket: 'machine-images-bucket', // pass your bucket name
+    //          Key: `${props.machine.image_key}.png`, // file will be saved as testBucket/contacts.csv
+    //          Body: JSON.stringify(data, null, 2)
+    //      };
+    //      s3.upload(params, function(s3Err, data) {
+    //          if (s3Err) throw s3Err
+    //          console.log(`File uploaded successfully at ${data.Location}`)
+    //      });
+    //   });
+    // };
   }
 
   let priceArray = [];

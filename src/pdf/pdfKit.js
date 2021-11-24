@@ -9,3 +9,6 @@ doc.pipe(res);                                       // HTTP response
 
 
 doc.end();
+stream.on('finish', function() {
+  iframe.src = stream.toBlobURL('application/pdf');
+});
