@@ -181,3 +181,18 @@ export const fetchCustomersForSelectBox = (addCustomersToState) => {
     addCustomersToState(json)
   })
 }
+
+export const addImageToDatabase = (body) => {
+  fetch(`${fetchUrl()}/images`, {
+    headers: {
+      "Content-type": "application/json",
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(body)
+  })
+  .then(resp => resp.json())
+  .then(proposal => {
+    alert("finished")
+  })
+}

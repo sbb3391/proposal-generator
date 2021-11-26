@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import numeral from 'numeral';
 import { proposalPdf } from '../pdf/proposalPdf'
 import { connect } from 'react-redux';
-import { editMachine } from '../actions/fetches'
+import { editMachine, addImageToDatabase } from '../actions/fetches'
 import { useHistory } from 'react-router-dom'
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import S3 from 'react-aws-s3';
+import { test } from '../pdf/test'
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -39,7 +40,8 @@ const MachineOverview = (props) => {
   }
 
   const createPdf = () => {
-    pdfMake.createPdf(proposalPdf([props.machine], "preview")).open()
+    proposalPdf([props.machine], "preview")
+    // test()
   }
 
   const renderImageOrFileInput = () => {
@@ -69,24 +71,9 @@ const MachineOverview = (props) => {
     ReactS3Client
     .uploadFile(selectedFile, newFileName)
     .then(data => {
-      alert(data.location)
+      addImageToDatabase({key: props.machine.image_key, url: data.location})
     })
     .catch(err => console.error(err))
-
-    // const uploadFile = () => {
-    //   fs.readFile(fileName, (err, data) => {
-    //      if (err) throw err;
-    //      const params = {
-    //          Bucket: 'machine-images-bucket', // pass your bucket name
-    //          Key: `${props.machine.image_key}.png`, // file will be saved as testBucket/contacts.csv
-    //          Body: JSON.stringify(data, null, 2)
-    //      };
-    //      s3.upload(params, function(s3Err, data) {
-    //          if (s3Err) throw s3Err
-    //          console.log(`File uploaded successfully at ${data.Location}`)
-    //      });
-    //   });
-    // };
   }
 
   let priceArray = [];

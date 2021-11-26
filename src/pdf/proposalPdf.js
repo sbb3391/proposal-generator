@@ -1,16 +1,29 @@
 import { createPdf } from 'pdfmake/build/pdfmake';
 import { machinePdf } from './machinePdf'
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
 
 const proposalPdf = (machinesArray, type) => {
 
-    let dd = {
-      content: [
-      ]
-    }
+  function waitForDd(machine) {  
+    return new Promise(resolve => {
+      let machineDd = machinePdf(machine)
+      setTimeout(() => {
+        resolve(machineDd)
+      }, 3000)
+    });
+  }
+
+  let dd = {
+    content: [
+    ]
+  }
 
   machinesArray.map( machine => {
-    machinePdf(machine).content.forEach( i => {
-      dd.content.push(i)
+    waitForDd(machine).then( resp => {
+      resp.content.forEach( i => {
+        dd.content.push(i)
+      })
     })
   })
 
@@ -19,10 +32,11 @@ const proposalPdf = (machinesArray, type) => {
       ...dd,
       watermark: { text: 'Preview', angle: 70 }
     }
-    debugger;
   }
 
-  return dd
+  setTimeout(() => {
+    pdfMake.createPdf(dd).open()
+  }, 5000)
 }
 
 export { proposalPdf }

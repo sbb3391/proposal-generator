@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.2.0",
+    "@react-pdf/renderer": "^2.0.21",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "aws-sdk": "^2.1035.0",
+    "canvas": "^2.8.0",
+    "html-to-pdfmake": "^2.3.6",
     "numeral": "^2.0.6",
     "pdfkit": "^0.13.0",
     "pdfmake": "^0.2.2",
