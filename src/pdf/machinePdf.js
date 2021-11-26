@@ -13,7 +13,7 @@ const machinePdf = (machine) => {
       setTimeout(() => {
         machineImageURI = getBase64Image(machineImage)
         resolve(machineImageURI)
-      }, 2000)
+      }, 1000)
     });
   }
   

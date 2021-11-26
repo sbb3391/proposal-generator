@@ -10,7 +10,7 @@ const proposalPdf = (machinesArray, type) => {
       let machineDd = machinePdf(machine)
       setTimeout(() => {
         resolve(machineDd)
-      }, 3000)
+      }, 2000)
     });
   }
 
