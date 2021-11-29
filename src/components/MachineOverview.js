@@ -48,32 +48,36 @@ const MachineOverview = (props) => {
     if (props.machine.image_url) {
       return <img src={props.machine.image_url} />
     } else {
-      return <input type="file" onChange={() => uploadImage()} />
+      return <input type="file" onChange={(e) => uploadImage(e)} />
     }
   }
 
   
-  const uploadImage = () => {
-
+  const uploadImage = (e) => {
     const config = {
       bucketName: 'machine-images-bucket',
       region: 'us-east-2',
       dirName: 'machine-images',
-      accessKeyId: "AKIA6A2PKIBMJRUE3Z53",
-      secretAccessKey: "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"
+      accessKeyId: "AKIA6A2PKIBMHKOTNJX7",
+      secretAccessKey: "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"
     }
 
-    const selectedFile = document.querySelector('input[type=file]').files[0]
+    const selectedFile = e.target.files[0]
 
     const ReactS3Client = new S3(config);
     const newFileName =`${props.machine.image_key}.png`;
 
+    
     ReactS3Client
     .uploadFile(selectedFile, newFileName)
     .then(data => {
       addImageToDatabase({key: props.machine.image_key, url: data.location})
     })
-    .catch(err => console.error(err))
+    .catch(err => {
+      alert("Image Upload Failed")
+    
+      console.error(err)
+    })
   }
 
   let priceArray = [];

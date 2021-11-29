@@ -28,9 +28,14 @@ const machinePdf = (machine) => {
   }
 
   let machineImage = new Image();
-  let machineImageURI, dd
+  let machineImageURI, dd, url
   machineImage.crossOrigin = 'anonymous'
-  let url = machine.image_url + "?somethingsomething"
+  if (machine.image_url) {
+    url = machine.image_url + "?somethingsomething"
+  } else {
+    url = 'https://machine-images-bucket.s3.us-east-2.amazonaws.com/machine-images/Screenshot+2021-11-29+110339.png'
+  }
+
   machineImage.src = url
 
   return waitForImageToLoad().then( resp => {

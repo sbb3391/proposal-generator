@@ -37,7 +37,6 @@ class Customers extends Component {
   }
 
   renderProposalsTable = (customer) => {
-    debugger;
     if (customer && customer.proposals.length > 0 ) {
       return(
         <table>
