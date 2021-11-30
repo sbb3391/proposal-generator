@@ -14,11 +14,23 @@ const proposalPdf = (machinesArray, type) => {
     });
   }
 
+  function addCoverPage() {
+    let coverDd = {
+      content: [
+        
+      ]
+    }
+
+
+    return coverDd
+  }
+
   let dd = {
     content: [
     ]
   }
-
+  
+  // push all machine information into proposal
   machinesArray.map( machine => {
     waitForDd(machine).then( resp => {
       resp.content.forEach( i => {
@@ -27,11 +39,15 @@ const proposalPdf = (machinesArray, type) => {
     })
   })
 
+  // add summary page
+  
   if (type === "preview") {
     dd = {
       ...dd,
       watermark: { text: 'Preview', angle: 70 }
     }
+  } else {
+    // add cover page and final page
   }
 
   setTimeout(() => {

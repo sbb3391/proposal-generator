@@ -8,35 +8,39 @@ import { defaults } from "autoprefixer";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 const machinePdf = (machine) => {
+  let dd
+
   function waitForImageToLoad() {  
     return new Promise(resolve => {
-      setTimeout(() => {
-        machineImageURI = getBase64Image(machineImage)
-        resolve(machineImageURI)
-      }, 1000)
+      getBase64Image()
+      .then( resp => resolve(resp))
     });
   }
   
-  function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL
-  }
+  function getBase64Image() {
+    return new Promise(resolve => {
+      let machineImage = new Image();
+      let url
+      if (machine.image_url) {
+        url = machine.image_url + "?somethingsomething"
+      } else {
+        url = 'https://machine-images-bucket.s3.us-east-2.amazonaws.com/machine-images/Screenshot+2021-11-29+110339.png'
+      }
+      machineImage.crossOrigin = 'anonymous'
+      machineImage.src = url
 
-  let machineImage = new Image();
-  let machineImageURI, dd, url
-  machineImage.crossOrigin = 'anonymous'
-  if (machine.image_url) {
-    url = machine.image_url + "?somethingsomething"
-  } else {
-    url = 'https://machine-images-bucket.s3.us-east-2.amazonaws.com/machine-images/Screenshot+2021-11-29+110339.png'
+      setTimeout(() => {
+        var canvas = document.createElement("canvas");
+        canvas.width = machineImage.width;
+        canvas.height = machineImage.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(machineImage, 0, 0);
+        var dataURL = canvas.toDataURL("image/png");
+        resolve(dataURL)
+      }, 750)
+    })
+    
   }
-
-  machineImage.src = url
 
   return waitForImageToLoad().then( resp => {
     let body = [

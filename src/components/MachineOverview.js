@@ -46,6 +46,7 @@ const MachineOverview = (props) => {
 
   const renderImageOrFileInput = () => {
     if (props.machine.image_url) {
+      console.log(process.env)
       return <img src={props.machine.image_url} />
     } else {
       return <input type="file" onChange={(e) => uploadImage(e)} />
