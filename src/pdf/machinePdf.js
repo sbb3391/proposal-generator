@@ -29,15 +29,16 @@ const machinePdf = (machine) => {
       machineImage.crossOrigin = 'anonymous'
       machineImage.src = url
 
-      setTimeout(() => {
+      machineImage.onload = function() {
         var canvas = document.createElement("canvas");
         canvas.width = machineImage.width;
         canvas.height = machineImage.height;
         var ctx = canvas.getContext("2d");
         ctx.drawImage(machineImage, 0, 0);
         var dataURL = canvas.toDataURL("image/png");
+
         resolve(dataURL)
-      }, 750)
+      }
     })
     
   }
