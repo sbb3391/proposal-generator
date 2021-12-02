@@ -2775,10 +2775,10 @@
     "postcss" "^7.0.32"
     "postcss-value-parser" "^4.1.0"
 
-"aws-sdk@^2.1035.0":
-  "integrity" "sha512-BjSGGZIQE/SCLDgj2T4AhtBG4A4NgXhV/Z/I/E7Mst/RpOepTqZGznUbgXTvO+Z3gKqx33jJa6mS7ZxStCb/Wg=="
-  "resolved" "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1035.0.tgz"
-  "version" "2.1035.0"
+"aws-sdk@^2.1041.0":
+  "integrity" "sha512-xAgURhKpb+z4gOFTd3Qa4n3wijPlmDJDblJdC6uqzxNthxtE4pBxB9nfszxdv2Sm4W3lAI/ACafO/9NXOGIkag=="
+  "resolved" "https://registry.npmjs.org/aws-sdk/-/aws-sdk-2.1041.0.tgz"
+  "version" "2.1041.0"
   dependencies:
     "buffer" "4.9.2"
     "events" "1.1.1"
