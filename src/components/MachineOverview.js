@@ -75,7 +75,8 @@ const MachineOverview = (props) => {
       addImageToDatabase({key: props.machine.image_key, url: data.location})
     })
     .catch(err => {
-      console.log(config)
+      alert(config.accessKeyId)
+      alert(config.bucketName)
       console.error(err)
     })
   }
