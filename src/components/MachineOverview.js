@@ -63,6 +63,9 @@ const MachineOverview = (props) => {
       secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY
     }
 
+    alert(config.region)
+    alert(config.accessKeyId)
+    
     const selectedFile = e.target.files[0]
 
     const ReactS3Client = new S3(config);
