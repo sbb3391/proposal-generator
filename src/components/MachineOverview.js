@@ -59,8 +59,8 @@ const MachineOverview = (props) => {
       bucketName: 'machine-images-bucket',
       region: 'us-east-2',
       dirName: 'machine-images',
-      accessKeyId: "AKIA6A2PKIBMHKOTNJX7",
-      secretAccessKey: "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"
+      accessKeyId: process.env.REACT_APP_AWS_ACCESS_ID_KEY,
+      secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY
     }
 
     const selectedFile = e.target.files[0]
