@@ -138,10 +138,9 @@ const MachineOverview = (props) => {
           {renderImageOrFileInput()}
       </div>
       <div className="flex flex-col space-y-3">
-        <h1 className="text-center">Machine Overview</h1>
         <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
-        <button onClick={createPdf} className="border border-black rounded-md w-36 mx-auto">Generate PDF</button>
-        <button onClick={editButtonClick} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Edit Machine</button>
+        <button onClick={editButtonClick} className="border border-black rounded-md w-36 mx-auto cursor-pointer">Edit Machine</button>
+        <button onClick={() => alert("delete functionality coming soon")} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Delete Machine</button>
         { renderSaveChangesButton(totalPrice)}
         { renderSaveMachinePreviewButton() }
       </div>
