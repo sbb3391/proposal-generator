@@ -8,6 +8,7 @@ import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import S3 from 'react-aws-s3';
 import { test } from '../pdf/test'
+import AWS from 'aws-sdk'
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -53,36 +54,75 @@ const MachineOverview = (props) => {
     }
   }
 
+  // for more details see: 
+  // // https://www.youtube.com/watch?v=_khupEk42zs&t=38s
+  // const getPresignedURL = (fileName) => {
+  //   return new Promise(resolve => {
+  //     const s3 = new AWS.S3()
+  //     const URL_EXPIRATION_SECONDS = 300
+  //     const bucket = "machine-images-bucket"
+      
+  //     // Main Lambda entry point
+  //     exports.handler = async (event) => {
+  //       return await getUploadURL(event)
+  //     }
+      
+  //     const getUploadURL = async function(event) {
+  //       const Key = `${fileName}.png`
+      
+  //       // Get signed URL from S3
+  //       const s3Params = {
+  //         Bucket: bucket,
+  //         Key,
+  //         Expires: URL_EXPIRATION_SECONDS,
+  //         ContentType: 'image/png',
+  //       }
+      
+  //       const uploadURL = await s3.getSignedUrlPromise('putObject', s3Params)
+      
+  //       resolve(JSON.stringify({uploadURL: uploadURL}))
+  //     }
+  //   })
+  // }
+
   
   const uploadImage = (e) => {
-    const config = {
-      bucketName: 'machine-images-bucket',
-      region: 'us-east-2',
-      dirName: 'machine-images',
-      accessKeyId: process.env.REACT_APP_AWS_ACCESS_ID_KEY,
-      secretAccessKey: process.env.REACT_APP_AWS_SECRET_KEY
-    }
+    const uploadURL = 'https://mq6wb7g4t7.execute-api.us-east-2.amazonaws.com/default/getPresignedURL?fileName=' + props.machine.image_key 
 
-    alert(config.region)
-    alert(config.accessKeyId)
-    
-    const selectedFile = e.target.files[0]
-
-    const ReactS3Client = new S3(config);
-    const newFileName =`${props.machine.image_key}.png`;
-
-    
-    ReactS3Client
-    .uploadFile(selectedFile, newFileName)
-    .then(data => {
-      addImageToDatabase({key: props.machine.image_key, url: data.location})
+    fetch(uploadURL)
+    .then( resp => resp.json())
+    .then( json => {
+      fetch(json.uploadURL, {
+        headers: {
+          "Content-Type": "image/png"
+        },
+        method: "PUT",
+        body: e.target.files[0]
+      })
+      .then( () => {
+        addImageToDatabase({key: props.machine.image_key, url: `https://machine-images-bucket.s3.us-east-2.amazonaws.com/machine-images/` + `${props.machine.image_key}.png`})
+      })
     })
-    .catch(err => {
-      alert(config.accessKeyId)
-      alert(config.bucketName)
-      console.error(err)
-    })
+
+  
+    // const selectedFile = e.target.files[0]
+
+    // const ReactS3Client = new S3(config);
+    // const newFileName =`${props.machine.image_key}.png`;
+
+    
+    // ReactS3Client
+    // .uploadFile(selectedFile, newFileName)
+    // .then(data => {
+    //   addImageToDatabase({key: props.machine.image_key, url: data.location})
+    // })
+    // .catch(err => {
+    //   alert(config.accessKeyId)
+    //   alert(config.bucketName)
+    //   console.error(err)
+    // })
   }
+
 
   let priceArray = [];
 
