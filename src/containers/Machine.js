@@ -39,7 +39,7 @@ class Machine extends Component {
         <div className="w-full h-full flex justify-around">
           <MachinePricing machine={this.props.machine} changeItemPrice={this.props.changePrice} machineType={this.props.machineType} />
           <div className="w-1/3 h-full flex place-items-center space-y-3">
-            <div className="flex flex-col space-y-3 w-11/12``">
+            <div className="flex flex-col space-y-3 w-11/12">
               <MachineOverview history={this.props.history} match={this.props.match} machine={this.props.machine} saveMachine={this.props.saveMachine} machineType={this.props.machineType}/>
             </div>
           </div>

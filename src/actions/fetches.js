@@ -196,3 +196,13 @@ export const addImageToDatabase = (body) => {
     alert("finished")
   })
 }
+
+export const deleteMachine = (machineId) => {
+  return fetch(`${fetchUrl()}/machines/${machineId}`, {
+    headers: {
+      "Content-type": "application/json",
+      'Content-Type': 'application/json'
+    },
+    method: "Delete"
+  })
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import numeral from 'numeral';
 import { proposalPdf } from '../pdf/proposalPdf'
 import { connect } from 'react-redux';
-import { editMachine, addImageToDatabase } from '../actions/fetches'
+import { editMachine, addImageToDatabase, deleteMachine } from '../actions/fetches'
 import { useHistory } from 'react-router-dom'
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
@@ -45,9 +45,26 @@ const MachineOverview = (props) => {
     // test()
   }
 
+  const deleteAMachine = (event) => {
+    if (event.target) {
+      deleteMachine(event.target.id)
+      .then( resp => resp.json())
+      .then( machine => {
+        props.removeMachine(machine.id)
+      })
+    }
+  }
+
+  const addDeleteButton = () => {
+    if (props.machineType !== "preview") {
+      return (
+        <button onClick={(event) => deleteAMachine(event)} id={props.machine.machineId} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Delete Machine</button>
+      )
+    }
+  }
+
   const renderImageOrFileInput = () => {
     if (props.machine.image_url) {
-      console.log(process.env)
       return <img src={props.machine.image_url} />
     } else {
       return <input type="file" onChange={(e) => uploadImage(e)} />
@@ -140,7 +157,7 @@ const MachineOverview = (props) => {
       <div className="flex flex-col space-y-3">
         <h1 className="text-center">Total Price: {numeral(totalPrice).format('$0,0.00')}</h1>
         <button onClick={editButtonClick} className="border border-black rounded-md w-36 mx-auto cursor-pointer">Edit Machine</button>
-        <button onClick={() => alert("delete functionality coming soon")} className="border border-black rounded-md w-36 mx-auto bg-red-500 text-white bold cursor-pointer">Delete Machine</button>
+        { addDeleteButton() }
         { renderSaveChangesButton(totalPrice)}
         { renderSaveMachinePreviewButton() }
       </div>
@@ -160,6 +177,7 @@ const mapDispatchToProps = (dispatch) => (
     editMachine: (machine, proposalId, history, machineType) => dispatch(editMachine(machine, proposalId, history, machineType)),
     testing: () => dispatch({type: "TESTING"}),
     toggleMachineSave: (machine, saveMachine) => dispatch({type: "TOGGLE_MACHINE_SAVE", machine: machine, saveMachine: saveMachine}),
+    removeMachine: (machineId) => dispatch({type: "REMOVE_MACHINE", machineId: machineId})
   }
 )
 
