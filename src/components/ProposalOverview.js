@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server'
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { deleteProposal } from '../actions/fetches'
+import { useHistory } from 'react-router-dom'
 
 // required for PDFMake
 import { buildQueries } from "@testing-library/react";
@@ -12,15 +13,17 @@ import pdfFonts from "pdfmake/build/vfs_fonts";
 import numeral from 'numeral';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-class ProposalOverview extends Component {
-  createPdf = () => {
-    if (this.props.proposal.machines) {
-      pdfMake.createPdf(proposalPdf(this.props.proposal.machines)).open()
+const ProposalOverview = (props) => {
+  const history = useHistory();
+
+  const createPdf = () => {
+    if (props.proposal.machines) {
+      pdfMake.createPdf(proposalPdf(props.proposal.machines)).open()
     }
   }
 
-  pricing = () => {
-    const purchase = this.props.proposal.sellingPrice
+  const pricing = () => {
+    const purchase = props.proposal.sellingPrice
     return(
       <div className="flex flex-col w-full place-self-center">
         <span className="text-sm">Purchase: {numeral(purchase).format('$0,0.00')} </span>
@@ -30,38 +33,36 @@ class ProposalOverview extends Component {
     )
   }
 
-  deleteProposal = (event) => {
+  const deleteAProposal = (event) => {
     const proposalId = event.target.id
 
     deleteProposal(proposalId)
     .then( () => {
-      debugger;
+      history.push('/customers')
     })
   }
 
-  render() {
-    return (
-      <>
-      <div>
-        {this.props.proposal.machines ? this.pricing() : null}
-      </div>
-      <div>
-        <button onClick={this.createPdf} className="border-black border-2 rounded-md p-2">Open PDF</button>
-      </div>
-      <div>
-        <button onClick={this.props.togglePopWindow} className="border-black border-2 rounded-md p-2">Edit Pricing Options</button>
-      </div>
-      <div>
-        <NavLink to={`/proposals/${this.props.match.params.id}/machine/new`}>
-          <button className="border-black border-2 rounded-md p-2">Add Machine</button>
-        </NavLink>
-      </div>
-      <div>
-        <button onClick={(event) => this.deleteProposal(event)} id={this.props.proposal.id} className="border-black border-2 rounded-md p-2 bg-red-500 text-white bold cursor-pointer">Delete Proposal</button>
-      </div>
-      </>
-    );
-  }
+  return (
+    <>
+    <div>
+      {props.proposal.machines ? pricing() : null}
+    </div>
+    <div>
+      <button onClick={createPdf} className="border-black border-2 rounded-md p-2">Open PDF</button>
+    </div>
+    <div>
+      <button onClick={props.togglePopWindow} className="border-black border-2 rounded-md p-2">Edit Pricing Options</button>
+    </div>
+    <div>
+      <NavLink to={`/proposals/${props.match.params.id}/machine/new`}>
+        <button className="border-black border-2 rounded-md p-2">Add Machine</button>
+      </NavLink>
+    </div>
+    <div>
+      <button onClick={(event) => deleteAProposal(event)} id={props.proposal.id} className="border-black border-2 rounded-md p-2 bg-red-500 text-white bold cursor-pointer">Delete Proposal</button>
+    </div>
+    </>
+  );
 }
 
 const mapStateToProps = state => (
