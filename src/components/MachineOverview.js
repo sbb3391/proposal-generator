@@ -47,6 +47,7 @@ const MachineOverview = (props) => {
 
   const deleteAMachine = (event) => {
     if (event.target) {
+      debugger;
       deleteMachine(event.target.id)
       .then( resp => resp.json())
       .then( machine => {

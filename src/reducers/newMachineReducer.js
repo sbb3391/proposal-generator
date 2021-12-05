@@ -338,13 +338,16 @@ function newMachineReducer(state = defaultState, action) {
       }
     case 'REMOVE_MACHINE':
       if (state.proposal.machines) {
-        const machine = state.proposal.machines.find( machine => machine.machineId = action.machineId)
-        const indexOfMachine = state.proposal.machines.indexOf(machine)
+        const stateCopy = Object.assign({}, {...state})
+        const machine = stateCopy.proposal.machines.find( machine => machine.machineId === action.machineId)
+        const indexOfMachine = stateCopy.proposal.machines.indexOf(machine)
+        debugger;
+
         return {
           ...state,
           proposal: {
             ...state.proposal,
-            sellingPrice: state.proposal.sellingPrice - state.proposal.machines[indexOfMachine].selingPrice,
+            sellingPrice: state.proposal.sellingPrice - machine.sellingPrice,
             machines: [...state.proposal.machines.slice(0, indexOfMachine), ...state.proposal.machines.slice(indexOfMachine + 1)]
           }
         }
