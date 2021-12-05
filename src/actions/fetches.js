@@ -206,3 +206,13 @@ export const deleteMachine = (machineId) => {
     method: "Delete"
   })
 }
+
+export const deleteProposal = (proposalId) => {
+  return fetch(`${fetchUrl()}/proposals/${proposalId}`, {
+    headers: {
+      "Content-type": "application/json",
+      'Content-Type': 'application/json'
+    },
+    method: "Delete"
+  })
+}

@@ -3,6 +3,7 @@ import { proposalPdf } from '../pdf/proposalPdf'
 import { renderToString } from 'react-dom/server'
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { deleteProposal } from '../actions/fetches'
 
 // required for PDFMake
 import { buildQueries } from "@testing-library/react";
@@ -29,6 +30,15 @@ class ProposalOverview extends Component {
     )
   }
 
+  deleteProposal = (event) => {
+    const proposalId = event.target.id
+
+    deleteProposal(proposalId)
+    .then( () => {
+      debugger;
+    })
+  }
+
   render() {
     return (
       <>
@@ -45,6 +55,9 @@ class ProposalOverview extends Component {
         <NavLink to={`/proposals/${this.props.match.params.id}/machine/new`}>
           <button className="border-black border-2 rounded-md p-2">Add Machine</button>
         </NavLink>
+      </div>
+      <div>
+        <button onClick={(event) => this.deleteProposal(event)} id={this.props.proposal.id} className="border-black border-2 rounded-md p-2 bg-red-500 text-white bold cursor-pointer">Delete Proposal</button>
       </div>
       </>
     );
