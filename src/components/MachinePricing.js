@@ -29,29 +29,38 @@ class MachinePricing extends Component {
     let itemsArray = []
 
     const part_types = ["engine", "delivery/install", "paper handling", "finishing", "print controller", "power supply"]
-    this.props.machine.assemblies.map( assembly => 
-      assembly.items.forEach( item => itemsArray.push(item))
-    )
+
+    let itemQuantities = {}
+    
+    this.props.machine.assemblies.map( assembly => {
+      assembly.items.forEach( item => {
+        if (itemQuantities[`${item.itemId}`]) {
+          itemQuantities[`${item.itemId}`]++
+        } else {
+          itemQuantities[`${item.itemId}`] = 1
+          itemsArray.push(item)
+        }
+      })
+    })
     
     return part_types.map( part => {
       return itemsArray.filter( item => item.part_type === part).map( item => {
-
         const sellingPriceValue = () => {
           const assembly = this.props.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId )
 
           return assembly.items.find( i => i.itemId == item.itemId).unitPrice
         }
 
-        let percent = parseFloat(item.unitPrice) / parseFloat(item.branchFloor)
+        const itemQuantity = itemQuantities[`${item.itemId}`]
+
         return(
           <tr>
-            <td className="text-center w-20">1</td>
+            <td className="text-center w-20">{itemQuantity}</td>
             <td className="w-96">{item.description}</td>
-            <td id="branch-floor-price" className="text-center w-36">{this.returnCurrencyFormat(item.branchFloor)}</td>
             <td className="text-center w-36">
-              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} onChange={this.handlePriceChange} />
+              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={numeral(sellingPriceValue()).format('000.00')} onChange={this.handlePriceChange} />
             </td> 
-            <td className="text-center w-28">{this.returnPercentFormat(percent)}</td>
+            <td className="text-center w-28">{this.returnCurrencyFormat(sellingPriceValue() * itemQuantity)}</td>
           </tr>
         )
       })
@@ -68,9 +77,8 @@ class MachinePricing extends Component {
             <tr>
               <td className="text-center w-20">Quantity</td>
               <td className="text-center w-96">Item</td>
-              <td className="text-center w-36">Branch Floor</td>
-              <td className="text-center w-28">Selling Price</td>
-              <td className="text-center w-28">% of BF</td>
+              <td className="text-center w-36">Unit Price</td>
+              <td className="text-center w-28">Extended Price</td>
             </tr>
           </thead>
           <tbody className="h-full overflow-auto block text-center">
