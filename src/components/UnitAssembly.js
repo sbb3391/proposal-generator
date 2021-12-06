@@ -18,8 +18,45 @@ class UnitAssembly extends Component {
     this.props.removeItem(assembly, itemId)
   }
 
+  addItemToAssembly = (event) => {
+    const assemblyId = event.target.dataset.assemblyId
+    const itemId = event.target.dataset.itemId
+
+    const assembly = this.props.assemblies.find( assembly => assembly.id == assemblyId )
+
+    this.props.addItem(assembly, itemId)
+
+  }
+
   toggleItemView = (event) => {
     event.target.parentElement.parentElement.querySelector(".items-container").classList.toggle("hidden")
+  }
+
+  renderAvailableAssemblyItems = (assembly) => {
+    const modelAssemblies = this.props.model.allAssemblies
+    const machineAssemblies = this.props.assemblies
+    
+    const modelAssembly = modelAssemblies.find( a => a.id == assembly.id)
+    const machineAssembly = machineAssemblies.find( a => a.id == assembly.id )
+
+    const availableItems = modelAssembly.items.filter( i =>  {
+      if (machineAssembly.items.find( ii => i.itemId == ii.itemId )) {
+        return false
+      } else {
+        return true
+      }
+    })
+
+    if (availableItems.length > 0) {
+      let items = availableItems.map( i => {
+        return <span data-item-id={i.itemId} data-assembly-id={assembly.id} onClick={this.addItemToAssembly} className="text-xs cursor-pointer">{i.description}</span>
+      })
+
+      items.unshift(<h1>Available Items</h1>)
+
+      return items
+    }
+
   }
 
   renderAssembliesAndItems = () => {
@@ -37,13 +74,13 @@ class UnitAssembly extends Component {
           <div className="items-container flex flex-col hidden">
             {assembly.items.map( item => {
               return(
-                <div className="flex space-x-2">
-                  { item.required ? <span className="w-4"></span> : <span id={item.itemId} data-assembly-id={assembly.id} onClick={this.removeItemFromAssembly} className="text-xs cursor-pointer">&#10060;</span> }
-                  <span className="text-xs">{item.description}</span>
-                </div>
-
+                  <div className="flex space-x-2">
+                    { item.required ? <span className="w-4"></span> : <span id={item.itemId} data-assembly-id={assembly.id} onClick={this.removeItemFromAssembly} className="text-xs cursor-pointer">&#10060;</span> }
+                    <span className="text-xs">{item.description}</span>
+                  </div>
               )
             })}
+            {this.renderAvailableAssemblyItems(assembly)}
           </div>
         </div>
       )
@@ -63,12 +100,16 @@ class UnitAssembly extends Component {
 const mapDispatchToProps = (dispatch) => (
   {
     removeAssembly: (assembly, step) => dispatch({type: "REMOVE_ASSEMBLY", assembly: assembly, step: step}),
-    removeItem: (assembly, itemId) => dispatch({type: "REMOVE_ITEM", assembly: assembly, itemId: itemId})
+    removeItem: (assembly, itemId) => dispatch({type: "REMOVE_ITEM", assembly: assembly, itemId: itemId}),
+    addItem: (assembly, itemId) => dispatch({type: "ADD_ITEM", assembly: assembly, itemId: itemId})
   }
 )
 
 const mapStateToProps = (state) => (
-  {assemblies: state.machine.assemblies}
+  {
+    assemblies: state.machine.assemblies,
+    model: state.model
+  }
 )
 
 export default connect(mapStateToProps, mapDispatchToProps)(UnitAssembly);

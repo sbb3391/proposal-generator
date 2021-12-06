@@ -158,7 +158,7 @@ function newMachineReducer(state = defaultState, action) {
         }
       }
     case 'REMOVE_ITEM':
-      const eventAssembly = state.machine.assemblies.find( assembly => assembly.id == action.assembly.id)
+      let eventAssembly = state.machine.assemblies.find( assembly => assembly.id == action.assembly.id)
       const eventItem = eventAssembly.items.find( item => item.itemId == action.itemId)
       const newItems = eventAssembly.items.filter( item => item !== eventItem)
       const newAssembly = Object.assign({}, eventAssembly)
@@ -171,6 +171,27 @@ function newMachineReducer(state = defaultState, action) {
           assemblies: state.machine.assemblies.map( assembly => {
             if (assembly.id === newAssembly.id) {
               return newAssembly
+            } else {
+              return assembly
+            }
+          })
+        }
+      }
+    case 'ADD_ITEM':
+      const eAssembly = state.machine.assemblies.find( assembly => assembly.id == action.assembly.id)
+      const modelAssembly = state.model.allAssemblies.find( assembly => assembly.id == action.assembly.id)
+      const actionItem = modelAssembly.items.find( i => i.itemId == action.itemId)
+
+      const aNewAssembly = Object.assign({}, eAssembly)
+      aNewAssembly.items.push(actionItem)
+
+      return{
+        ...state,
+        machine: {
+          ...state.machine,
+          assemblies: state.machine.assemblies.map( assembly => {
+            if (assembly.id === aNewAssembly.id) {
+              return aNewAssembly
             } else {
               return assembly
             }
