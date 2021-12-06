@@ -49,10 +49,15 @@ class UnitAssembly extends Component {
 
     if (availableItems.length > 0) {
       let items = availableItems.map( i => {
-        return <span data-item-id={i.itemId} data-assembly-id={assembly.id} onClick={this.addItemToAssembly} className="text-xs cursor-pointer">{i.description}</span>
+        return(
+          <div className="flex space-x-2">
+             <span className="w-4"></span>
+            <span data-item-id={i.itemId} data-assembly-id={assembly.id} onClick={this.addItemToAssembly} className="text-xs cursor-pointer">{i.description}</span>
+          </div>
+        )
       })
 
-      items.unshift(<h1>Available Items</h1>)
+      items.unshift(<h1 className="text-center my-2 underline">Available Items</h1>)
 
       return items
     }
