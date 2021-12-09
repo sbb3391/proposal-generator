@@ -28,6 +28,11 @@ class MachinePricing extends Component {
   renderTableRows = () => {
     let itemsArray = []
 
+    const formatter = new Intl.NumberFormat('en-US', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    });
+
     const part_types = ["engine", "delivery/install", "paper handling", "finishing", "print controller", "power supply"]
 
     let itemQuantities = {}
@@ -48,7 +53,9 @@ class MachinePricing extends Component {
         const sellingPriceValue = () => {
           const assembly = this.props.machine.assemblies.find( assembly => assembly.id == item.assemblyId && assembly.modelId == item.modelId )
 
-          return assembly.items.find( i => i.itemId == item.itemId).unitPrice
+          let sellPrice = assembly.items.find( i => i.itemId == item.itemId).unitPrice
+
+          return sellPrice
         }
 
         const itemQuantity = itemQuantities[`${item.itemId}`]
@@ -58,7 +65,7 @@ class MachinePricing extends Component {
             <td className="text-center w-20">{itemQuantity}</td>
             <td className="w-96">{item.description}</td>
             <td className="text-center w-36">
-              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={numeral(sellingPriceValue()).format('000.00')} onChange={this.handlePriceChange} />
+              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} onChange={this.handlePriceChange} />
             </td> 
             <td className="text-center w-28">{this.returnCurrencyFormat(sellingPriceValue() * itemQuantity)}</td>
           </tr>
