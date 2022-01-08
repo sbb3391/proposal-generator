@@ -13,6 +13,7 @@ import { savePreviewMachine } from './actions/fetches';
 import MachineSave from './containers/MachineSave.js';
 import NewProposal from './components/NewProposal.js';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SupplyOrders from './containers/SupplyOrders'
 
 function App(props) {
 
@@ -46,6 +47,7 @@ function App(props) {
             <Route path="/proposals/:proposalId/machine/new" render={(match) => <NewMachine type="new" match={match.match} /> } />
             <Route path="/proposals/:id" component={Proposal} />
             <Route path="/edit" component={Edit}/>
+            <Route path="/supply-orders" render={(match) => <SupplyOrders />} />
           </Switch>
         </div>
       </div>

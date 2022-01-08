@@ -20,7 +20,24 @@ class MachinePricing extends Component {
     const assembly = this.props.machine.assemblies.find( assembly => assembly.id == assemblyId && assembly.modelId == modelId)
 
     const  changingItem = assembly.items.find( i => i.itemId == itemId)
-    changingItem.unitPrice = event.target.value
+
+    
+    event.target.value > 0 ? changingItem.unitPrice = event.target.value : changingItem.unitPrice = null
+    
+    this.props.changeItemPrice(changingItem, this.props.machineType)
+  }
+
+  blurItemPrice = (event) => {
+    const modelId = event.target.dataset.modelId
+    const itemId = event.target.id
+    const assemblyId = event.target.dataset.assemblyId
+
+    const assembly = this.props.machine.assemblies.find( assembly => assembly.id == assemblyId && assembly.modelId == modelId)
+
+    const  changingItem = assembly.items.find( i => i.itemId == itemId)
+
+    
+    if (event.target.value === "") changingItem.unitPrice = 0
     
     this.props.changeItemPrice(changingItem, this.props.machineType)
   }
@@ -65,7 +82,7 @@ class MachinePricing extends Component {
             <td className="text-center w-20">{itemQuantity}</td>
             <td className="w-96">{item.description}</td>
             <td className="text-center w-36">
-              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} onChange={this.handlePriceChange} />
+              <input className="w-28" data-assembly-id={item.assemblyId} data-model-id={item.modelId} id={item.itemId} type="number" value={sellingPriceValue()} onChange={this.handlePriceChange} onBlur={this.blurItemPrice} />
             </td> 
             <td className="text-center w-28">{this.returnCurrencyFormat(sellingPriceValue() * itemQuantity)}</td>
           </tr>

@@ -145,11 +145,18 @@ const MachineOverview = (props) => {
   let priceArray = [];
 
   if (props.machine.assemblies.length > 0) {
-    props.machine.assemblies.forEach(assembly => assembly.items.forEach( item => priceArray.push(item.unitPrice)))
+    props.machine.assemblies.forEach(assembly => assembly.items.forEach( item => {
+      if (Object.is(NaN, item.unitPrice)) {
+        priceArray.push("0")
+      } else {
+        priceArray.push(item.unitPrice)
+      }
+    }))
   }
 
+
   const totalPrice = numeral(priceArray.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
-  
+
   return (
     <div className="flex flex-col space-y-6">
       <div className="place-items-center h-36">

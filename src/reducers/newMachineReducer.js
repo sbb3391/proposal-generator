@@ -209,8 +209,8 @@ function newMachineReducer(state = defaultState, action) {
       let items = [];
 
       action.machine.assemblies.forEach( assembly => assembly.items.forEach( item => {
-          items.push(parseFloat(item.unitPrice))
-        })
+        items.push(item.unitPrice)
+      })
       )
 
       sellingPrice = numeral(items.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')

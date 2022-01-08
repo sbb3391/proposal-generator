@@ -106,7 +106,11 @@ export function updateProposalSellingPrice(proposal) {
     let items = [];
     machine.assemblies.forEach( assembly => {
       assembly.items.forEach( item => {
-        items.push(parseFloat(item.unitPrice))
+        if (Object.is(NaN, item.unitPrice)) {
+          items.push("0")
+        } else {
+          items.push(item.unitPrice)
+        }
       })
     })
     sellingPrice = numeral(items.reduce((a, b) => parseFloat(a) + parseFloat(b), 0)).format('000.00')
