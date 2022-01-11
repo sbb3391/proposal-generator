@@ -8,6 +8,7 @@ import {
 import SupplyOrderHeader from '../components/SupplyOrderHeader'
 import Filters from '../components/Filters'
 import * as FaIcons from "react-icons/fa"
+import { fetchUrl } from "../actions/fetches"
 
 
 const SupplyOrders = (props) => {
@@ -64,8 +65,9 @@ const SupplyOrders = (props) => {
 
   const changeDate = (value, orderId) => {
     const body = {
-      date: value
+      due_date: value
     }
+
     fetch(`http://localhost:3000/supply_orders/${orderId}`, {
       headers: {
         "Content-type": "application/json",
@@ -76,13 +78,22 @@ const SupplyOrders = (props) => {
     })
     .then( resp => resp.json())
     .then( json => {
+      const newOrders = [...orders]
+
+      newOrders.forEach( order => {
+        if (order.id === json.id) {
+          order.due_date = json.due_date
+        }
+      })
+
+      setOrders(newOrders)
     })
   }
 
   const renderDateField = (dateValue, orderId) => {
     return(
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker value={dateValue} format="MM/dd/yyyy" onChange={() => changeDate(dateValue, orderId)}/>
+        <KeyboardDatePicker value={dateValue} format="MM/dd/yyyy" onChange={(newValue) => changeDate(newValue, orderId)}/>
       </MuiPickersUtilsProvider>
     )
   }
@@ -109,17 +120,13 @@ const SupplyOrders = (props) => {
       return(<FaIcons.FaSort onClick={() => sortColumn(header)}/>)
     } else if (header.sorted === "up") {
       return(<FaIcons.FaSortUp onClick={() => sortColumn(header)} />) 
-    } else {
+    } else if (header.sorted === "down") {
       return(<FaIcons.FaSortDown onClick={() => sortColumn(header)} />)
     }
   }
 
   const sortColumn = (header) => {
     const newOrders = [...orders]
-
-    const convertDateToUTC = (date) => { 
-      return new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()); 
-    }
 
     // if the column being sorted is a date change the data to type Date so it can actually be sorted
     if (header.date) {;
@@ -131,15 +138,15 @@ const SupplyOrders = (props) => {
         return( (a,b) => a[header.key] - b[header.key] )
       } else if (header.sorted === "up") {
         return( (a,b) => b[header.key] - a[header.key])
-      } else {
-        return( (a,b) => a )
+      } else if (header.sorted === "down") {
+        return( (a,b) => a[header.key] - b[header.key] )
       }
     }
 
     const setNewSortedValue = (sorted) => {
       if (sorted === "sort") return "up" 
       else if (sorted === "up") return "down"
-      else return "sort"
+      else if (sorted === "down") return "up"
     }
 
 
@@ -156,14 +163,50 @@ const SupplyOrders = (props) => {
 
     setOrders(newOrders)
     setColumnHeaders(newHeaders)
-
   }
 
-  const renderCompleteButton = (completed) => {
-    if (completed) {
-      return <FaIcons.FaCheckCircle />
+  const checkToToggleCompleteButton = ord => {
+    if (window.confirm("Uncomplete Supply Order?")) {
+      toggleCompleteButton(ord)
+    }
+  }
+
+  const toggleCompleteButton = (ord) => {
+    const toggle = ord.completed ? false : true
+
+    const newOrders = [...orders]
+
+    newOrders.forEach( order => {
+      if (order.id === ord.id) {
+        order.completed = toggle
+      }
+    })
+
+    setOrders(newOrders)
+
+    const body = {
+      completed: toggle
+    }
+
+    fetch(`http://localhost:3000/supply_orders/${ord.id}`, {
+      headers: {
+        "Content-type": "application/json",
+        'Content-Type': 'application/json'
+        },
+      method: "PUT",
+      body: JSON.stringify(body)
+    })
+    .then( resp => resp.json())
+    .then( json => {
+      debugger
+    })
+  }
+
+  const renderCompleteButton = (order) => {
+    if (order.completed) {
+      return <FaIcons.FaCheckCircle color="Green" fontSize="28" onClick={() => {checkToToggleCompleteButton(order)}} />
     } else {
-      return <FaIcons.FaTimes color="Tomato" fontSize="28"/>
+      return <FaIcons.FaTimes color="Tomato" fontSize="28" onClick={() => toggleCompleteButton(order)}/>
     }
   
   }
@@ -180,7 +223,7 @@ const SupplyOrders = (props) => {
             <td>{renderDateField(order.due_date, order.id) }</td>
             <td align="center">
               <button className="">
-                {renderCompleteButton(order.completed)}
+                {renderCompleteButton(order)}
               </button>
             </td>
           </tr>
