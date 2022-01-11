@@ -55,7 +55,7 @@ const SupplyOrders = (props) => {
 
   useEffect( () => {
     if (orders.length === 0) {
-      fetch("http://localhost:3000/supply_orders")
+      fetch(`${fetchUrl}/supply_orders`)
       .then( resp => resp.json())
       .then( json => {
         setOrders(json)
@@ -68,7 +68,7 @@ const SupplyOrders = (props) => {
       due_date: value
     }
 
-    fetch(`http://localhost:3000/supply_orders/${orderId}`, {
+    fetch(`${fetchUrl}/supply_orders/${orderId}`, {
       headers: {
         "Content-type": "application/json",
         'Content-Type': 'application/json'
@@ -188,7 +188,7 @@ const SupplyOrders = (props) => {
       completed: toggle
     }
 
-    fetch(`http://localhost:3000/supply_orders/${ord.id}`, {
+    fetch(`${fetchUrl}/supply_orders/${ord.id}`, {
       headers: {
         "Content-type": "application/json",
         'Content-Type': 'application/json'
@@ -198,7 +198,6 @@ const SupplyOrders = (props) => {
     })
     .then( resp => resp.json())
     .then( json => {
-      debugger
     })
   }
 
